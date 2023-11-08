@@ -1,0 +1,158 @@
+
+*{
+
+    margin:0;
+     padding:0;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+
+
+  /* <naigator section foe the menu bar> */
+  .topnav{
+     
+    z-index: 2;
+    width: 40%;
+    margin-left: 20%;
+    }
+    .topnav a{
+        float:right;
+        display: block;
+         color:white;
+        text-align: center;
+      
+        font-family: 'Vollkorn', serif;
+        padding: 14px 16px;
+        text-decoration: none;
+      top:15px;
+        font-size: 16px;
+    }
+
+    .topnav a:hover {
+        background-color: blue;
+     
+    }
+
+  /* <>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+
+.Clothing {
+
+  background-image: url(images/shopping.jpg);
+  /* background-image: linear-gradient(to right bottom, #314fa3, #6f71b9, #a097cf, #cbc0e6, #f4ecff); */
+  min-height: 100vh;
+   top: 0;
+   background-position: center;
+   background-size: cover;
+   position: relative;
+
+ } 
+ .Beauty {
+
+    background-image: url(images/beauty.jpg);
+   
+    min-height: 100vh;
+     top: 0;
+     background-position: center;
+     background-size: cover;
+     position: relative;
+   
+   } 
+   .Accessories {
+
+    background-image: url(images/img1.jpg);
+  
+    min-height: 100vh;
+     top: 0;
+   
+     background-position: center;
+     background-size: cover;
+     position: relative;
+  
+   } 
+   .Text1
+   {
+    
+    width: 10%;
+    height: 2rem;
+    /* background-color: red;  */
+    border-color: black;
+    border-width: 10px;
+    margin-left: 90%;
+    transform: translateY(80vh);
+    z-index: 1;
+}
+
+
+.Text1 p
+{font-size: 16px;
+font-weight: bold;
+text-align: center;
+}
+.heading
+{
+display: flex;
+/* background-color: blue; */
+height: 2em;
+width: 80%;
+margin-left: 20%;
+}
+.search {
+    text-align: center;
+}
+
+/* Style the form for the search bar */
+.search form {
+    display: inline-block;
+}
+
+/* Style the search input field */
+.search input[type="text"] {
+    padding: 10px;
+    width: 25em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Style the search button */
+.search button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Add some hover effect for the button */
+.search button:hover {
+    background-color: #0056b3;
+}
+  .Footer{
+    width:100%;
+    margin-top: 0px;
+    text-align:center;
+    height: 15em;
+  /* height: 10em; */
+    /* padding-top: 15px; */
+    color: white;
+    background-color: #3E4756;
+  
+  
+  
+  }
+  .footinfor{
+  
+    display: flex;
+    justify-content: space-between;
+  
+  }
+  .infoUs{
+    flex-basis: 30%;
+  }
+  .copyright{
+    width: 100%;
+    background-color: #758199;
+    height: 15%;
+  
+  }

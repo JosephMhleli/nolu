@@ -11,9 +11,10 @@
 
   /* <naigator section foe the menu bar> */
   .topnav{
-    
+    /* background-color: #0056b3; */
    z-index: 2;
     width: 60%;
+ top: 0;
     margin-left: 30%;
     }
     .topnav a{
@@ -50,34 +51,88 @@
          width: 60%;
          margin-left: 20%;
          margin-top: 2%;
-         border-top: 2px solid #414242;
-         border-bottom: 2px solid #414242;
+         border-top: 2px solid #989799;
+         border-bottom: 2px solid #989799;
          height: 5vh;
-         
+         position: relative;
          }
          .topnav2 a{
+        
              float:right;
          font-weight: bold;
-              color:black; 
+              color:#5D5C5E; 
+              margin-right: 2%;
              text-align: center;
              padding: 14px 20px;
              text-decoration:solid;
            top:15px;
              font-size: 14px;
              font-family: Arial, Helvetica, sans-serif;
+             
          }
-     
-         .topnav2 a:hover {
-            background-color:#3E4756;
-          
-         }
+    
+         
+      
+      
+      .topnav2 a::after {
+          content: "";
+          display: block;
+          width: 0;
+          height: 2px;
+          background-color: #758199; /* Color of the line */
+          transition: width 0.3s ease-in-out;
+      }
+      
+      .topnav2 a:hover::after {
+          width: 100%;
+      }
+      
+/* .topnav2::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 10px;
+  width: 100%;
+  z-index: 2;
+  height: 30vh; 
+  background-color: red; 
+  opacity: 0; 
+  transition: opacity 0.3s ease-in-out;
+}
+
+.topnav2:hover::before {
+  opacity: 1;  
+} */
+
+.topnav2 .hoverdiv {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 30vh;
+  padding: 10px;
+  background-color:#F7F7F7;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.topnav2:hover .hoverdiv {
+  display: block;
+}
+
+
+
 
   /* <>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
  
 .Romance{
 
-  background-image: url(..//Images/img2.jpg);
-  /* background-image: linear-gradient(to right bottom, #314fa3, #6f71b9, #a097cf, #cbc0e6, #f4ecff); */
+ background-color: white;
+  
   min-height: 100vh;
    top: 0;
    z-index:0;
@@ -87,49 +142,30 @@
 
  } 
 
-   .Text1
-   {
-    
-    width: 10%;
-    height: 2rem;
-    /* background-color: red;  */
-    border-color: black;
-    border-width: 10px;
-    margin-left: 90%;
-    transform: translateY(80vh);
-    z-index: 1;
-}
 
 
-.Text1 p
-{font-size: 16px;
-font-weight: bold;
-text-align: center;
-}
-.heading
-{
-z-index:0;
-width: 70%;
-margin: 0 auto;
-position: relative;
-/* border: 2px solid #0056b3; */
-}
 .search {
     text-align: center;
+    
+    
+    
 }
 
 /* Style the form for the search bar */
 .search form {
     display: inline-block;
+    
 }
 
 /* Style the search input field */
 .search input[type="text"] {
     padding: 10px;
-    width: 45em;
-    margin-top: 5%;
+    width: 100vh; 
+    /* border-radius: 5px; */
+   margin-top: 10%;
+   
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 20px;
 }
 
 /* Style the search button */
@@ -155,7 +191,7 @@ position: relative;
     left: 0;
     background-size: cover;
     background-position: center;
-    z-index: 2;
+   
     animation: backgroundChange 12s infinite;
   }
   

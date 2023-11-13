@@ -219,6 +219,16 @@
     }
   }
 
+.topsellers{
+  width: 60%;
+  height: 5vh;
+  margin: 1% auto;
+  
+  border-top: 2px solid #989799;
+  border-bottom: 2px solid #989799;
+  
+}
+
   .catDiv{
   
   display: flex;
@@ -268,12 +278,7 @@
       position: relative;
       margin: auto;
     }
-.slide1{
-  width: 60%;
 
-  background-color: red;
-  margin:  50px auto;
-}
 
 .imgcontainer{
   display: flex;
@@ -295,20 +300,12 @@
 .bookdet{
   width: 100%;
 height: 100%;
-background-color: yellow;}
-
-/* .slide2{
-  width: 60%;
- 
-  background-color: Blue;
-  margin:  50px auto;
+/* background-color: yellow; */
 }
-.slide3{
-  width: 60%;
- 
-  background-color: green;
-  margin:  50px auto;
-}  */
+
+.bookconte{
+  text-align: center;
+}
 
 .slideshow-container {
  width: 60%;

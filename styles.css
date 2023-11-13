@@ -117,7 +117,7 @@
   background-color:#F7F7F7;
   color: #fff;
   border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow:pink
 }
 
 .topnav2:hover .hoverdiv {
@@ -303,7 +303,7 @@ height: 100%;
 /* background-color: yellow; */
 }
 
-.bookconte{
+.bookinfo{
   text-align: center;
 }
 
@@ -355,16 +355,64 @@ height: 100%;
   from { opacity: 0.4; }
   to { opacity: 1; }
 }
+.biocontainer{
+  width: 60%;
+  height: 30vh;
+  margin: 1% auto;
+  display: flex;
+  padding: 10px;
+
+  justify-content: space-between;
+}
+
+.insidecon {
+  position: relative;
+  display: inline-block;
+  flex-basis: 20%;
+}
+
+.bookconte {
+  position: absolute;
+  bottom: 20%;
+  left: 0;
+  background: rgba(255, 255, 255, 0.8); /* Adjust background color and opacity as needed */
+
+  visibility: hidden;
+  opacity: 0;
+  width: 95%;
+  transition: opacity 0.3s;
+  transition: width 0.3s ease-in-out;
+}
+
+.insidecon:hover .bookconte {
+  visibility: visible;
+  opacity: 1;
+}
+
+.cart-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #007bff; /* Adjust background color as needed */
+  color: white;
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.cart-overlay  a{
+  margin-right: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
 
 .Footer{
     width:100%;
-    margin-top: 0px;
-    text-align:center;
-    height: 15em;
-  /* height: 10em; */
-    /* padding-top: 15px; */
-    color: white;
-    background-color: #3E4756;
+   
+    /* text-align:center; */
+    height: 20em;
+    color: black;
+    background-color: #a2a2a2;
   
   
   
@@ -377,10 +425,62 @@ height: 100%;
   }
   .infoUs{
     flex-basis: 30%;
+    padding: 20px 6px;
+
   }
-  .copyright{
-    width: 100%;
-    background-color: #758199;
-    height: 15%;
-  
-  }
+ .infoUs h2{
+  font-size: 18px;
+  padding: 10px 0;
+ }
+.infoUs p{
+  padding: 10px 0;
+}
+ .infoUs a{
+  font-size: 18px;
+  display: block;
+  text-decoration: none;
+  padding: 10px 0;
+  font-weight: bold;
+  color:#5D5C5E; 
+ text-decoration:solid;
+  top:15px;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+ }
+ .fitfooter{
+  width: 60%;
+margin: 0 auto;
+}
+.subscribe-section {
+  text-align: center;
+ 
+}
+
+.subscribe-section form {
+  max-width: 400px;
+  margin: auto;
+}
+
+.subscribe-section label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.subscribe-section input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+}
+
+.subscribe-section button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.subscribe-section button:hover {
+  background-color: #0056b3;
+}

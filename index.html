@@ -46,52 +46,15 @@
          
 
         <div class="topnav2" id="myTopnav2">
-          <a href="#ews">ROMANCE</a>
-          <a href="#ews">CHILDREN</a>
-          <a href="#ews">FICTION</a>
-          <a href="#ews">NON-FICTION</a>
-          <a href="#contact">NEWSLETTER</a>
-          <a href="#about">PRE-ORDER</a>
+          <a href="#" onmouseover="showCategory(1)" onmouseout="hideHoverDiv()">ROMANCE</a>
+          <a href="#" onmouseover="showCategory(2)" onmouseout="hideHoverDiv()">CHILDREN</a>
+          <a href="#" onmouseover="showCategory(3)" onmouseout="hideHoverDiv()">FICTION</a>
+          <a href="#" onmouseover="showCategory(4)" onmouseout="hideHoverDiv()">NON-FICTION</a>
+          <a href="#" onmouseover="showCategory(5)" onmouseout="hideHoverDiv()">NEWSLETTER</a>
+          <a href="#" onmouseover="showCategory(6)" onmouseout="hideHoverDiv()">PRE-ORDER</a>
         
-          <!-- Move the hoverdiv inside topnav2 -->
-          <div class="hoverdiv">
-            <div class = "catDiv">
-
-                <div class = serv1>
-                  <h2>Category 1</h2>
-                  <div class="tobchosen">
-                    <a href="#ews">ROMANCE</a>
-                    <a href="#ews">CHILDREN</a>
-                    <a href="#ews">FICTION</a>
-                    <a href="#ews">NON-FICTION</a>
-                   
-          
-                  </div>
-                </div>
-                <div class = serv1>
-                  <h2>Category 2</h2>
-                  <div class="tobchosen">
-                    <a href="#ews">ROMANCE</a>
-                    <a href="#ews">CHILDREN</a>
-                    <a href="#ews">FICTION</a>
-                    <a href="#ews">NON-FICTION</a>
-                   
-                              
-                  </div>
-                </div>
-                <div class = serv1>
-                  
-                  <h2>Category 3</h2>
-                  <div class="tobchosen">
-                    <a href="#ews">ROMANCE</a>
-                    <a href="#ews">CHILDREN</a>
-                    <a href="#ews">FICTION</a>
-                    <a href="#ews">NON-FICTION</a>
-                  
-                              
-                  </div>
-              </div>
-            </div>
+          <div class="hoverdiv" id="hoverContent">
+            <!-- Content will be dynamically updated here -->
           </div>
         </div>
         
@@ -470,6 +433,7 @@
 
 </section>
 <script src = "Javascript/slide.js"></script>
+<script src = "Javascript/topnav2.js"></script>
 <script src ="Javascript/divshow.js"></script>
 
 

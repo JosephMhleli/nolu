@@ -39,7 +39,7 @@
 
           <div class="search">
             <form action="/search" method="get">
-                <input type="text" name="query" placeholder="Enter Book, author....">
+                <input type="text" name="query" placeholder="Search Book, author....">
                 <button type="submit">Search</button>
             </form>
         </div>
@@ -53,7 +53,7 @@
           <a href="#" onmouseover="showCategory(5)" onmouseout="hideHoverDiv()">NEWSLETTER</a>
           <a href="#" onmouseover="showCategory(6)" onmouseout="hideHoverDiv()">PRE-ORDER</a>
         
-          <div class="hoverdiv" id="hoverContent">
+          <div class="hoverdiv" id="hoverContent" onmouseover="showHoverDiv()" onmouseout="hideHoverDiv()">
             <!-- Content will be dynamically updated here -->
           </div>
         </div>

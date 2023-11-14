@@ -436,7 +436,7 @@ height: 100%;
   padding: 10px 0;
 }
  .infoUs a{
-  font-size: 18px;
+  
   display: block;
   text-decoration: none;
   padding: 10px 0;
@@ -483,4 +483,34 @@ margin: 0 auto;
 
 .subscribe-section button:hover {
   background-color: #0056b3;
+}
+.flex-container {
+  display: flex;
+}
+
+.flex-item {
+  flex: 1;
+
+
+  margin: 5px;
+}
+.flex-item h3{
+  margin-left: 30%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+.flex-item a{
+  display: block;
+  float: left;
+  padding: 10px 0;
+  font-weight: bold;
+  color:#5D5C5E; 
+ text-decoration:solid;
+
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
 }

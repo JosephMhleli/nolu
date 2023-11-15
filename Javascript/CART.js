@@ -1,7 +1,7 @@
 function redirectToProductPage(title, author, imagePath,price) {
-    // Redirect to the product page and pass book information as query parameters
+    
     const queryString = `?title=${encodeURIComponent(title)}&author=${encodeURIComponent(author)}&image=${encodeURIComponent(imagePath)}&price=${encodeURIComponent(price)}`;
-    window.location.href = "/Pages/ProductPage.html" + queryString;
+    window.location.href = "Pages/ProductPage.html" + queryString;
 }
 
   

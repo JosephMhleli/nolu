@@ -31,10 +31,7 @@
         font-size: 16px;
     }
 
-    .topnav a:hover {
-        background-color:#3E4756;
-     
-    }
+   
     .icon{
         background-color: #3277c1;
         border:2px solid #3277c1;
@@ -46,6 +43,23 @@
     color: white;
     font-weight: 500;
 }
+.login{
+  
+  border:1px solid #3277c1;
+  border-radius: 5px;
+  
+}
+.login:hover{
+  background-color: #DFF1FF;
+}
+.favorites-link {
+  display: inline-flex; 
+}
+
+.heart-icon {
+  margin-right: 10px; 
+}
+
     .topnav2{
         z-index: 2;
          width: 60%;
@@ -70,8 +84,7 @@
              font-family: Arial, Helvetica, sans-serif;
              
          }
-    
-         
+        
       
       
       .topnav2 a::after {
@@ -143,35 +156,28 @@
 
 
 
-.search {
-    text-align: center;
-    
-    
-    
-}
 
-/* Style the form for the search bar */
-.search form {
-    display: inline-block;
-    
-}
 
-/* Style the search input field */
+
+
+
 .search input[type="text"] {
     padding: 10px;
-    width: 100vh; 
-    /* border-radius: 5px; */
-   margin-top: 10%;
-   
+/* background-color: red;  */
+ width: 55%;
+   height: 2.5vh;
+   margin-left: 20%;
     border: 1px solid #ccc;
     border-radius: 20px;
+    margin-top: 5%;
 }
 
-/* Style the search button */
+
 .search button {
     padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
+   
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -309,7 +315,7 @@ height: 100%;
   text-align: center;
 }
 .bookinfo h3{
-  font-size: 18px;
+  font-size: 14px;
   font-family: Arial, Helvetica, sans-serif;
   margin: 10px;
 }
@@ -419,7 +425,10 @@ height: 100%;
   cursor: pointer;
   text-decoration: none;
 }
-
+.bookimg {
+ 
+  cursor: pointer;
+}
 .Footer{
     width:100%;
    

@@ -15,21 +15,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Diplomata+SC&family=Gorditas&family=Josefin+Sans:ital,wght@1,500&family=PT+Serif:ital@1&family=Vast+Shadow&family=Vollkorn&display=swap" rel="stylesheet">
 
 
-
-<!-- for clothing------------------------------------------------ -->
-    
-   
-      
-<!-- for Beauty and comsmetic------------------------------------------------ -->
-
 <section class = "Romance">
    
         <div class="topnav" id="myTopnav">
             
-            <a href="#ews">CONTACT US</a>
-            <a href="#ews">LOG IN</a>
-            <a href="#contact">HOW IT WORKS</a>
-            <a href="#about">HOME</a>
+          <a href="#ews" class="favorites-link">
+            <i class="fa-regular fa-heart heart-icon"></i>Favorites
+          </a>
+            <a href="#ews" class = "login">Login/Sign up</a>
+          
             
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
               <!-- <i class="fa fa-bars"></i> -->
@@ -42,12 +36,12 @@
                 <input type="text" name="query" placeholder="Search Book, author....">
                 <button type="submit">Search</button>
             </form>
-        </div>
+          </div>
          
 
         <div class="topnav2" id="myTopnav2">
           <a href="#" onmouseover="showCategory(1)" onmouseout="hideHoverDiv()">ROMANCE</a>
-          <a href="#" onmouseover="showCategory(2)" onmouseout="hideHoverDiv()">CHILDREN</a>
+          <a href="#" onmouseover="showCategory(2)" onmouseout="hideHoverDiv()" >CHILDREN</a>
           <a href="#" onmouseover="showCategory(3)" onmouseout="hideHoverDiv()">FICTION</a>
           <a href="#" onmouseover="showCategory(4)" onmouseout="hideHoverDiv()">NON-FICTION</a>
           
@@ -183,20 +177,20 @@
 </div> 
 <div class="biocontainer">
   <div class="insidecon">
-    <div class="bookimg">
-      <img src="/Images/boo.JPG" style="width:100%">
+    <div class="bookimg" onclick="redirectToProductPage('FIND YOUR TRUTH', 'Joshua Maponga', '/Images/boo.JPG','R 250.00')">
+      <img src="/Images/boo.JPG" style="width:100%" alt="Book Image">   <!-- Pull images from database-->
       <div class="bookconte">
-        
         <div class="cart-overlay">
-          <a href="/Pages/CART.html">ADD TO CART</a>
+          <a href="/Pages/CART.html" onclick="addToCart(event)">ADD TO CART</a>  <!-- Pull all the books content database-->
           <i class="fas fa-shopping-cart"></i>
         </div>
       </div>
     </div>
+    
   <div class="bookinfo">
-    <h3>WOMAN EVOLVE</h3>
-    <p>Sarah Jakes Roberts</p>
-    <h4>R 250.00</h4>
+    <h3 id="bookTitle">FIND YOUR TRUTH</h3>
+    <p id="bookAuthor">Joshua Maponga</p>
+    <h4 id = "bookPrice">R 250.00</h4>
   </div>
     
   
@@ -205,20 +199,20 @@
   </div>
 
   <div class="insidecon">
-    <div class="bookimg">
-      <img src="/Images/boo1.JPG" style="width:100%">
+    <div class="bookimg" onclick="redirectToProductPage('Intelligence isnt enough', 'Carice Anderson', '/Images/boo1.JPG','R 279.00')">
+      <img src="/Images/boo1.JPG" style="width:100%" alt = "Book Image">
       <div class="bookconte">
         
         <div class="cart-overlay">
-          <a href="/Pages/CART.html">ADD TO CART</a>
+          <a href="/Pages/CART.html" onclick="addToCart(event)">ADD TO CART</a>
           <i class="fas fa-shopping-cart"></i>
         </div>
       </div>
     </div>
   <div class="bookinfo">
-    <h3>WOMAN EVOLVE</h3>
-    <p>Sarah Jakes Roberts</p>
-    <h4>R 250.00</h4>
+    <h3>Intelligence isnt enough</h3>
+    <p>Carice Anderson</p>
+    <h4>R 279.00</h4>
   </div>
     
   
@@ -226,20 +220,20 @@
      
   </div>
   <div class="insidecon">
-    <div class="bookimg">
-      <img src="/Images/ttt.JPG" style="width:100%">
+    <div class="bookimg" onclick="redirectToProductPage('THINK AND GROW RICH', 'Napolean Hill', '/Images/ttt.JPG','R 329.00')">
+      <img src="/Images/ttt.JPG" style="width:100%" alt = "Book Image">
       <div class="bookconte">
         
         <div class="cart-overlay">
-          <a href="/Pages/CART.html">ADD TO CART</a>
+          <a href="/Pages/CART.html" onclick ="addToCart(event)">ADD TO CART</a>
           <i class="fas fa-shopping-cart"></i>
         </div>
       </div>
     </div>
   <div class="bookinfo">
-    <h3>WOMAN EVOLVE</h3>
-    <p>Sarah Jakes Roberts</p>
-    <h4>R 250.00</h4>
+    <h3>THINK AND GROW RICH</h3>
+    <p>Napolean Hill</p>
+    <h4>R 329.00</h4>
   </div>
     
     
@@ -247,20 +241,20 @@
      
   </div>
   <div class="insidecon">
-    <div class="bookimg">
-      <img src="/Images/opp.JPG" style="width:100%">
+    <div class="bookimg" onclick="redirectToProductPage('WHAT HAPPENED TO YOU?', 'Bruce D. Perry', '/Images/opp.JPG','R 200.00')">
+      <img src="/Images/opp.JPG" style="width:100%" alt="Book Image">
       <div class="bookconte">
         
         <div class="cart-overlay">
-          <a href="/Pages/CART.html">ADD TO CART</a>
+          <a href="/Pages/CART.html" onclick="addToCart(event)">ADD TO CART</a>
           <i class="fas fa-shopping-cart"></i>
         </div>
       </div>
     </div>
   <div class="bookinfo">
-    <h3>WOMAN EVOLVE</h3>
-    <p>Sarah Jakes Roberts</p>
-    <h4>R 250.00</h4>
+    <h3>WHAT HAPPENED TO YOU?</h3>
+    <p>Bruce D. Perry</p>
+    <h4>R 200.00</h4>
   </div>
     
 
@@ -280,86 +274,87 @@
 </div> 
 <div class="biocontainer">
   <div class="insidecon">
-    <div class="bookimg">
-      <img src="/Images/boo.JPG" style="width:100%">
+    <div class="bookimg" onclick="redirectToProductPage('FIND YOUR TRUTH', 'Joshua Maponga', '/Images/boo.JPG','R 250.00')">
+      <img src="/Images/boo.JPG" style="width:100%" alt="Book Image">   <!-- Pull images from database-->
       <div class="bookconte">
-        
         <div class="cart-overlay">
-          <a href="/Pages/CART.html">ADD TO CART</a>
+          <a href="/Pages/CART.html" onclick="addToCart(event)">ADD TO CART</a>  <!-- Pull all the books content database-->
           <i class="fas fa-shopping-cart"></i>
         </div>
       </div>
     </div>
+    
   <div class="bookinfo">
-    <h3>WOMAN EVOLVE</h3>
-    <p>Sarah Jakes Roberts</p>
-    <h4>R 250.00</h4>
+    <h3 id="bookTitle">FIND YOUR TRUTH</h3>
+    <p id="bookAuthor">Joshua Maponga</p>
+    <h4 id = "bookPrice">R 250.00</h4>
   </div>
     
+  
      
      
   </div>
 
   <div class="insidecon">
-    <div class="bookimg">
-      <img src="/Images/boo1.JPG" style="width:100%">
+    <div class="bookimg" onclick="redirectToProductPage('Intelligence isnt enough', 'Carice Anderson', '/Images/boo1.JPG','R 279.00')">
+      <img src="/Images/boo1.JPG" style="width:100%" alt = "Book Image">
       <div class="bookconte">
         
         <div class="cart-overlay">
-          <a href="/Pages/CART.html">ADD TO CART</a>
+          <a href="/Pages/CART.html" onclick="addToCart(event)">ADD TO CART</a>
           <i class="fas fa-shopping-cart"></i>
         </div>
       </div>
     </div>
   <div class="bookinfo">
-    <h3>WOMAN EVOLVE</h3>
-    <p>Sarah Jakes Roberts</p>
-    <h4>R 250.00</h4>
+    <h3>Intelligence isnt enough</h3>
+    <p>Carice Anderson</p>
+    <h4>R 279.00</h4>
   </div>
     
-      <!-- Cart elements hidden by default -->
+  
      
      
   </div>
   <div class="insidecon">
-    <div class="bookimg">
-      <img src="/Images/ttt.JPG" style="width:100%">
+    <div class="bookimg" onclick="redirectToProductPage('THINK AND GROW RICH', 'Napolean Hill', '/Images/ttt.JPG','R 329.00')">
+      <img src="/Images/ttt.JPG" style="width:100%" alt = "Book Image">
       <div class="bookconte">
         
         <div class="cart-overlay">
-          <a href="/Pages/CART.html">ADD TO CART</a>
+          <a href="/Pages/CART.html" onclick ="addToCart(event)">ADD TO CART</a>
           <i class="fas fa-shopping-cart"></i>
         </div>
       </div>
     </div>
   <div class="bookinfo">
-    <h3>WOMAN EVOLVE</h3>
-    <p>Sarah Jakes Roberts</p>
-    <h4>R 250.00</h4>
+    <h3>THINK AND GROW RICH</h3>
+    <p>Napolean Hill</p>
+    <h4>R 329.00</h4>
   </div>
     
-      <!-- Cart elements hidden by default -->
+    
      
      
   </div>
   <div class="insidecon">
-    <div class="bookimg">
-      <img src="/Images/opp.JPG" style="width:100%">
+    <div class="bookimg" onclick="redirectToProductPage('WHAT HAPPENED TO YOU?', 'Bruce D. Perry', '/Images/opp.JPG','R 200.00')">
+      <img src="/Images/opp.JPG" style="width:100%" alt="Book Image">
       <div class="bookconte">
         
         <div class="cart-overlay">
-          <a href="/Pages/CART.html">ADD TO CART</a>
+          <a href="/Pages/CART.html" onclick="addToCart(event)">ADD TO CART</a>
           <i class="fas fa-shopping-cart"></i>
         </div>
       </div>
     </div>
   <div class="bookinfo">
-    <h3>WOMAN EVOLVE</h3>
-    <p>Sarah Jakes Roberts</p>
-    <h4>R 250.00</h4>
+    <h3>WHAT HAPPENED TO YOU?</h3>
+    <p>Bruce D. Perry</p>
+    <h4>R 200.00</h4>
   </div>
     
-      <!-- Cart elements hidden by default -->
+
      
      
   </div>
@@ -430,11 +425,14 @@
   </div>
 
 </section>
+
+<!-- <this sesction is for the scrips that was used in the development >  -->
 <script src = "Javascript/slide.js"></script>
 <script src = "Javascript/topnav2.js"></script>
+<script src = "Javascript/CART.js"></script>
 <script src ="Javascript/divshow.js"></script>
 
-
+<!-- <---------------------------------------------------------------------> 
 
 
   </body>

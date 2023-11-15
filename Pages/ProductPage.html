@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nolu Book Store</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta charset="UTF-8">
+  <link rel = "stylesheet" href = "productpagestyles.css">
+  </head>
+  <body>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/324c7ccd76.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+  <link href="https://fonts.googleapis.com/css2?family=Diplomata+SC&family=Gorditas&family=Josefin+Sans:ital,wght@1,500&family=PT+Serif:ital@1&family=Vast+Shadow&family=Vollkorn&display=swap" rel="stylesheet">
+
+
+<section class="content">
+  <div class="topnav" id="myTopnav">
+            
+    <a href="#ews" class="favorites-link">
+      <i class="fa-regular fa-heart heart-icon"></i>Favorites
+    </a>
+      <a href="#ews" class = "login">Login/Sign up</a>
+    
+      
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <!-- <i class="fa fa-bars"></i> -->
+        <p>REQUEST A BOOK</p>
+      </a>
+    </div>
+
+    <div class="search">
+      <form action="/search" method="get">
+          <input type="text" name="query" placeholder="Search Book, author....">
+          <button type="submit">Search</button>
+      </form>
+    </div>
+  <div class="product-info">
+    
+    <img id="bookImage" src="default-image.jpg" alt="Default Book Image" style="width:30%" height="80%">
+    <div class="titlebook">
+      <h3 id="bookTitle">Default Title</h3>
+      <p id="bookAuthor">Default Author</p>
+      <h3 id="bookPrice">Default Price</h3>
+      <div class="estimation">
+        <h3>ESTIMATED DELIVERY:</h3>
+        <h4>Approx in 4 Working Days</h4> 
+      </div>
+
+      <div class="ButtonSec">
+       <div class="cartbutt" onclick="addToCart()">
+        ADD TO CART <i class="fas fa-shopping-cart"></i>
+       </div>
+       <div class="Wishbutt" onclick="addToWish()">
+        ADD TO WISH  <i class="fa-regular fa-heart heart-icon"></i>
+       </div>
+      </div>
+     
+        <div class="Condition">
+          Condition: Good
+        </div>
+        <div class="bookApp">    <!--appreacnce of the book small dscription of the appreacnce of the book-->
+       <p>Book has rolled pages and stains on cover</p>          
+        </div>
+     
+      
+    </div>
+    
+    
+    
+</div>
+<div class="topsellers">
+  <h2>You Might Also Like</h2>
+</div> 
+
+
+</section>
+
+
+
+
+<section class="Footer">
+  <div class="fitfooter">
+    <div class = "footinfor">
+      <div class = "infoUs">
+        <h2>CUSTOMER CARE</h2>
+        
+              <p><i class="fas fa-envelope mr-3"></i> info@KeeganTechnologies.com</p>
+              <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+              
+              <h3>CONTACT HOURS:</h3>
+
+
+  
+      </div>
+      <div class = "infoUs">
+        <h2>ABOUT US</h2>
+        <a href="#ews">Contact Us</a>
+        <a href="#ews">T's and C's</a>
+        <a href="#contact">Gift cards and Vouchers</a>
+        <a href="#about">Privacy Policy</a>
+  
+      </div>
+      <div class = "infoUs">
+        <h2>CUSTOMER SERVICES</h2>
+        <p> <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+              <p><i class="fas fa-envelope mr-3"></i> info@KeeganTechnologies.com</p>
+              <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+              <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+  
+      </div>
+      <div class = "infoUs">
+        <div class="subscribe-section">
+          <h2>SUBSCRIBE</h2>
+          <p>Stay updated with our latest news and offers. Subscribe now!</p>
+        
+          <form>
+          
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+        
+            
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+        
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+        
+      </div>
+     
+    </div>
+  </div>
+
+</section>
+  <script src = "/Javascript/bookdisplay.js"></script>
+</body>
+</html>

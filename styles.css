@@ -144,7 +144,7 @@
  
 .Romance{
 
- background-color:			#FFFFF0;
+ background-color:			#FFFFFF;
   min-height: 100vh;
 margin-bottom: 0;
    z-index:0;
@@ -160,7 +160,7 @@ margin-bottom: 0;
 
 .search input[type="text"] {
     padding: 10px;
-background-color: #FFFFF0; 
+background-color: #FFFFFF; 
  width: 55%;
    height: 2.5vh;
    margin-left: 20%;

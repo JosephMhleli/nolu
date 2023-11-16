@@ -313,6 +313,7 @@ height: 100%;
 
 .bookinfo{
   text-align: center;
+  background-color: yellow;
 }
 .bookinfo h3{
   font-size: 14px;

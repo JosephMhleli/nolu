@@ -199,24 +199,24 @@ background-color: #FFFFFF;
   
   @keyframes backgroundChange {
     0% {
-      background-image: url(Images/Nolu1.png);
+      background-image: url(../Images/Nolu1.png);
       transform: translateX(-100%);
     }
     25% {
       
-      background-image: url(Images/Nolu1.png);
+      background-image: url(../Images/Nolu1.png);
       transform: translateX(0%);
     }
     50% {
-      background-image: url(Images/img3.jpg);
+      background-image: url(../Images/img3.jpg);
       transform: translateX(-100%);
     }
     75% {
-      background-image: url(Images/beauty.jpg);
+      background-image: url(../Images/beauty.jpg);
       transform: translateX(0%);
     }
     100% {
-      background-image: url(Images/img1.jpg);
+      background-image: url(../Images/img1.jpg);
       transform: translateX(-100%);
     }
   }

@@ -15,7 +15,7 @@
    z-index: 2;
     width: 60%;
  top: 0;
-    margin-left: 30%;
+    margin-left: 20%;
     }
     .topnav a{
         float:right;
@@ -65,6 +65,7 @@
          width: 60%;
          margin-left: 20%;
          margin-top: 2%;
+         /* background-color: red; */
          border-top: 1px solid #989799;
          border-bottom: 1px solid #989799;
          height: 5vh;
@@ -75,7 +76,7 @@
              float:right;
          font-weight: bold;
               color:#2b2b2b; 
-              margin-right: 2%;
+              /* margin-right: 2%; */
              text-align: center;
              padding: 14px 20px;
              text-decoration:solid;
@@ -100,24 +101,7 @@
           width: 100%;
       }
       
-/* .topnav2::before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  margin-top: 10px;
-  width: 100%;
-  z-index: 2;
-  height: 30vh; 
-  background-color: red; 
-  opacity: 0; 
-  transition: opacity 0.3s ease-in-out;
-}
 
-.topnav2:hover::before {
-  opacity: 1;  
-} */
 
 
 .hoverdiv {
@@ -128,7 +112,7 @@
   top: 100%;
   left: 0;
   background-color: #f9f9f9;
-  padding: 10px;
+  padding : 10px;
   border: 1px solid #ccc;
   z-index: 1;
 }
@@ -196,35 +180,13 @@ background-color: #FFFFFF;
    
     animation: backgroundChange 12s infinite;
   }
-  
-  @keyframes backgroundChange {
-    0% {
-      background-image: url(../Images/Nolu1.png);
-      transform: translateX(-100%);
-    }
-    25% {
-      
-      background-image: url(../Images/Nolu1.png);
-      transform: translateX(0%);
-    }
-    50% {
-      background-image: url(../Images/img3.jpg);
-      transform: translateX(-100%);
-    }
-    75% {
-      background-image: url(../Images/beauty.jpg);
-      transform: translateX(0%);
-    }
-    100% {
-      background-image: url(../Images/img1.jpg);
-      transform: translateX(-100%);
-    }
-  }
+
 
 .topsellers{
   width: 60%;
   height: 5vh;
   margin: 1% auto;
+ 
   border-top: 1px solid #989799;
   border-bottom: 1px solid #989799;
   
@@ -237,7 +199,7 @@ background-color: #FFFFFF;
   .catDiv{
   
   display: flex;
-
+/* background-color: red; */
   padding: 10px;
   justify-content: space-between;
   }
@@ -261,6 +223,7 @@ background-color: #FFFFFF;
      width: 60%;
      margin-left: 20%;
      margin-top: 2%;
+     /* background-color: beige; */
      /* height: 5vh; */
      position: relative;
      }
@@ -280,8 +243,9 @@ background-color: #FFFFFF;
      }
      .slideshow-container {
       width: 100%;
+      /* background-color: gold; */
       position: relative;
-      margin: auto;
+      
     }
 
 
@@ -289,11 +253,12 @@ background-color: #FFFFFF;
   display: flex;
   padding: 10px;
   height: 300px;
+
   justify-content: space-between;
 }
 .book{
   flex-basis: 30%;
-  background-color: #007bff;
+ 
   border-radius:2px solid  #F4ECFF;
   
   padding: 20px 6px;
@@ -303,13 +268,16 @@ background-color: #FFFFFF;
 
 }
 .bookdet{
-  width: 100%;
+  width: 80%;
 height: 100%;
-
+margin: 0 auto;
+/* background-color: silver; */
 }
 
 .bookinfo{
   text-align: center;
+/* background-color: cyan; */
+  width: 80%;
 
 }
 .bookinfo h3{
@@ -329,6 +297,7 @@ height: 100%;
  width: 60%;
   position: relative;
   margin: 20px auto;
+  /* background-color: #5D5C5E; */
 }
 
 .mySlides {
@@ -379,7 +348,7 @@ height: 100%;
   margin: 0 auto;
   display: flex;
   padding: 10px;
-
+/* background-color: yellow; */
   justify-content: space-between;
 }
 
@@ -387,17 +356,18 @@ height: 100%;
   position: relative;
   display: inline-block;
   flex-basis: 20%;
+  /* background-color: blue; */
 }
 
 .bookconte {
-  position: absolute;
+  position: relative;
   
-  left: 0;
-
-
+ top: 55%;
+/* width:60%; */
+margin:  0 auto;
   visibility: hidden;
   opacity: 0;
-  width: 95%;
+
   transition: opacity 0.3s;
   transition: width 0.3s ease-in-out;
 }
@@ -413,14 +383,17 @@ height: 100%;
   justify-content: center;
   background-color: #2F4858; /* Adjust background color as needed */
   color: white;
-  width: 100%;
-  padding: 5px;
+  width: 79%;
+  top:0;
+  padding: 1%;
   border-radius: 5px;
+ 
 }
 
 .cart-overlay  a{
   margin-right: 5px;
   cursor: pointer;
+  /* background-color: pink; */
   text-decoration: none;
   color: white;
   font-weight: bold;

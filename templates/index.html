@@ -4,7 +4,8 @@
   <title>Nolu Book Store</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <meta charset="UTF-8">
-  <link rel = "stylesheet" href = "../static/styles.css">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
   </head>
   <body>
 
@@ -13,6 +14,31 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
   <link href="https://fonts.googleapis.com/css2?family=Diplomata+SC&family=Gorditas&family=Josefin+Sans:ital,wght@1,500&family=PT+Serif:ital@1&family=Vast+Shadow&family=Vollkorn&display=swap" rel="stylesheet">
+
+  <style>
+    @keyframes backgroundChange {
+        0% {
+            background-image: url('{{ url_for('static', filename='Images/Nolu1.png') }}');
+            transform: translateX(-100%);
+        }
+        25% {
+            background-image: url('{{ url_for('static', filename='Images/Nolu1.png') }}');
+            transform: translateX(0%);
+        }
+        50% {
+            background-image: url('{{ url_for('static', filename='Images/img3.jpg') }}');
+            transform: translateX(-100%);
+        }
+        75% {
+            background-image: url('{{ url_for('static', filename='Images/beauty.jpg') }}');
+            transform: translateX(0%);
+        }
+        100% {
+            background-image: url('{{ url_for('static', filename='Images/img1.jpg') }}');
+            transform: translateX(-100%);
+        }
+    }
+</style>
 
 
 <section class = "Romance">
@@ -64,20 +90,20 @@
 <div class="slideshow-container">
   <div class = mySlides fade>
 <div class="imgcontainer">
-  <div class = Book>
+  <div class = "Book">
     <div class="bookdet">
-      <img src="../Images/img333.JPG" style="width:80%" height="80%">
+      <img src="{{ url_for('static', filename='Images/img333.jpg') }}" alt="Image 1" style="width:80%" height="80%">
       <div class = "bookconte">
       <h3>WOMAN EVOLVE</h3>
       <p>Sarah Jakes Roberts</p>
       <h4>R 250.00</h4>
     </div>
 
-                  </div>
+   </div>
   </div>
-  <div class = Book>
+  <div class = "Book">
     <div class="bookdet">
-      <img src="../Images/boo.JPG" style="width:80%" height="80%">
+      <img src="{{ url_for('static', filename='Images/img333.jpg') }}" alt="Image 1"style="width:80%" height="80%">
       <div class = "bookconte">
       <h3>Find Your Truth</h3>
       <p>Maponga Joshua</p>
@@ -85,9 +111,9 @@
     </div>
     </div>
   </div>
-  <div class = Book>
+  <div class = "Book">
     <div class="bookdet">
-      <img src="../Images/opp.JPG" style="width:80%" height="80%">
+      <img src="{{ url_for('static', filename='Images/img333.jpg') }}" alt="Image 1"style="width:80%" height="80%">
       <div class = "bookconte">
       <h3>What happened to you?</h3>
       <p>Bruce D. Perry</p>
@@ -99,9 +125,9 @@
   </div>
   <div class = mySlides fade>
     <div class="imgcontainer">
-      <div class = Book>
+      <div class = "Book">
         <div class="bookdet">
-          <img src="../Images/bookimg2.JPG" style="width:80%" height="80%">
+          <img src="{{ url_for('static', filename='Images/img333.jpg') }}" alt="Image 1"style="width:80%" height="80%">
           <div class = "bookconte">
           <h3>WOMAN EVOLVE</h3>
           <p>Sarah Jakes Roberts</p>
@@ -109,9 +135,9 @@
         </div>
                       </div>
       </div>
-      <div class = Book>
+      <div class = "Book">
         <div class="bookdet">
-          <img src="../Images/img333.JPG" style="width:80%" height="80%">
+          <img src="{{ url_for('static', filename='Images/img333.jpg') }}" alt="Image 1"style="width:80%" height="80%">
       <div class = "bookconte">
       <h3>WOMAN EVOLVE</h3>
       <p>Sarah Jakes Roberts</p>
@@ -119,9 +145,9 @@
     </div>
         </div>
       </div>
-      <div class = Book>
+      <div class = "Book">
         <div class="bookdet">
-          <img src="../Images/ttt.JPG" style="width:80%" height="80%">
+          <img src="{{ url_for('static', filename='Images/img333.jpg') }}" alt="Image 1"style="width:80%" height="80%">
           <div class = "bookconte">
           <h3>WOMAN EVOLVE</h3>
           <p>Sarah Jakes Roberts</p>
@@ -134,9 +160,9 @@
   </div>
   <div class = mySlides fade>
     <div class="imgcontainer">
-      <div class = Book>
+      <div class = "Book">
         <div class="bookdet">
-          <img src="Images/bookimg1.JPG"style="width:80%" height="80%">
+          <img src="{{ url_for('static', filename='Images/img333.jpg') }}" alt="Image 1"style="width:80%" height="80%">
       <div class = "bookconte">
       <h3>The MIND of the Leader</h3>
       <p>Sarah Jakes Roberts</p>
@@ -144,9 +170,9 @@
     </div>
                       </div>
       </div>
-      <div class = Book>
+      <div class = "Book">
         <div class="bookdet">
-          <img src="Images/boo1.JPG" style="width:80%" height="80%">
+          <img src="{{ url_for('static', filename='Images/img333.jpg') }}" alt="Image 1"style="width:80%" height="80%">
           <div class = "bookconte">
           <h3>Intelligence isn't enough</h3>
           <p>Candice Anderson</p>
@@ -154,9 +180,9 @@
         </div>
         </div>
       </div>
-      <div class = Book>
+      <div class = "Book">
         <div class="bookdet">
-          <img src="Images/img333.JPG" style="width:80%" height="80%">
+          <img src="{{ url_for('static', filename='Images/img333.jpg') }}" alt="Image 1"style="width:80%" height="80%">
           <div class = "bookconte">
           <h3>WOMAN EVOLVE</h3>
           <p>Sarah Jakes Roberts</p>
@@ -179,7 +205,7 @@
   
   <div class="insidecon">
     <div class="bookimg" onclick="redirectToProductPage('FIND YOUR TRUTH', 'Joshua Maponga', '../Images/boo.JPG','R 250.00')">
-      <img src="../Images/boo.JPG" style="width:100%" alt="Book Image">   <!-- Pull images from database-->
+      <img src="{{ url_for('static', filename='images/img333.jpg') }}" alt="Image 1" style="width:80%" height="80%">   <!-- Pull images from database-->
       <div class="bookconte">
         <div class="cart-overlay">
           <a href="CART.html" onclick="addToCart(event)">ADD TO CART</a>  <!-- Pull all the books content database-->
@@ -200,7 +226,7 @@
   </div>
   <div class="insidecon">
     <div class="bookimg" onclick="redirectToProductPage('Intelligence isnt enough', 'Carice Anderson', '../Images/boo1.JPG','R 279.00')">
-      <img src="../Images/boo1.JPG" style="width:100%" alt = "Book Image">
+      <img src="{{ url_for('static', filename='Images/img333.jpg') }}" alt="Image 1" style="width:80%" height="80%">
       <div class="bookconte">
         
         <div class="cart-overlay">
@@ -221,7 +247,7 @@
   </div>
   <div class="insidecon">
     <div class="bookimg" onclick="redirectToProductPage('THINK AND GROW RICH', 'Napolean Hill', '../Images/ttt.JPG','R 329.00')">
-      <img src="../Images/ttt.JPG" style="width:100%" alt = "Book Image">
+      <img src="{{ url_for('static', filename='Images/img333.JPG') }}" alt="Image 1" style="width:80%" height="80%">
       <div class="bookconte">
         
         <div class="cart-overlay">
@@ -242,7 +268,7 @@
   </div>
   <div class="insidecon">
     <div class="bookimg" onclick="redirectToProductPage('WHAT HAPPENED TO YOU?', 'Bruce D. Perry', '../Images/opp.JPG','R 200.00')">
-      <img src="../Images/opp.JPG" style="width:100%" alt="Book Image">
+      <img src="{{ url_for('static', filename='Images/img333.jpg') }}" alt="Image 1"style="width:80%" height="80%">
       <div class="bookconte">
         
         <div class="cart-overlay">
@@ -275,7 +301,7 @@
 <div class="biocontainer">
   <div class="insidecon">
     <div class="bookimg" onclick="redirectToProductPage('FIND YOUR TRUTH', 'Joshua Maponga', '../Images/boo.JPG','R 250.00')">
-      <img src="../Images/boo.JPG" style="width:100%" alt="Book Image">   <!-- Pull images from database-->
+      <img src="{{ url_for('static', filename='Images/img333.jpg') }}" alt="Image 1"style="width:80%" height="80%">  <!-- Pull images from database-->
       <div class="bookconte">
         <div class="cart-overlay">
           <a href="CART.html" onclick="addToCart(event)">ADD TO CART</a>  <!-- Pull all the books content database-->
@@ -297,7 +323,7 @@
 
   <div class="insidecon">
     <div class="bookimg" onclick="redirectToProductPage('Intelligence isnt enough', 'Carice Anderson', '../Images/boo1.JPG','R 279.00')">
-      <img src="../Images/boo1.JPG" style="width:100%" alt = "Book Image">
+      <img src="{{ url_for('static', filename='Images/img333.jpg') }}" alt="Image 1"style="width:80%" height="80%">
       <div class="bookconte">
         
         <div class="cart-overlay">
@@ -318,7 +344,7 @@
   </div>
   <div class="insidecon">
     <div class="bookimg" onclick="redirectToProductPage('THINK AND GROW RICH', 'Napolean Hill', '../Images/ttt.JPG','R 329.00')">
-      <img src="../Images/ttt.JPG" style="width:100%" alt = "Book Image">
+      <img src="{{ url_for('static', filename='Images/img333.jpg') }}" alt="Image 1"style="width:80%" height="80%">
       <div class="bookconte">
         
         <div class="cart-overlay">
@@ -339,7 +365,7 @@
   </div>
   <div class="insidecon">
     <div class="bookimg" onclick="redirectToProductPage('WHAT HAPPENED TO YOU?', 'Bruce D. Perry', '../Images/opp.JPG','R 200.00')">
-      <img src="../Images/opp.JPG" style="width:100%" alt="Book Image">
+      <img src="{{ url_for('static', filename='Images/img333.jpg') }}" alt="Image 1"style="width:80%" height="80%">
       <div class="bookconte">
         
         <div class="cart-overlay">
@@ -427,11 +453,11 @@
 </section>
 
 <!-- <this sesction is for the scrips that was used in the development >  -->
-<script src = "../Javascript/slide.js"></script>
-<script src = "../Javascript/topnav2.js"></script>
-<script src = "../Javascript/CART.js"></script>
+  <script src="{{ url_for('static', filename='Javascript/slide.js') }}"></script>
+  <script src="{{ url_for('static', filename='Javascript/topnav2.js') }}"></script>
+  <script src="{{ url_for('static', filename='Javascript/CART.js') }}"></script>
+  <script src="{{ url_for('static', filename='javascript/divshow.js') }}"></script>
 
-<script src ="../Javascript/divshow.js"></script>
 
 
 

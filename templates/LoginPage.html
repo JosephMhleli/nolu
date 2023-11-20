@@ -3,9 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
     <title>Login</title>
 </head>
 <body>
-    <h2>I wanna login please let me in</h2>
+
+
+       <div class="topnav" id="myTopnav">
+            
+        <a href="#ews" class="favorites-link">
+          <i class="fa-regular fa-heart heart-icon"></i>FAVORITES
+        </a>
+          <a href="/login" class = "login">SIGN IN</a>
+          <a href="CART.html" onclick="addToCart(event)">CART</a>
+          
+          
+        </div>
+
+        <div class=formscon>
+            
+            <form action="/login" method="post">
+                <div class="register">
+                    <a href="/registers" class="signup">Don't have an account?</a>
+                </div>
+                
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            
+            
+            
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <div class="fpswd">
+                    <a href="#ews" class="forgetpswd">Forgot Password?</a>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    
 </body>
 </html>

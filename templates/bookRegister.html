@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='registerbooks.css') }}">
+    <title>Register</title>
+</head>
+<body>
+    <form id="bookForm" action="{{ url_for('add_book') }}" method="post" onsubmit="return validateForm()">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+    
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" required>
+    
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category" required>
+    
+        <label for="price">Price:</label>
+        <input type="text" id="price" name="price" required>
+    
+        <label for="img_url">Cover Image URL:</label>
+        <input type="url" id="img_url" name="img_url" required>
+    
+        <!-- Display an error message if the URL is invalid -->
+        <div id="img-url-error" style="color: red;"></div>
+    
+        <button type="submit">Add Book</button>
+    </form>
+    
+    <script>
+        function validateForm() {
+            // Your validation logic here
+    
+            // Validate the image URL
+            var imgUrlInput = document.getElementById('img_url');
+            var imgUrlError = document.getElementById('img-url-error');
+            if (!isValidUrl(imgUrlInput.value)) {
+                imgUrlError.textContent = 'Invalid URL';
+                return false;
+            } else {
+                imgUrlError.textContent = '';
+            }
+    
+            // Additional validation logic...
+    
+            return true;
+        }
+    
+        function isValidUrl(url) {
+            // Simple URL validation
+            var pattern = /^(ftp|http|https):\/\/[^ "]+$/;
+            return pattern.test(url);
+        }
+    
+        // Add event listener to form to trigger validation
+        document.getElementById('bookForm').addEventListener('submit', function (event) {
+            if (!validateForm()) {
+                event.preventDefault(); // Prevent form submission if validation fails
+            }
+        });
+    </script>
+    
+    
+
+    
+
+</body>
+</html>

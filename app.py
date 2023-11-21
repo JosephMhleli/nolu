@@ -96,107 +96,11 @@ def logout():
 def myBook():
      return 'View Book'
 
-@app.route('/BookInte', methods=['GET'])
-def get_books():
-    try:
-        # Query the database to get all books
-        dbb_session = BookSession()
-        books = dbb_session.query(Book).all()
-        dbb_session.close()
 
-        # Prepare the response data
-        book_list = [{"id": book.id, "title": book.title, "author": book.author, "category": book.category, "price": book.price, "image_url": book.image_url} for book in books]
 
-        # Return the list of books as JSON
-        return jsonify({"books": book_list})
-    except Exception as e:
-        return make_response(str(e), 500)
-   
-@app.route('/BookInte', methods=['POST'])
-def add_book():
-    try:
-        # Extract book information from the request form
-        title = request.form['title']
-        author = request.form['author']
-        category = request.form['category']
-        img_url = request.form['img_url']
-        price = request.form['price']
-
-        if not all([title, author, category, img_url, price]):
-          abort(400, 'Missing required fields')
-        # Create a new book instance
-        new_book = Book(title=title, author=author, category=category, image_url=img_url, price=price)
-
-        # Add the book to the database
-        dbb_session = BookSession()
-        dbb_session.add(new_book)
-        dbb_session.commit()
-        dbb_session.close()
-
-        return 'Book added successfully'
-    except IntegrityError:
-        dbb_session.rollback()
-        return make_response('Book with the same title already exists', 409)
-    except Exception as e:
-        return make_response(str(e), 500)
  
  
-@app.route('/BookInte', methods=['PUT'])
-def update_book():
-    try:
-        # Extract book information from the request form
-        book_id = request.form['id']
-        title = request.form['title']
-        author = request.form['author']
-        category = request.form['category']
-        img_url = request.form['img_url']
-        price = request.form['price']
 
-        if not all([book_id, title, author, category, img_url, price]):
-            abort(400, 'Missing required fields')
-
-        # Query the database to get the existing book
-        db_session = BookSession()
-        existing_book = db_session.query(Book).filter_by(id=book_id).first()
-
-        # Update the book information
-        existing_book.title = title
-        existing_book.author = author
-        existing_book.category = category
-        existing_book.image_url = img_url
-        existing_book.price = price
-
-        # Commit the changes to the database
-        db_session.commit()
-        db_session.close()
-
-        return 'Book updated successfully'
-    except Exception as e:
-        return make_response(str(e), 500)
-    
-@app.route('/BookInte', methods=['DELETE'])
-def delete_book():
-    try:
-        # Extract book ID from the request form
-        book_id = request.form['id']
-         
-        if not book_id:
-            abort(400, 'Missing book ID')
-        # Query the database to get the existing book
-        db_session = BookSession()
-        book_to_delete = db_session.query(Book).filter_by(id=book_id).first()
-
-        # Remove the book from the database
-        db_session.delete(book_to_delete)
-        db_session.commit()
-        db_session.close()
-
-        return 'Book deleted successfully'
-    except Exception as e:
-        return make_response(str(e), 500)
-           
-    
-     
     
             
     

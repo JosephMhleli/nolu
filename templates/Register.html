@@ -20,8 +20,8 @@
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
     
-        <label for="confirm-password">Confirm Password:</label>
-        <input type="password" id="confirm-password" name="confirm-password" required oninput="validatePassword()">
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" id="confirm_password" name="confirm_password" required oninput="validatePassword()">
     
         <!-- Display an error message if passwords do not match -->
         <div id="password-error" style="color: red;"></div>
@@ -32,7 +32,7 @@
     <script>
         function validatePassword() {
             var password = document.getElementById("password");
-            var confirm_password = document.getElementById("confirm-password");
+            var confirm_password = document.getElementById("confirm_password");
             var error_message = document.getElementById("password-error");
     
             if (password.value != confirm_password.value) {

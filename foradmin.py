@@ -32,13 +32,13 @@ def add_book():
             category = request.form['category']
             img_url = request.form['img_url']
             price = request.form['price']
-
+            print(f"Title: {title}, Author: {author}, Category: {category}, Img URL: {img_url}, Price: {price}")
             # Validate input data
             if not all([title, author, category, img_url, price]):
                 return make_response('Missing required fields', 400)
 
             # Create a new book instance
-            new_book = Book(title=title, author=author, category=category, image_url=img_url, price=price)
+            new_book = Book(title=title, author=author, category=category, price=price,image_url=img_url )
 
             # Add the book to the database
             book_session = BookSession()

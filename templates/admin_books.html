@@ -20,7 +20,9 @@
           <p>Author: {{ book.author }}</p>
           <p>Category: {{ book.category }}</p>
           <p>Price: {{ book.price }}</p>
-          <p>Cover Image: <img src="{{ book.img_url }}" alt="{{ book.title }} Cover"></p>
+          
+          <p>Cover Image: <img src="{{book.image_url}} " alt="{{ book.title }} Cover"></p>
+
         </li>
       {% endfor %}
     </ul>

@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, make_response
 from db import Book, BookSession
-
+from flask_cors import CORS
 app = Flask(__name__)
-
+CORS(app)
 # Routes for Admin to Add, Edit, and Delete Books
 @app.route('/')
 def show():

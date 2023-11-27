@@ -1,0 +1,134 @@
+*{
+
+    margin:0;
+     padding:0;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  .topnav{
+    /* background-color: #0056b3; */
+   z-index: 2;
+    width: 60%;
+ top: 0;
+    margin-left: 20%;
+    }
+    .topnav a{
+        float:right;
+        display: block;
+         color:black;
+        text-align: center;
+      
+        font-family: 'Vollkorn', serif;
+        padding: 5px 15px;
+        text-decoration: none;
+      top:10px;
+      margin-top: 10px;
+        font-size: 16px;
+    }
+
+   
+    .icon{
+        background-color: #2F4858;
+        border:2px solid #2F4858;
+        border-radius: 5px;
+        margin-right: 10px;
+        
+    }
+.icon p{
+    color: white;
+    font-weight: 500;
+}
+.login{
+  
+  border:1px solid #3277c1;
+  border-radius: 5px;
+  
+}
+.login:hover{
+  background-color: #DFF1FF;
+}
+.favorites-link {
+  display: inline-flex; 
+}
+
+.heart-icon {
+  margin-right: 10px; 
+}
+.search input[type="text"] {
+    padding: 10px;
+background-color: #FFFFFF; 
+ width: 55%;
+   height: 2.5vh;
+   margin-left: 20%;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    margin-top: 5%;
+}
+
+
+.search button {
+    padding: 10px 20px;
+    background-color: #2F4858;
+    color: #fff;
+   
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Add some hover effect for the button */
+.search button:hover {
+    background-color: #0056b3;
+}
+#header{
+  width: 55%;
+height: 5vh;
+  margin: 20px auto;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+  padding-top: 7px;
+  border-top: 1px solid #ccc;
+  font-size: 26px;
+}
+  .book-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* background-color: red; */
+    width: 60%;
+    margin: 20px auto;
+}
+
+.book {
+    border: 1px solid #ccc;
+    margin: 10px;
+    padding: 10px;
+    width: 300px; /* Adjust the width as needed */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.book {
+    border: 1px solid #ccc;
+    margin: 20px;
+    padding: 10px;
+   text-align: center;
+    width: 300px; /* Adjust the width as needed */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.book img {
+    max-width: 50%;
+    height: auto;
+    
+}
+#author{
+    color: #555555;
+    font-family: 'Roboto', sans-serif;
+}
+#price{
+    color: #2F4858;
+    font-size: 22px;
+    font-weight: bold;
+}

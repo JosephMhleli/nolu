@@ -4,7 +4,7 @@
   <title>Nolu Book Store</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <meta charset="UTF-8">
-  <link rel = "stylesheet" href = "../static/productpagestyles.css">
+
   </head>
   <body>
 
@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
   <link href="https://fonts.googleapis.com/css2?family=Diplomata+SC&family=Gorditas&family=Josefin+Sans:ital,wght@1,500&family=PT+Serif:ital@1&family=Vast+Shadow&family=Vollkorn&display=swap" rel="stylesheet">
-
+  <link rel="stylesheet" href="{{ url_for('static', filename='productpagestyles.css') }}">
 
 <section class="content">
   <div class="topnav" id="myTopnav">
@@ -41,9 +41,14 @@
     <img id="bookImage" src="default-image.jpg" alt="Default Book Image" style="width:30%" height="80%">
 
     <div class="titlebook">
-      <h3 id="bookTitle">Default Title</h3>
-      <p id="bookAuthor">Default Author</p>
-      <h3 id="bookPrice">Default Price</h3>
+      <div class="product-container">
+        <h1>{{ title }}</h1>
+        <p>Author: {{ author }}</p>
+        <p>Price: R {{ price }}</p>
+        <p>Category: {{ category }}</p>
+        <img src="{{ image_url }}" alt="{{ title }} Cover">
+        <!-- Add more details or styling as needed -->
+    </div>
       <div class="estimation">
         <h3>ESTIMATED DELIVERY:</h3>
         <h4>Approx in 4 Working Days</h4> 

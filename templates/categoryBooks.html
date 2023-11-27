@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ category }} Books</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='booksdisp.css') }}">
+</head>
+<body>
+
+    <div class="topnav" id="myTopnav">
+            
+        <a href="#ews" class="favorites-link">
+          <i class="fa-regular fa-heart heart-icon"></i>FAVORITES
+        </a>
+          <a href="/login" class = "login">SIGN IN</a>
+          <a href="CART.html" onclick="addToCart(event)">CART</a>
+          
+          <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <!-- <i class="fa fa-bars"></i> -->
+            <p>REQUEST A BOOK</p>
+          </a>
+        </div>
+
+        <div class="search">
+          <form action="/search" method="get">
+              <input type="text" name="query" placeholder="Search Book, author....">
+              <button type="submit">Search</button>
+          </form>
+        </div>
+    <h2 id="header">Our in store {{ category }} books</h2>
+    <div class="book-container">
+
+        {% for book in books %}
+        <div class="book" onclick="redirectToProductPage('{{ book.title }}','{{ book.price }}','{{ book.image_url }}','{{ book.author }}','{{ book.category }}')">
+            <h3>{{ book.title }}</h3>
+            <p id="author">{{ book.author }}</p>
+            <!--<p>Category: {{ book.category }}</p> -->
+            
+            <img src="{{ book.image_url }}" alt="{{ book.title }} Cover">
+            <p id="price"> R {{ book.price }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    <script src="{{ url_for('static', filename='Javascript/redirect.js') }}"></script>
+</body>
+</html>

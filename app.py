@@ -91,11 +91,93 @@ def logout():
     session.pop('logged_in', None)
     return redirect(url_for('index.html'))
 
-@app.route('/SelectBook',methods = ['GET'])
 
-def myBook():
-     return 'View Book'
+# gets the list of all the books in thr database
+@app.route('/getbooks', methods=['GET'])
+def list_books():
+    try:
+        # Query the database to get all books
+        book_session = BookSession()
+        books = book_session.query(Book).all()
+        book_session.close()
 
+        book_list = [{'id': book.id,
+                      'title': book.title,
+                      'author': book.author,
+                      'category': book.category,
+                      'price': book.price,
+                      'image_url': book.image_url
+                      } for book in books]
+
+        return jsonify({'books': book_list})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    
+@app.route('/books/<category>', methods=['GET'])
+def get_books(category):
+  
+    try:
+        # Query the database to get books for a specific category
+        book_session = BookSession()
+        books = book_session.query(Book).filter_by(category=category).all()
+        book_session.close()
+
+        if not books:
+            return jsonify({'error': 'Category not found'}), 404
+
+        # Convert the SQLAlchemy objects to dictionaries
+        book_list = [{'id': book.id,
+                      'title': book.title,
+                      'author': book.author,
+                      'category': book.category,
+                      'price': book.price,
+                      'image_url': book.image_url
+                      } for book in books]
+
+        return render_template('categoryBooks.html', books=book_list, category=category)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+  
+
+@app.route('/ProductPage')
+def product_page():
+    # Retrieve parameters from the URL
+    title = request.args.get('title', '')
+    price = request.args.get('price', '')
+    image_url = request.args.get('image_url', '')
+    author = request.args.get('author', '')
+    category = request.args.get('category', '')
+
+    # Render the template with the dynamic parameters
+    return render_template('ProductPage.html', title=title, price=price, image_url=image_url, author=author, category=category)
+
+
+@app.route('/search', methods=['GET'])
+def search_books():
+    try:
+        # Retrieve the search query from the request parameters
+        search_query = request.args.get('query', '')
+
+        # Query the database to get books with the specified title
+        book_session = BookSession()
+        books = book_session.query(Book).filter(Book.title.ilike(f"%{search_query}%")).all()
+        book_session.close()
+
+        if not books:
+            return render_template('categoryBooks.html', books=[], category=search_query, no_results=True)
+
+        # Convert the SQLAlchemy objects to dictionaries
+        book_list = [{'id': book.id,
+                      'title': book.title,
+                      'author': book.author,
+                      'category': book.category,
+                      'price': book.price,
+                      'image_url': book.image_url
+                      } for book in books]
+
+        return render_template('categoryBooks.html', books=book_list, category=search_query)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 
  

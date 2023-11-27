@@ -66,10 +66,11 @@
          
 
         <div class="topnav2" id="myTopnav2">
-          <a href="#" onmouseover="showCategory(1)" onmouseout="hideHoverDiv()">ROMANCE</a>
-          <a href="#" onmouseover="showCategory(2)" onmouseout="hideHoverDiv()" >CHILDREN</a>
-          <a href="#" onmouseover="showCategory(3)" onmouseout="hideHoverDiv()">FICTION</a>
-          <a href="#" onmouseover="showCategory(4)" onmouseout="hideHoverDiv()">NON-FICTION</a>
+          <a href="{{ url_for('get_books', category='ROMANCE') }}" >ROMANCE</a>
+          <a href="{{ url_for('get_books', category='ROMANCE') }}" >CHILDREN</a>
+          <a href="{{ url_for('get_books', category='ROMANCE') }}" >FICTION</a>
+          <a href="{{ url_for('get_books', category='ROMANCE') }}" >NON-FICTION</a>
+          <a href="{{ url_for('get_books', category='psychology') }}" >PSYCHOLOGY</a>
           
         
           <div class="hoverdiv" id="hoverContent" onmouseover="showHoverDiv()" onmouseout="hideHoverDiv()">
@@ -454,9 +455,9 @@
 
 <!-- <this sesction is for the scrips that was used in the development >  -->
   <script src="{{ url_for('static', filename='Javascript/slide.js') }}"></script>
-  <script src="{{ url_for('static', filename='Javascript/topnav2.js') }}"></script>
-  <script src="{{ url_for('static', filename='Javascript/CART.js') }}"></script>
-  <script src="{{ url_for('static', filename='javascript/divshow.js') }}"></script>
+ 
+  <script src="{{ url_for('static', filename='Javascript/redirect.js') }}"></script>
+
 
 
 

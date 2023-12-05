@@ -1,7 +1,7 @@
 from flask import Flask, render_template,request,make_response,jsonify,session,redirect, url_for
 import jwt
 from passlib.hash import bcrypt
-
+import requests
 from datetime import datetime,timedelta,timezone
 from functools import wraps
 from db import User, UserSession
@@ -21,13 +21,44 @@ def token_required(func):
         except:
             return jsonify({'Alert!': 'Invalid Token!'})
         return decorated
-      
+   
+@app.route('/getbooks', methods=['GET'])
+def list_books():
+    try:
+        # Query the database to get all books
+        book_session = BookSession()
+        books = book_session.query(Book).all()
+        book_session.close()
+
+        book_list = [{'id': book.id,
+                      'title': book.title,
+                      'author': book.author,
+                      'category': book.category,
+                      'price': book.price,
+                      'image_url': book.image_url,
+                      'descri':book.descri
+                      } for book in books]
+
+        return jsonify({'books': book_list})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+       
 @app.route('/')     # for the public anyone can access this side......
 def index():
-    if not session.get('logged in'):
-      return render_template('index.html' )
-    else :
-        return 'Logged in Currently!'
+    try:
+        # Fetch books from the /getbooks endpoint
+        books_url = url_for('list_books')  # Assuming your route for getting books is named 'list_books'
+        response = requests.get(f'http://localhost:5000{books_url}')  # Replace localhost:5000 with your actual host and port
+
+
+        # Check if the request was successful (status code 200)
+        if response.status_code == 200:
+            books = response.json()['books']
+            return render_template('index.html', books=books)
+        else:
+            return jsonify({'error': f"Failed to fetch books. Status code: {response.status_code}"}), response.status_code
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
     
     
 @app.route('/login')
@@ -93,26 +124,7 @@ def logout():
 
 
 # gets the list of all the books in thr database
-@app.route('/getbooks', methods=['GET'])
-def list_books():
-    try:
-        # Query the database to get all books
-        book_session = BookSession()
-        books = book_session.query(Book).all()
-        book_session.close()
-
-        book_list = [{'id': book.id,
-                      'title': book.title,
-                      'author': book.author,
-                      'category': book.category,
-                      'price': book.price,
-                      'image_url': book.image_url
-                      } for book in books]
-
-        return jsonify({'books': book_list})
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
-    
+   
 @app.route('/books/<category>', methods=['GET'])
 def get_books(category):
   
@@ -131,7 +143,8 @@ def get_books(category):
                       'author': book.author,
                       'category': book.category,
                       'price': book.price,
-                      'image_url': book.image_url
+                      'image_url': book.image_url,
+                      'descri': book.descri
                       } for book in books]
 
         return render_template('categoryBooks.html', books=book_list, category=category)
@@ -141,16 +154,39 @@ def get_books(category):
 
 @app.route('/ProductPage')
 def product_page():
-    # Retrieve parameters from the URL
-    title = request.args.get('title', '')
-    price = request.args.get('price', '')
-    image_url = request.args.get('image_url', '')
-    author = request.args.get('author', '')
-    category = request.args.get('category', '')
+    
+    try:
+     books_url = url_for('list_books')  # Assuming your route for getting books is named 'list_books'
+     response = requests.get(f'http://localhost:5000{books_url}')  # Replace localhost:5000 with your actual host and port
+     
+     title = request.args.get('title', '')
+     price = request.args.get('price', '')
+     image_url = request.args.get('image_url', '')
+     author = request.args.get('author', '')
+     category = request.args.get('category', '')
+     descri = request.args.get('descri', '')
+            
+     if response.status_code == 200:
+            books = response.json()['books']
+            return render_template('ProductPage.html', title=title, price=price, image_url=image_url, author=author, category=category, descri=descri,books=books)
+     else:
+            return jsonify({'error': f"Failed to fetch books. Status code: {response.status_code}"}), response.status_code
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    
+    
 
-    # Render the template with the dynamic parameters
-    return render_template('ProductPage.html', title=title, price=price, image_url=image_url, author=author, category=category)
 
+@app.route('/requestBook', methods = ['POST'])
+def bookre():
+    try:
+        title = request.args.get('title', '')
+        price = request.args.get('price', '')
+        author = request.args.get('author', '')
+        
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    return render_template()  
 
 @app.route('/search', methods=['GET'])
 def search_books():
@@ -172,6 +208,7 @@ def search_books():
                       'author': book.author,
                       'category': book.category,
                       'price': book.price,
+                       'descri': book.descri,
                       'image_url': book.image_url
                       } for book in books]
 
@@ -186,10 +223,12 @@ def search_books():
     
             
     
-# @app.route('/Add2Cart',methods = ['POST','GET','DELETE'])
-# @token_required
-# def addtocart():
-#      return 'added to cart!'
+@app.route('/AddtoCart',methods = ['POST','GET','DELETE'])
+def addtocart():
+    
+    
+     return render_template('CART.html') 
+ 
 
 
 # @app.route('/Favorites',methods = ['POST','GET','DELETE'])

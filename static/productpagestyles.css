@@ -16,50 +16,8 @@
       background-position: center;
       background-size: cover;
       position: relative;
-   
-    } 
-    .topnav{
-        /* background-color: #0056b3; */
-       z-index: 2;
-        width: 60%;
-     top: 0;
-        margin-left: 30%;
-        }
-        .topnav a{
-            float:right;
-            display: block;
-             color:black;
-            text-align: center;
-          
-            font-family: 'Vollkorn', serif;
-            padding: 5px 15px;
-            text-decoration: none;
-          top:10px;
-          margin-top: 10px;
-            font-size: 16px;
-        }
-    
-       
-        .icon{
-            background-color: #3277c1;
-            border:2px solid #3277c1;
-            border-radius: 5px;
-            margin-right: 10px;
-            
-        }
-    .icon p{
-        color: white;
-        font-weight: 500;
-    }
-    .login{
-      
-      border:1px solid #3277c1;
-      border-radius: 5px;
-      
-    }
-    .login:hover{
-      background-color: #DFF1FF;
-    }
+  }
+  
     .favorites-link {
       display: inline-flex; 
     }
@@ -75,13 +33,13 @@
        margin-left: 20%;
         border: 2px solid #ccc;
         border-radius: 20px;
-        margin-top: 5%;
+        margin-top: 2%;
     }
     
     
     .search button {
         padding: 10px 20px;
-        background-color: #007bff;
+        background-color: #2F4858;
         color: #fff;
        
         border: none;
@@ -93,7 +51,129 @@
     .search button:hover {
         background-color: #0056b3;
     }
+    .topnav2{
+      z-index: 2;
+       width: 60%;
+       margin-left: 20%;
+       margin-top: 2%;
+       /* background-color: red; */
+       border-top: 1px solid #989799;
+       border-bottom: 1px solid #989799;
+       height: 5vh;
+       position: relative;
+       }
+       .topnav2 a{
+      
+           float:right;
+       font-weight: bold;
+            color:#2b2b2b; 
+            /* margin-right: 2%; */
+           text-align: center;
+           padding: 14px 20px;
+           text-decoration:solid;
+         top:15px;
+           font-size: 14px;
+           font-family: Arial, Helvetica, sans-serif;
+           
+       }
+      
+    
+    
+    .topnav2 a::after {
+        content: "";
+        display: block;
+        width: 0;
+        height: 2px;
+        background-color: #758199; 
+        transition: width 0.3s ease-in-out;
+    }
+    
+    .topnav2 a:hover::after {
+        width: 100%;
+    }
+    .navi {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px; 
+      /* background-color: #333; */
+      border-bottom: 1px solid #333;
+      width: 60%;
+      margin:  0 auto;
+    }
+    
+    /* Style the home button */
+    .home {
+      font-family: 'Ephesis', cursive;
+     font-size: 30px;
+     font-weight: bold;
+      
+    }
+    
+    /* Style the individual navigation links */
+    .topnav a {
+      display: inline-block;
+      color: #333; /* Change text color as needed */
+      text-decoration: none;
+      padding: 10px 15px; /* Adjust padding as needed */
+    }
+    
+    /* Change color on hover */
+    
+      .topnav a::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 2px;
+      background-color: #758199; 
+      transition: width 0.3s ease-in-out;
+    }
+    
+    .topnav a:hover::after {
+      width: 100%;
+    }
+    /* Style the carts container */
+    .carts-container {
+      display: flex;
+      align-items: center;
+    }
+    
+    /* Style the carts icon */
+    .carts-icon {
+      font-size: 16px; /* Adjust the size as needed */
+      margin-right: 5px; /* Adjust spacing between icon and count */
+    }
+    
+    /* Style the cart count */
+    #cartcount {
+      margin: 0;
+    }
+    
+    /* Style the cart dropdown */
+    #cart-dropdown {
+      /* Add your styles for the dropdown here */
+    }
+    
+    #cart-items {
+      /* Add your styles for the cart items here */
+    }
+    #cart-dropdown {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+      padding: 12px;
+      z-index: 1;
+    }
 
+    #cart-dropdown p {
+      margin: 0;
+    }
+
+    #cart-btn:hover #cart-dropdown {
+      display: block;
+    }
     .product-info{
         display: flex;
         width: 50%;
@@ -120,10 +200,10 @@
         font-family: Arial, Helvetica, sans-serif;
 
     }
-#bookPrice{
-    font-size: 20px;
-        padding: 10px;
-        font-family: Arial, Helvetica, sans-serif;
+#price{
+    font-size: 30px;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .estimation{
     display: flex;
@@ -152,6 +232,10 @@
     margin-bottom: 10px;
     text-align: center;
 }
+.cartbutt:hover{
+  cursor: pointer;
+  background-color: lightblue;
+}
 .Wishbutt{
     border:1px solid  #F89880;
     background-color:  #F89880;
@@ -168,6 +252,54 @@
     display: flex;
     /* background-color: #0056b3; */
 }
+/* styles.css */
+
+.cart-item {
+  display: flex;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  height: 10vh;
+  padding: 10px;
+}
+
+.cart-item-image {
+  width: 80px; /* Adjust the width as needed */
+  height: auto;
+  margin-right: 10px;
+}
+
+.cart-item-details {
+  flex: 1; /* Take up remaining space in the flex container */
+}
+
+.cart-item-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.cart-item-author {
+  font-size: 14px;
+  color: #555;
+}
+
+.cart-item-price {
+  font-size: 16px;
+  color: #e44d26; /* Adjust the color as needed */
+  font-weight: bold;
+}
+
+.remove-item-btn {
+  background-color: #e44d26;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.remove-item-btn:hover {
+  background-color: #c53e23; /* Adjust the hover color as needed */
+}
+
 .Condition{
 text-align: center;
     border:1px solid  #F89880;
@@ -195,6 +327,96 @@ text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     margin-top: 1%;
+  }
+  .morebooks{
+    /* background-color: #c53e23; */
+    height: 25vh;
+    width: 60%;
+    margin: 20px auto;
+  }
+  .cart-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    background-color: rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+    transition: height 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .book:hover .cart-overlay {
+    height: 100%;
+  }
+  
+  .cart-icon {
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  #cart-dropdown {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    padding: 12px;
+    z-index: 1;
+  }
+  
+  #cart-dropdown p {
+    margin: 0;
+  }
+  
+  #cart-btn:hover #cart-dropdown {
+    display: block;
+  }
+  .biocontainer{
+    width: 60%;
+    height: 30vh;
+    margin: 0 auto;
+    display: flex;
+    padding: 10px;
+  /* background-color: yellow; */
+    justify-content: space-between;
+  }
+ 
+  .book {
+    /* border: 1px solid #ccc; */
+    margin: 10px;
+    padding: 10px;
+   text-align: center;
+   position: relative;
+   margin: 10px;
+   cursor: pointer;
+   transition: transform 0.3s;
+   width: 40%;
+    
+  }
+  .book :hover{
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+  .book img{
+       width: 60%; 
+        max-height: 150px; 
+        object-fit:contain;
+  }
+  #author{
+    color: #989799;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 5px;
+  
   }
 /* footer styling section....................................>>>> */
 .Footer{

@@ -14,7 +14,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
   <link href="https://fonts.googleapis.com/css2?family=Diplomata+SC&family=Gorditas&family=Josefin+Sans:ital,wght@1,500&family=PT+Serif:ital@1&family=Vast+Shadow&family=Vollkorn&display=swap" rel="stylesheet">
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ephesis&family=Josefin+Sans:ital,wght@0,100;1,100&display=swap" rel="stylesheet">
   <style>
     @keyframes backgroundChange {
         0% {
@@ -43,19 +45,34 @@
 
 <section class = "Romance">
    
-        <div class="topnav" id="myTopnav">
-            
+        <div class ="navi">
+         <div class = "home">
+           FlavaBooks
+         </div>
+         <div class="topnav" id="myTopnav">
+         
           <a href="#ews" class="favorites-link">
             <i class="fa-regular fa-heart heart-icon"></i>FAVORITES
           </a>
             <a href="/login" class = "login">SIGN IN</a>
-            <a href="CART.html" onclick="addToCart(event)">CART</a>
-            
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-              <!-- <i class="fa fa-bars"></i> -->
-              <p>REQUEST A BOOK</p>
+
+
+            <a id="carts-btn" href="{{url_for('addtocart')}}" onclick="addToCart(event)">
+              <div class="carts-container">
+                <span class="carts-icon">🛒</span>
+               
+                <p id="cartcount">0</p>
+              </div>
+              <div id="cart-dropdown">
+                <p id="cart-items">Cart is empty</p>
+              </div>
             </a>
+
+              <a href="" class = "login">BOOK REQUEST</a>
+ 
           </div>
+        </div>
+        
 
           <div class="search">
             <form action="/search" method="get">
@@ -66,15 +83,15 @@
          
 
         <div class="topnav2" id="myTopnav2">
-          <a href="{{ url_for('get_books', category='ROMANCE') }}" >ROMANCE</a>
-          <a href="{{ url_for('get_books', category='ROMANCE') }}" >CHILDREN</a>
-          <a href="{{ url_for('get_books', category='ROMANCE') }}" >FICTION</a>
-          <a href="{{ url_for('get_books', category='ROMANCE') }}" >NON-FICTION</a>
+          <a href="{{ url_for('get_books', category='Romance') }}" >ROMANCE</a>
+          <a href="{{ url_for('get_books', category='Children') }}" >CHILDREN</a>
+          <a href="{{ url_for('get_books', category='Fiction') }}" >FICTION</a>
+          <a href="{{ url_for('get_books', category='Non-Fiction') }}" >NON-FICTION</a>
           <a href="{{ url_for('get_books', category='psychology') }}" >PSYCHOLOGY</a>
           
         
           <div class="hoverdiv" id="hoverContent" onmouseover="showHoverDiv()" onmouseout="hideHoverDiv()">
-            <!-- Content will be dynamically updated here -->
+            
           </div>
         </div>
         
@@ -88,206 +105,59 @@
           <h2>Top Sellers</h2>
       </div> 
      
-<div class="slideshow-container">
-  <div class = mySlides fade>
-<div class="imgcontainer">
-  <div class = "Book">
-    <div class="bookdet">
-      <img src="{{ url_for('static', filename='Images/img333.jpg') }}" alt="Image 1" style="width:80%" height="80%">
-      <div class = "bookconte">
-      <h3>WOMAN EVOLVE</h3>
-      <p>Sarah Jakes Roberts</p>
-      <h4>R 250.00</h4>
-    </div>
-
-   </div>
-  </div>
-  <div class = "Book">
-    <div class="bookdet">
-      <img src="{{ url_for('static', filename='Images/img333.jpg') }}" alt="Image 1"style="width:80%" height="80%">
-      <div class = "bookconte">
-      <h3>Find Your Truth</h3>
-      <p>Maponga Joshua</p>
-      <h4>R 250.00</h4>
-    </div>
-    </div>
-  </div>
-  <div class = "Book">
-    <div class="bookdet">
-      <img src="{{ url_for('static', filename='Images/img333.jpg') }}" alt="Image 1"style="width:80%" height="80%">
-      <div class = "bookconte">
-      <h3>What happened to you?</h3>
-      <p>Bruce D. Perry</p>
-      <h4>R 279.00</h4>
-    </div>
+      <div class="slideshow-container">
+        {% for group in books|batch(4) %}
+          <div class="mySlides fade">
+            <div class="imgcontainer">
+              {% for book in group %}
+                <div class="Book">
+                  <div class="bookdet">
+                    <img src="{{book.image_url }}" alt="{{ book.title }}" style="width:100%" height="80%">
+                    <div class="bookconte">
+                      <h3>{{ book.title }}</h3>
+                      
+                     
+                    </div>
+                  </div>
                 </div>
-  </div>
-</div>
-  </div>
-  <div class = mySlides fade>
-    <div class="imgcontainer">
-      <div class = "Book">
-        <div class="bookdet">
-          <img src="{{ url_for('static', filename='Images/img333.jpg') }}" alt="Image 1"style="width:80%" height="80%">
-          <div class = "bookconte">
-          <h3>WOMAN EVOLVE</h3>
-          <p>Sarah Jakes Roberts</p>
-          <h4>R 250.00</h4>
-        </div>
-                      </div>
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
       </div>
-      <div class = "Book">
-        <div class="bookdet">
-          <img src="{{ url_for('static', filename='Images/img333.jpg') }}" alt="Image 1"style="width:80%" height="80%">
-      <div class = "bookconte">
-      <h3>WOMAN EVOLVE</h3>
-      <p>Sarah Jakes Roberts</p>
-      <h4>R 250.00</h4>
-    </div>
-        </div>
-      </div>
-      <div class = "Book">
-        <div class="bookdet">
-          <img src="{{ url_for('static', filename='Images/img333.jpg') }}" alt="Image 1"style="width:80%" height="80%">
-          <div class = "bookconte">
-          <h3>WOMAN EVOLVE</h3>
-          <p>Sarah Jakes Roberts</p>
-          <h4>R 250.00</h4>
-        </div>
-                    </div>
-      </div>
-    </div>
-        
-  </div>
-  <div class = mySlides fade>
-    <div class="imgcontainer">
-      <div class = "Book">
-        <div class="bookdet">
-          <img src="{{ url_for('static', filename='Images/img333.jpg') }}" alt="Image 1"style="width:80%" height="80%">
-      <div class = "bookconte">
-      <h3>The MIND of the Leader</h3>
-      <p>Sarah Jakes Roberts</p>
-      <h4>R 300.00</h4>
-    </div>
-                      </div>
-      </div>
-      <div class = "Book">
-        <div class="bookdet">
-          <img src="{{ url_for('static', filename='Images/img333.jpg') }}" alt="Image 1"style="width:80%" height="80%">
-          <div class = "bookconte">
-          <h3>Intelligence isn't enough</h3>
-          <p>Candice Anderson</p>
-          <h4>R 250.00</h4>
-        </div>
-        </div>
-      </div>
-      <div class = "Book">
-        <div class="bookdet">
-          <img src="{{ url_for('static', filename='Images/img333.jpg') }}" alt="Image 1"style="width:80%" height="80%">
-          <div class = "bookconte">
-          <h3>WOMAN EVOLVE</h3>
-          <p>Sarah Jakes Roberts</p>
-          <h4>R 250.00</h4>
-        </div>
-                    </div>
-      </div>
-    </div>
-        
-  </div>
-  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-  <a class="next" onclick="plusSlides(1)">&#10095;</a>
-</div>
+      
+      
    
 <!-- for the biograpgy bestsellers book section -->
 <div class="topsellers">
-  <h2>Biography Top Sellers</h2>
+  <h2>Fiction Top Sellers</h2>
 </div> 
 <div class="biocontainer">
   
-  <div class="insidecon">
-    <div class="bookimg" onclick="redirectToProductPage('FIND YOUR TRUTH', 'Joshua Maponga', '../Images/boo.JPG','R 250.00')">
-      <img src="{{ url_for('static', filename='images/img333.jpg') }}" alt="Image 1" style="width:80%" height="80%">   <!-- Pull images from database-->
-      <div class="bookconte">
-        <div class="cart-overlay">
-          <a href="/Add2Cart" onclick="addToCart(event)">ADD TO CART</a>  <!-- Pull all the books content database-->
-          <i class="fas fa-shopping-cart"></i>
-        </div>
-      </div>
-    </div>
-    
-  <div class="bookinfo">
-    <h3 id="bookTitle">FIND YOUR TRUTH</h3>
-    <p id="bookAuthor">Joshua Maponga</p>
-    <h4 id = "bookPrice">R 250.00</h4>
-  </div>
-    
-  
-     
-     
-  </div>
-  <div class="insidecon">
-    <div class="bookimg" onclick="redirectToProductPage('Intelligence isnt enough', 'Carice Anderson', '../Images/boo1.JPG','R 279.00')">
-      <img src="{{ url_for('static', filename='Images/img333.jpg') }}" alt="Image 1" style="width:80%" height="80%">
-      <div class="bookconte">
-        
-        <div class="cart-overlay">
-          <a href="/Add2Cart" onclick="addToCart(event)">ADD TO CART</a>
-          <i class="fas fa-shopping-cart"></i>
-        </div>
-      </div>
-    </div>
-  <div class="bookinfo">
-    <h3>Intelligence isnt enough</h3>
-    <p>Carice Anderson</p>
-    <h4>R 279.00</h4>
-  </div>
-    
-  
-     
-     
-  </div>
-  <div class="insidecon">
-    <div class="bookimg" onclick="redirectToProductPage('THINK AND GROW RICH', 'Napolean Hill', '../Images/ttt.JPG','R 329.00')">
-      <img src="{{ url_for('static', filename='Images/img333.JPG') }}" alt="Image 1" style="width:80%" height="80%">
-      <div class="bookconte">
-        
-        <div class="cart-overlay">
-          <a href="/Add2Cart" onclick ="addToCart(event)">ADD TO CART</a>
-          <i class="fas fa-shopping-cart"></i>
-        </div>
-      </div>
-    </div>
-  <div class="bookinfo">
-    <h3>THINK AND GROW RICH</h3>
-    <p>Napolean Hill</p>
-    <h4>R 329.00</h4>
-  </div>
-    
-    
-     
-     
-  </div>
-  <div class="insidecon">
-    <div class="bookimg" onclick="redirectToProductPage('WHAT HAPPENED TO YOU?', 'Bruce D. Perry', '../Images/opp.JPG','R 200.00')">
-      <img src="{{ url_for('static', filename='Images/img333.jpg') }}" alt="Image 1"style="width:80%" height="80%">
-      <div class="bookconte">
-        
-        <div class="cart-overlay">
-          <a href="/Add2Cart" onclick="addToCart(event)">ADD TO CART</a>
-          <i class="fas fa-shopping-cart"></i>
-        </div>
-      </div>
-    </div>
-  <div class="bookinfo">
-    <h3>WHAT HAPPENED TO YOU?</h3>
-    <p>Bruce D. Perry</p>
-    <h4>R 200.00</h4>
-  </div>
-    
+  <div class="book-container">
+    {% set children_books = [] %}
+    {% for book in books %}
+        {% if book.category == 'Fiction' %}
+            {% if children_books|length < 3 %}
+                {% set _ = children_books.append(book) %}
+                <div class="book" onclick="redirectToProductPage('{{ book.title }}','{{ book.price }}','{{ book.image_url }}','{{ book.author }}','{{ book.category }}','{{book.descri}}')">
+                  <div class="cart-overlay">
+                    <div class="cart-icon">&#128722;</div>
+                    <p>ADD TO CART</p>
+                  </div> 
+                  <img src="{{ book.image_url }}" alt="{{ book.title }} Cover">
+                    <h3>{{ book.title }}</h3>
+                    <p id="author">{{ book.author }}</p>
+                    <p id="price"> R {{ book.price }}</p>
+                </div>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</div>
 
-     
-     
-  </div>
+  
   
 </div>
 
@@ -297,94 +167,38 @@
 
 <!-- for the CHILDREN bestsellers book section -->
 <div class="topsellers">
-  <h2>Children Top Sellers</h2>
+  <h2>Romance Top Sellers</h2>
 </div> 
 <div class="biocontainer">
-  <div class="insidecon">
-    <div class="bookimg" onclick="redirectToProductPage('FIND YOUR TRUTH', 'Joshua Maponga', '../Images/boo.JPG','R 250.00')">
-      <img src="{{ url_for('static', filename='Images/img333.jpg') }}" alt="Image 1"style="width:80%" height="80%">  <!-- Pull images from database-->
-      <div class="bookconte">
-        <div class="cart-overlay">
-          <a href="/Add2Cart" onclick="addToCart(event)">ADD TO CART</a>  <!-- Pull all the books content database-->
-          <i class="fas fa-shopping-cart"></i>
-        </div>
-      </div>
-    </div>
-    
-  <div class="bookinfo">
-    <h3 id="bookTitle">FIND YOUR TRUTH</h3>
-    <p id="bookAuthor">Joshua Maponga</p>
-    <h4 id = "bookPrice">R 250.00</h4>
-  </div>
+  
     
   
-     
-     
-  </div>
+  <div class="book-container">
+   
+    {% set children_books = [] %}
+    {% for book in books %}
+        {% if book.category == 'Romance' %}
+            {% if children_books|length < 3 %}
+                {% set _ = children_books.append(book) %}
+                <div class="book" onclick="redirectToProductPage('{{ book.title }}','{{ book.price }}','{{ book.image_url }}','{{ book.author }}','{{ book.category }}','{{book.descri}}')">
+                  <div class="cart-overlay">
+                    <div class="cart-icon">&#128722;</div>
+                    <p>ADD TO CART</p>
+                  </div> 
+                  <img src="{{ book.image_url }}" alt="{{ book.title }} Cover">
+                    <h3>{{ book.title }}</h3>
+                    <p id="author">{{ book.author }}</p>
+                    <p id="price"> R {{ book.price }}</p>
+                </div>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</div>
 
-  <div class="insidecon">
-    <div class="bookimg" onclick="redirectToProductPage('Intelligence isnt enough', 'Carice Anderson', '../Images/boo1.JPG','R 279.00')">
-      <img src="{{ url_for('static', filename='Images/img333.jpg') }}" alt="Image 1"style="width:80%" height="80%">
-      <div class="bookconte">
-        
-        <div class="cart-overlay">
-          <a href="CART.html" onclick="addToCart(event)">ADD TO CART</a>
-          <i class="fas fa-shopping-cart"></i>
-        </div>
-      </div>
-    </div>
-  <div class="bookinfo">
-    <h3>Intelligence isnt enough</h3>
-    <p>Carice Anderson</p>
-    <h4>R 279.00</h4>
-  </div>
-    
+     
   
      
-     
-  </div>
-  <div class="insidecon">
-    <div class="bookimg" onclick="redirectToProductPage('THINK AND GROW RICH', 'Napolean Hill', '../Images/ttt.JPG','R 329.00')">
-      <img src="{{ url_for('static', filename='Images/img333.jpg') }}" alt="Image 1"style="width:80%" height="80%">
-      <div class="bookconte">
-        
-        <div class="cart-overlay">
-          <a href="CART.html" onclick ="addToCart(event)">ADD TO CART</a>
-          <i class="fas fa-shopping-cart"></i>
-        </div>
-      </div>
-    </div>
-  <div class="bookinfo">
-    <h3>THINK AND GROW RICH</h3>
-    <p>Napolean Hill</p>
-    <h4>R 329.00</h4>
-  </div>
-    
-    
-     
-     
-  </div>
-  <div class="insidecon">
-    <div class="bookimg" onclick="redirectToProductPage('WHAT HAPPENED TO YOU?', 'Bruce D. Perry', '../Images/opp.JPG','R 200.00')">
-      <img src="{{ url_for('static', filename='Images/img333.jpg') }}" alt="Image 1"style="width:80%" height="80%">
-      <div class="bookconte">
-        
-        <div class="cart-overlay">
-          <a href="CART.html" onclick="addToCart(event)">ADD TO CART</a>
-          <i class="fas fa-shopping-cart"></i>
-        </div>
-      </div>
-    </div>
-  <div class="bookinfo">
-    <h3>WHAT HAPPENED TO YOU?</h3>
-    <p>Bruce D. Perry</p>
-    <h4>R 200.00</h4>
-  </div>
-    
 
-     
-     
-  </div>
   
 </div>
 

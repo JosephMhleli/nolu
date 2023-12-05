@@ -117,7 +117,9 @@ height: 5vh;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
 }
-
+.book :hover{
+  cursor: pointer;
+}
 .book img {
     max-width: 50%;
     height: auto;

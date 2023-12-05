@@ -31,14 +31,15 @@ def add_book():
             author = request.form['author']
             category = request.form['category']
             img_url = request.form['img_url']
+            decrip = request.form['decrip']
             price = request.form['price']
             print(f"Title: {title}, Author: {author}, Category: {category}, Img URL: {img_url}, Price: {price}")
             # Validate input data
-            if not all([title, author, category, img_url, price]):
+            if not all([title, author, category, img_url, price,decrip]):
                 return make_response('Missing required fields', 400)
 
             # Create a new book instance
-            new_book = Book(title=title, author=author, category=category, price=price,image_url=img_url )
+            new_book = Book(title=title, author=author, category=category, price=price,image_url=img_url,descri = decrip )
 
             # Add the book to the database
             book_session = BookSession()
@@ -59,9 +60,10 @@ def update_book():
         author = request.form['author']
         category = request.form['category']
         img_url = request.form['img_url']
+        descrip = request.form['descrip']
         price = request.form['price']
 
-        if not all([book_id, title, author, category, img_url, price]):
+        if not all([book_id, title, author, category, img_url, price,descrip]):
             abort(400, 'Missing required fields')
 
         # Query the database to get the existing book
@@ -73,6 +75,7 @@ def update_book():
         existing_book.author = author
         existing_book.category = category
         existing_book.image_url = img_url
+        existing_book.descri = descrip
         existing_book.price = price
 
         # Commit the changes to the database

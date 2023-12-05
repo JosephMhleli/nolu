@@ -13,22 +13,37 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
   <link href="https://fonts.googleapis.com/css2?family=Diplomata+SC&family=Gorditas&family=Josefin+Sans:ital,wght@1,500&family=PT+Serif:ital@1&family=Vast+Shadow&family=Vollkorn&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Ephesis&family=Josefin+Sans:ital,wght@0,100;1,100&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='productpagestyles.css') }}">
 
 <section class="content">
-  <div class="topnav" id="myTopnav">
-            
-    <a href="#ews" class="favorites-link">
-      <i class="fa-regular fa-heart heart-icon"></i>Favorites
-    </a>
-      <a href="#ews" class = "login">Login/Sign up</a>
-    
-      
-      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-        <!-- <i class="fa fa-bars"></i> -->
-        <p>REQUEST A BOOK</p>
-      </a>
+  <div class ="navi">
+    <div class = "home">
+      FlavaBooks
     </div>
+    <div class="topnav" id="myTopnav">
+    
+     <a href="#ews" class="favorites-link">
+       <i class="fa-regular fa-heart heart-icon"></i>FAVORITES
+     </a>
+       <a href="/login" class = "login">SIGN IN</a>
+
+
+       <a id="carts-btn" href="{{url_for('addtocart')}}" onclick="addToCart(event)">
+         <div class="carts-container">
+           <span class="carts-icon">🛒</span>
+          
+           <p id="cartcount">0</p>
+         </div>
+         <div id="cart-dropdown">
+           <p id="cart-items">Cart is empty</p>
+         </div>
+       </a>
+
+         <a href="" class = "login">BOOK REQUEST</a>
+
+     </div>
+   </div>
 
     <div class="search">
       <form action="/search" method="get">
@@ -36,18 +51,31 @@
           <button type="submit">Search</button>
       </form>
     </div>
+    <div class="topnav2" id="myTopnav2">
+      <a href="{{ url_for('get_books', category='Romance') }}" >ROMANCE</a>
+      <a href="{{ url_for('get_books', category='Children') }}" >CHILDREN</a>
+      <a href="{{ url_for('get_books', category='Fiction') }}" >FICTION</a>
+      <a href="{{ url_for('get_books', category='Non-Fiction') }}" >NON-FICTION</a>
+      <a href="{{ url_for('get_books', category='psychology') }}" >PSYCHOLOGY</a>
+      
+    
+      <div class="hoverdiv" id="hoverContent" onmouseover="showHoverDiv()" onmouseout="hideHoverDiv()">
+        
+      </div>
+    </div>
   <div class="product-info">
     
-    <img id="bookImage" src="default-image.jpg" alt="Default Book Image" style="width:30%" height="80%">
+    <img src="{{ image_url }}" alt="{{ title }} Cover">
 
     <div class="titlebook">
       <div class="product-container">
-        <h1>{{ title }}</h1>
-        <p>Author: {{ author }}</p>
-        <p>Price: R {{ price }}</p>
-        <p>Category: {{ category }}</p>
-        <img src="{{ image_url }}" alt="{{ title }} Cover">
+        <h1 id="bookTitle">{{ title}}</h1>
+        <p id="bookAuthor"> {{author}}</p>
+      
+       <!---<p>Category: {{ category }}</p>-->
+        
         <!-- Add more details or styling as needed -->
+        <p id="price"> R {{ price }}</p>
     </div>
       <div class="estimation">
         <h3>ESTIMATED DELIVERY:</h3>
@@ -55,7 +83,7 @@
       </div>
 
       <div class="ButtonSec">
-       <div class="cartbutt" onclick="addToCart()">
+       <div class="cartbutt" onclick="addToCart(event,'{{image_url}}','{{title}}','{{author}}','{{price}}')">
         ADD TO CART <i class="fas fa-shopping-cart"></i>
        </div>
        <div class="Wishbutt" onclick="addToWish()">
@@ -67,7 +95,7 @@
           Condition: Good
         </div>
         <div class="bookApp">    <!--appreacnce of the book small dscription of the appreacnce of the book-->
-       <p>Book has rolled pages and stains on cover</p>          
+       <p>{{descri}}</p>          
         </div>
      
       
@@ -80,6 +108,32 @@
   <h2>You Might Also Like</h2>
 </div> 
 
+<div class="biocontainer">
+  
+
+    {% set children_books = [] %}
+    {% for book in books %}
+        {% if book.category == category %}
+            {% if children_books|length < 3 %}
+                {% set _ = children_books.append(book) %}
+                <div class="book" onclick="redirectToProductPage('{{ book.title }}','{{ book.price }}','{{ book.image_url }}','{{ book.author }}','{{ book.category }}','{{book.descri}}')">
+                  <div class="cart-overlay">
+                    <div class="cart-icon">&#128722;</div>
+                    <p>ADD TO CART</p>
+                  </div> 
+                  <img src="{{ book.image_url }}" alt="{{ book.title }} Cover">
+                    <h3>{{ book.title }}</h3>
+                    <p id="author">{{ book.author }}</p>
+                    <!--- <p id="price"> R {{ book.price }}</p> -->
+                </div>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+
+
+  
+  
+</div>
 
 </section>
 
@@ -140,6 +194,7 @@
 </section>
 
 <script src="{{ url_for('static', filename='Javascript/bookUpdate.js') }}"></script>
+<script src="{{ url_for('static', filename='Javascript/redirect.js') }}"></script>
 
 </body>
 </html>

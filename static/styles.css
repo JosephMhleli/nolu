@@ -8,57 +8,8 @@
     scroll-behavior: smooth;
   }
 
-
-  /* <naigator section foe the menu bar> */
-  .topnav{
-    /* background-color: #0056b3; */
-   z-index: 2;
-    width: 60%;
- top: 0;
-    margin-left: 20%;
-    }
-    .topnav a{
-        float:right;
-        display: block;
-         color:black;
-        text-align: center;
-      
-        font-family: 'Vollkorn', serif;
-        padding: 5px 15px;
-        text-decoration: none;
-      top:10px;
-      margin-top: 10px;
-        font-size: 16px;
-    }
-
-   
-    .icon{
-        background-color: #2F4858;
-        border:2px solid #2F4858;
-        border-radius: 5px;
-        margin-right: 10px;
-        
-    }
-.icon p{
-    color: white;
-    font-weight: 500;
-}
-.login{
-  
-  border:1px solid #3277c1;
-  border-radius: 5px;
-  
-}
-.login:hover{
-  background-color: #DFF1FF;
-}
-.favorites-link {
-  display: inline-flex; 
-}
-
-.heart-icon {
-  margin-right: 10px; 
-}
+ 
+ 
 
     .topnav2{
         z-index: 2;
@@ -100,7 +51,74 @@
       .topnav2 a:hover::after {
           width: 100%;
       }
-      
+     /* Reset some default styles for the topnav */
+/* Reset some default styles for the navi container */
+.navi {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px; 
+  /* background-color: #333; */
+  border-bottom: 1px solid #333;
+  width: 60%;
+  margin:  0 auto;
+}
+
+/* Style the home button */
+.home {
+  font-family: 'Ephesis', cursive;
+ font-size: 30px;
+ font-weight: bold;
+  
+}
+
+/* Style the individual navigation links */
+.topnav a {
+  display: inline-block;
+  color: #333; /* Change text color as needed */
+  text-decoration: none;
+  padding: 10px 15px; /* Adjust padding as needed */
+}
+
+/* Change color on hover */
+
+  .topnav a::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background-color: #758199; 
+  transition: width 0.3s ease-in-out;
+}
+
+.topnav a:hover::after {
+  width: 100%;
+}
+/* Style the carts container */
+.carts-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Style the carts icon */
+.carts-icon {
+  font-size: 16px; /* Adjust the size as needed */
+  margin-right: 5px; /* Adjust spacing between icon and count */
+}
+
+/* Style the cart count */
+#cartcount {
+  margin: 0;
+}
+
+/* Style the cart dropdown */
+#cart-dropdown {
+  /* Add your styles for the dropdown here */
+}
+
+#cart-items {
+  /* Add your styles for the cart items here */
+}
 
 
 
@@ -135,13 +153,6 @@ margin-bottom: 0;
 
  } 
 
-
-
-
-
-
-
-
 .search input[type="text"] {
     padding: 10px;
 background-color: #FFFFFF; 
@@ -150,7 +161,7 @@ background-color: #FFFFFF;
    margin-left: 20%;
     border: 2px solid #ccc;
     border-radius: 20px;
-    margin-top: 5%;
+    margin-top: 2%;
 }
 
 
@@ -203,44 +214,7 @@ background-color: #FFFFFF;
   padding: 10px;
   justify-content: space-between;
   }
-  .serv1{
-    flex-basis: 30%;
-    /* background:#DADDE2; */
-    border-radius:2px solid  #F4ECFF;
-    margin-bottom: 5%;
-    padding: 20px 6px;
-    box-sizing: border-box;
-  
-  
-  }
-  .serv1 h2{
-    text-align: center;
-    color: black;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  .tobchosen{
-    
-     width: 60%;
-     margin-left: 20%;
-     margin-top: 2%;
-     /* background-color: beige; */
-     /* height: 5vh; */
-     position: relative;
-     }
-     .tobchosen a{
-    
-         float:right;
-     font-weight: bold;
-          color:#5D5C5E; 
-          margin-right: 0%;
-         /* text-align: center; */
-         /* padding: 14px 20px; */
-         text-decoration:solid;
-       top:15px;
-         font-size: 14px;
-         font-family: Arial, Helvetica, sans-serif;
-         
-     }
+
      .slideshow-container {
       width: 100%;
       /* background-color: gold; */
@@ -266,6 +240,10 @@ background-color: #FFFFFF;
   box-sizing: border-box;
 
 
+}
+.bookconte h3{
+  font-size: 16px;
+  text-align: center;
 }
 .bookdet{
   width: 80%;
@@ -344,7 +322,7 @@ margin: 0 auto;
 }
 .biocontainer{
   width: 60%;
-  height: 30vh;
+  height: 45vh;
   margin: 0 auto;
   display: flex;
   padding: 10px;
@@ -359,50 +337,86 @@ margin: 0 auto;
   /* background-color: blue; */
 }
 
-.bookconte {
-  position: relative;
-  
- top: 55%;
-/* width:60%; */
-margin:  0 auto;
-  visibility: hidden;
-  opacity: 0;
-
-  transition: opacity 0.3s;
-  transition: width 0.3s ease-in-out;
-}
-
-.insidecon:hover .bookconte {
-  visibility: visible;
-  opacity: 1;
-}
 
 .cart-overlay {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #2F4858; /* Adjust background color as needed */
-  color: white;
-  width: 79%;
-  top:0;
-  padding: 1%;
-  border-radius: 5px;
- 
-}
-
-.cart-overlay  a{
-  margin-right: 5px;
-  cursor: pointer;
-  /* background-color: pink; */
-  text-decoration: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
   color: white;
   font-weight: bold;
-   font-size: 14px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  background-color: rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+  transition: height 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-.bookimg {
- 
+
+.book:hover .cart-overlay {
+  height: 100%;
+}
+
+.cart-icon {
+  font-size: 30px;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#cart-dropdown {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  padding: 12px;
+  z-index: 1;
+}
+
+#cart-dropdown p {
+  margin: 0;
+}
+
+#cart-btn:hover #cart-dropdown {
+  display: block;
+}
+.book-container{
+  /* background-color: red; */
+  height: 43vh;
+  display: flex;
+  width: 100%;
+}
+.book {
+  /* border: 1px solid #ccc; */
+  margin: 10px;
+  padding: 10px;
+ text-align: center;
+ position: relative;
+ margin: 10px;
+ cursor: pointer;
+ transition: transform 0.3s;
+  /* width: 300px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px; */
+}
+.book :hover{
   cursor: pointer;
+  transform: scale(1.05);
+}
+.book img{
+  width: 60%;
+  height: auto;
+}
+#author{
+  color: #989799;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 5px;
+
 }
 .Footer{
     width:100%;

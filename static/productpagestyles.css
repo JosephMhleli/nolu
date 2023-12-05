@@ -103,11 +103,16 @@
     }
     
     /* Style the home button */
-    .home {
+    #home {
       font-family: 'Ephesis', cursive;
      font-size: 30px;
      font-weight: bold;
-      
+     color: #2b2b2b;
+      text-decoration: none;
+    }
+    #home:hover{
+      cursor: pointer;
+      transform: scale(1.05);
     }
     
     /* Style the individual navigation links */

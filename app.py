@@ -215,14 +215,7 @@ def search_books():
         return render_template('categoryBooks.html', books=book_list, category=search_query)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
-
- 
- 
-
-    
-            
-    
+   
 @app.route('/AddtoCart',methods = ['POST','GET','DELETE'])
 def addtocart():
     

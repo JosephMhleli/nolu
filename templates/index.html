@@ -4,108 +4,73 @@
   <title>Nolu Book Store</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <meta charset="UTF-8">
-
+  <script src="https://unpkg.com/feather-icons"></script>
+      <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://kit.fontawesome.com/324c7ccd76.js" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Roboto&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Diplomata+SC&family=Gorditas&family=Josefin+Sans:ital,wght@1,500&family=PT+Serif:ital@1&family=Vast+Shadow&family=Vollkorn&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Ephesis&family=Josefin+Sans:ital,wght@0,100;1,100&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel = "stylesheet" href="/static/styles.css">
   </head>
   <body>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://kit.fontawesome.com/324c7ccd76.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
-  <link href="https://fonts.googleapis.com/css2?family=Diplomata+SC&family=Gorditas&family=Josefin+Sans:ital,wght@1,500&family=PT+Serif:ital@1&family=Vast+Shadow&family=Vollkorn&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Ephesis&family=Josefin+Sans:ital,wght@0,100;1,100&display=swap" rel="stylesheet">
   <style>
-    @keyframes backgroundChange {
-        0% {
-            background-image: url('{{ url_for('static', filename='Images/Nolu1.png') }}');
-            transform: translateX(-100%);
-        }
-        25% {
-            background-image: url('{{ url_for('static', filename='Images/Nolu1.png') }}');
-            transform: translateX(0%);
-        }
-        50% {
-            background-image: url('{{ url_for('static', filename='Images/img3.jpg') }}');
-            transform: translateX(-100%);
-        }
-        75% {
-            background-image: url('{{ url_for('static', filename='Images/beauty.jpg') }}');
-            transform: translateX(0%);
-        }
-        100% {
-            background-image: url('{{ url_for('static', filename='Images/img1.jpg') }}');
-            transform: translateX(-100%);
-        }
-    }
+    
+ @keyframes backgroundChange {
+  0%, 20% {
+      background-image: url('{{ url_for('static', filename='Images/Nolu1.png') }}');
+      opacity: 1;
+  }
+  25% {
+      opacity: 0;
+  }
+  30%, 50% {
+      background-image: url('{{ url_for('static', filename='Images/img3.jpg') }}');
+      opacity: 1;
+  }
+  55% {
+      opacity: 0;
+  }
+  60%, 80% {
+      background-image: url('{{ url_for('static', filename='Images/beauty.jpg') }}');
+      opacity: 1;
+  }
+  85% {
+      opacity: 0;
+  }
+  90%, 100% {
+      background-image: url('{{ url_for('static', filename='Images/img1.jpg') }}');
+      opacity: 1;
+  }
+}
+  
 </style>
-
-
+<!-- <div class="user-greeting">
+  {% if user_authenticated %}
+    <p>Hello, {{ current_user_id }}!</p>
+  {% else %}
+    <p>Hello, Guest!</p>
+  {% endif %}
+</div> -->
+{%include 'navbar.html'%}
 <section class = "Romance">
    
-        <div class ="navi">
-         <a id = "home" href="{{url_for('index')}}">
-           FlavaBooks
-         </a>
-         <div class="topnav" id="myTopnav">
-         
-          <a href="#ews" class="favorites-link">
-            <i class="fa-regular fa-heart heart-icon"></i>FAVORITES
-          </a>
-            <a href="/login" class = "login">SIGN IN</a>
-
-
-            <a id="carts-btn" href="{{url_for('addtocart')}}" onclick="addToCart(event)">
-              <div class="carts-container">
-                <span class="carts-icon">🛒</span>
-               
-                <p id="cartcount">0</p>
-              </div>
-              <div id="cart-dropdown">
-                <p id="cart-items">Cart is empty</p>
-              </div>
-            </a>
-
-              <a href="" class = "login">BOOK REQUEST</a>
- 
-          </div>
-        </div>
+      
         
 
-          <div class="search">
-            <form action="/search" method="get">
-                <input type="text" name="query" placeholder="Search Book, author....">
-                <button type="submit">Search</button>
-            </form>
-          </div>
-         
-
-        <div class="topnav2" id="myTopnav2">
-          <a href="{{ url_for('get_books', category='Romance') }}" >ROMANCE</a>
-          <a href="{{ url_for('get_books', category='Children') }}" >CHILDREN</a>
-          <a href="{{ url_for('get_books', category='Fiction') }}" >FICTION</a>
-          <a href="{{ url_for('get_books', category='Non-Fiction') }}" >NON-FICTION</a>
-          <a href="{{ url_for('get_books', category='psychology') }}" >PSYCHOLOGY</a>
-          
-        
-          <div class="hoverdiv" id="hoverContent" onmouseover="showHoverDiv()" onmouseout="hideHoverDiv()">
-            
-          </div>
-        </div>
-        
-
-        <div class="specialoffer">
-        
+        <div class="specialoffer">       
       </div> 
      
-      
       <div class="topsellers">
           <h2>Top Sellers</h2>
       </div> 
-     
-      <div class="slideshow-container">
+      <div class="slideshow-container1">
         {% for group in books|batch(4) %}
           <div class="mySlides fade">
             <div class="imgcontainer">
@@ -136,7 +101,7 @@
 </div> 
 <div class="biocontainer">
   
-  <div class="book-container">
+  
     {% set children_books = [] %}
     {% for book in books %}
         {% if book.category == 'Fiction' %}
@@ -144,9 +109,9 @@
                 {% set _ = children_books.append(book) %}
                 <div class="book" onclick="redirectToProductPage('{{ book.title }}','{{ book.price }}','{{ book.image_url }}','{{ book.author }}','{{ book.category }}','{{book.descri}}')">
                   <div class="cart-overlay">
-                    <div class="cart-icon">&#128722;</div>
+                    <div class="cart-icon"><i class="fa-solid fa-cart-shopping"></i></div>
                     <p>ADD TO CART</p>
-                  </div> 
+                  </div>
                   <img src="{{ book.image_url }}" alt="{{ book.title }} Cover">
                     <h3>{{ book.title }}</h3>
                     <p id="author">{{ book.author }}</p>
@@ -159,7 +124,7 @@
 
   
   
-</div>
+
 
 
 
@@ -182,7 +147,7 @@
                 {% set _ = children_books.append(book) %}
                 <div class="book" onclick="redirectToProductPage('{{ book.title }}','{{ book.price }}','{{ book.image_url }}','{{ book.author }}','{{ book.category }}','{{book.descri}}')">
                   <div class="cart-overlay">
-                    <div class="cart-icon">&#128722;</div>
+                    <div class="cart-icon"> <i class="fa-solid fa-cart-shopping"></i></div>
                     <p>ADD TO CART</p>
                   </div> 
                   <img src="{{ book.image_url }}" alt="{{ book.title }} Cover">
@@ -195,11 +160,6 @@
     {% endfor %}
 </div>
 
-     
-  
-     
-
-  
 </div>
 
 
@@ -208,64 +168,13 @@
 <!-- end of the bestsellers CHILDREN section -->
 </section>
 
+{%include 'footer.html'%}
 
 
 
 
 
 
-<section class="Footer">
-  <div class="fitfooter">
-    <div class = "footinfor">
-      <div class = "infoUs">
-        <h2>CUSTOMER CARE</h2>
-        
-              <p><i class="fas fa-envelope mr-3"></i> info@KeeganTechnologies.com</p>
-              <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-              
-              <h3>CONTACT HOURS:</h3>
-
-
-  
-      </div>
-      <div class = "infoUs">
-        <h2>ABOUT US</h2>
-        <a href="#ews">Contact Us</a>
-        <a href="#ews">T's and C's</a>
-        <a href="#contact">Gift cards and Vouchers</a>
-        <a href="#about">Privacy Policy</a>
-  
-      </div>
-      <div class = "infoUs">
-        <h2>CUSTOMER SERVICES</h2>
-        <p> <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
-              <p><i class="fas fa-envelope mr-3"></i> info@KeeganTechnologies.com</p>
-              <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-              <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
-  
-      </div>
-      <div class = "infoUs">
-        <div class="subscribe-section">
-          <h2>SUBSCRIBE</h2>
-          <p>Subscribe for the latest news and exclusive offers!</p>
-        
-          <form>
-          
-            <input type="text" id="name" name="name" placeholder="Your Name" required>
-        
-            
-            <input type="email" id="email" name="email" placeholder="Your Email" required>
-        
-            <button type="submit">Subscribe</button>
-          </form>
-        </div>
-        
-      </div>
-     
-    </div>
-  </div>
-
-</section>
 
 <!-- <this sesction is for the scrips that was used in the development >  -->
   <script src="{{ url_for('static', filename='Javascript/slide.js') }}"></script>
@@ -276,6 +185,10 @@
 
 
 
-
+<!-- <script>
+  if (!window.location.href.includes('/ProductPage')) { 
+    sidebar.style.display = 'none';
+  }
+</script> -->
   </body>
 </html>

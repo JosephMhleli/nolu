@@ -12,6 +12,35 @@ function redirectToProductPage(title, price, image_url, author, category,descri)
     // Redirect to the new page
     window.location.href = url;
 }
+function addToWish(imageUrl, title, author, price, category) {
+    const bookDetails = {
+        image_url: imageUrl,
+        title: title,
+        author: author,
+        price: price,
+        category: category
+    };
+
+    fetch('/Favorites/post', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(bookDetails),
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message);
+        if (data.success) {
+            // Optionally, redirect to the Favorites page if the book was added successfully
+            window.location.href = '/Favorites';
+        }
+    })
+    .catch(error => {
+        console.error('Error adding book to wishlist:', error);
+        alert('Error adding book to wishlist. Please try again.');
+    });
+}
 
 
 function bookreq(){
@@ -19,52 +48,80 @@ function bookreq(){
     //redirecting to the page window
     window.location.href = url;
 }
+function getToken() {
+    const cookies = document.cookie.split('; ');
+    const tokenCookie = cookies.find(row => row.startsWith('token='));
 
-function addToCart(event, itemImg, itemName, itemAuthor, itemPrice) {
-    const cartCountElement = document.getElementById('cartcount');
-    const cartItemsElement = document.getElementById('cart-items');
-
-    // Increment cart count (you should replace this with your actual logic)
-    const currentCount = parseInt(cartCountElement.innerText, 10);
-    cartCountElement.innerText = currentCount + 1;
-
-    // Update cart dropdown content (you should replace this with your actual logic)
-    let cartContent = cartItemsElement.innerHTML;
-    if (cartContent === "Cart is empty") {
-        cartContent = ''; // Clear the default message
+    if (tokenCookie) {
+        return tokenCookie.split('=')[1];
+    } else {
+        // Token cookie not found
+        return null;
     }
+}
 
-    // Generate a unique ID for each cart item
-    const itemId = `cart-item-${currentCount}`;
-
-    // Add the selected item to the cart with HTML markup
-    cartContent += `
-        <div id="${itemId}" class="cart-item">
-            <img src="${itemImg}" alt="${itemName} image" class="cart-item-image">
-            <div class="cart-item-details">
-                <p class="cart-item-title">${itemName}</p>
-                <p class="cart-item-author">Author: ${itemAuthor}</p>
-                <p class="cart-item-price">Price: ${itemPrice}</p>
-            </div>
-            <button class="remove-item-btn" onclick="removeCartItem('${itemId}')">Remove</button>
-        </div>`;
-
-    cartItemsElement.innerHTML = cartContent;
+function addToCart(image_url, title, author, price) {
+    // Assuming you have a function to retrieve the token, replace getToken() with that function.
+//     var token = getToken();
+//    console.log('token is ',token)
+    // Check if variables are defined and have values
+    if (image_url && title && author && price && token) {
+        // Make an AJAX request to the server
+        $.ajax({
+            type: "POST",
+            url: "/AddtoCart",
+            // headers: {
+            //     'Authorization': 'Bearer ' + token
+            // },
+            data: {
+                image_url: image_url,
+                title: title,
+                author: author,
+                price: price
+            },
+            success: function(response) {
+                // Update the cart counter and handle any other UI updates
+                updateCartCounter(response.cart_count);
+            },
+            error: function(error) {
+                console.error("Error adding to cart:", error);
+            }
+        });
+    } else {
+        console.error("One or more variables are undefined or null.");
+    }
 }
 
 
-
-
-
-function removeCartItem(itemId) {
-    // Remove the cart item with the specified ID
-    const cartItem = document.getElementById(itemId);
-    if (cartItem) {
-        cartItem.remove();
-    }
-
-    // Update the cart count (you should replace this with your actual logic)
-    const cartCountElement = document.getElementById('cartcount');
-    const currentCount = parseInt(cartCountElement.innerText, 10);
-    cartCountElement.innerText = Math.max(0, currentCount - 1);
+function updateCartCounter(count) {
+    // Update the cart counter in the UI
+    // For example, assuming you have a cart counter element with id "cartCounter"
+    $("#cartCounter").text(count);
 }
+
+$("#cartContainer").hover(
+    function() {
+        // Show cart contents on hover
+        $("#cartContents").removeClass("hidden");
+    },
+    function() {
+        // Hide cart contents when not hovering
+        $("#cartContents").addClass("hidden");
+    }
+);
+
+function proceedToCheckout() {
+    
+}
+function getToken() {
+    const cookies = document.cookie.split('; ');
+    const tokenCookie = cookies.find(row => row.startsWith('token='));
+
+    if (tokenCookie) {
+        return tokenCookie.split('=')[1];
+    } else {
+        // Token cookie not found
+        return null;
+    }
+}
+

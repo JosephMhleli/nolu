@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout - Nolu Book Store</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script src="https://kit.fontawesome.com/324c7ccd76.js" crossorigin="anonymous"></script>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Roboto&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Diplomata+SC&family=Gorditas&family=Josefin+Sans:ital,wght@1,500&family=PT+Serif:ital@1&family=Vast+Shadow&family=Vollkorn&display=swap" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ephesis&family=Josefin+Sans:ital,wght@0,100;1,100&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='checkstyles.css') }}">
+<link rel="stylesheet" href="/static/checkstyles.css">
+    <style>
+        body {
+            padding-top: 20px;
+        }
+        .checkout-header {
+            margin-bottom: 30px;
+        }
+        .checkout-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .checkout-item img {
+            width: 80px;
+            height: auto;
+            margin-right: 20px;
+        }
+        .payment-methods {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .payment-methods img {
+            width: 50px;
+            margin-right: 10px;
+        }
+        #card-element {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .card-errors {
+            color: red;
+            margin-top: 10px;
+        }
+        .total-amount {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    {%include 'navbar.html'%}
+    <div class="container">
+        <div class="checkout-header">
+            <h2>Your Cart</h2>
+        </div>
+        <div id="cartItems" class="mb-3">
+            <!-- Cart items will be inserted here dynamically -->
+        </div>
+        <div class="total-amount" id="totalAmount">
+            <!-- Total amount will be calculated and displayed here -->
+        </div>
+      
+        <form id="payment-form">
+            <div id="card-element">
+                <!-- A Stripe Element will be inserted here. -->
+            </div>
+            <div id="card-errors" class="card-errors" role="alert"></div>
+            <!-- <button class="btn btn-primary mt-4" id="submit">Submit Payment</button> -->
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-75">
+          <div class="container">
+            <form action="/action_page.php">
+      
+              <div class="row">
+                <div class="col-50">
+                  <h3>Billing Address</h3>
+                  <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+                  <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
+                  <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                  <input type="text" id="email" name="email" placeholder="john@example.com">
+                  <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+                  <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
+                  <label for="city"><i class="fa fa-institution"></i> City</label>
+                  <input type="text" id="city" name="city" placeholder="New York">
+      
+                  <div class="row">
+                    <div class="col-50">
+                      <label for="state">State</label>
+                      <input type="text" id="state" name="state" placeholder="NY">
+                    </div>
+                    <div class="col-50">
+                      <label for="zip">Zip</label>
+                      <input type="text" id="zip" name="zip" placeholder="10001">
+                    </div>
+                  </div>
+                </div>
+      
+                <div class="col-50">
+                  <h3>Payment</h3>
+                  <label for="fname">Accepted Cards</label>
+                  <div class="icon-container">
+                    <i class="fa fa-cc-visa" style="color:navy;"></i>
+                    <i class="fa fa-cc-amex" style="color:blue;"></i>
+                    <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                    <i class="fa fa-cc-discover" style="color:orange;"></i>
+                  </div>
+                  <label for="cname">Name on Card</label>
+                  <input type="text" id="cname" name="cardname" placeholder="John More Doe">
+                  <label for="ccnum">Credit card number</label>
+                  <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+                  <label for="expmonth">Exp Month</label>
+                  <input type="text" id="expmonth" name="expmonth" placeholder="September">
+      
+                  <div class="row">
+                    <div class="col-50">
+                      <label for="expyear">Exp Year</label>
+                      <input type="text" id="expyear" name="expyear" placeholder="2018">
+                    </div>
+                    <div class="col-50">
+                      <label for="cvv">CVV</label>
+                      <input type="text" id="cvv" name="cvv" placeholder="352">
+                    </div>
+                  </div>
+                </div>
+      
+              </div>
+              <label>
+                <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+              </label>
+              <input type="submit" value="Continue to checkout" class="btn">
+            </form>
+          </div>
+        </div>
+      
+        
+      </div>
+    {%include 'footer.html'%}
+    <script>
+        // Populate cart items and calculate total amount
+        document.addEventListener("DOMContentLoaded", function() {
+            const cartItemsElement = document.getElementById('cartItems');
+            const totalAmountElement = document.getElementById('totalAmount');
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let totalAmount = 0;
+
+            cart.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.classList.add('checkout-item');
+                itemElement.innerHTML = `
+                    <img src="${item.imageUrl}" alt="${item.title}">
+                    <div>
+                        <h5>${item.title}</h5>
+                        <p>Author: ${item.author}</p>
+                        <p>Price: R${item.price}</p>
+                    </div>
+                `;
+                cartItemsElement.appendChild(itemElement);
+                totalAmount += parseFloat(item.price);
+            });
+
+            totalAmountElement.textContent = `Total Amount Due: R${totalAmount.toFixed(2)}`;
+        });
+
+        // Stripe JavaScript here (similar to previous example)
+    </script>
+</body>
+</html>

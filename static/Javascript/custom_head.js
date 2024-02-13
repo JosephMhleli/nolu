@@ -1,12 +1,11 @@
-<!-- admin_books.html -->
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - List of Books</title>
-    <script src="https://unpkg.com/feather-icons"></script>
+class CustomHead extends HTMLElement {
+    constructor() {
+      super(); // Always call super first in constructor
+      this.attachShadow({ mode: 'open' }); // Attach a shadow root to the element.
+  
+      // Define the content you want to reuse in the head section
+      const content = `
+      <script src="https://unpkg.com/feather-icons"></script>
       <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://kit.fontawesome.com/324c7ccd76.js" crossorigin="anonymous"></script>
@@ -17,31 +16,13 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Ephesis&family=Josefin+Sans:ital,wght@0,100;1,100&display=swap" rel="stylesheet">
-    <!-- Add any additional styles or links to external stylesheets here -->
-</head>
-<body>
-
-  <h1>List of Books</h1>
-
-  {% if books %}
-    <ul>
-      {% for book in books %}
-        <li>
-          <h3>{{ book.title }}</h3>
-          <p>Author: {{ book.author }}</p>
-          <p>Category: {{ book.category }}</p>
-          <p>Price: {{ book.price }}</p>
-          
-          <p>Cover Image: <img src="{{book.image_url}} " alt="{{ book.title }} Cover"></p>
-
-        </li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>No books available.</p>
-  {% endif %}
-
-  <!-- Add any additional content or links here -->
-
-</body>
-</html>
+      `;
+  
+      // Append the content to the shadow DOM
+      this.shadowRoot.innerHTML = content;
+    }
+  }
+  
+  // Define the new element
+  customElements.define('custom-head', CustomHead);
+  

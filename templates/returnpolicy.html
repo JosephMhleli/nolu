@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar</title>
+    <script src="https://kit.fontawesome.com/324c7ccd76.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/324c7ccd76.js" crossorigin="anonymous"></script>
+
+    <script src="https://kit.fontawesome.com/324c7ccd76.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Navstyles.css') }}">
+    <link rel = "stylesheet" href = "/static/Navstyles.css">
+</head>
+<body>
+  <a href="javascript:void(0);" class="icon" onclick="toggleNav()">
+    <i id="menuIcon" class="fa fa-bars"></i>
+    <i id="closeIcon" class="fa fa-times" style="display:none;"></i>
+  </a>
+    <div class ="navi">
+        <a id = "home" href="{{url_for('index')}}">
+          Books & Nooks
+        </a>
+       
+        <div class="overlay" id="overlay" onclick="closeNav()"></div>
+        <div class="topnav" id="myTopnav">
+        
+         <a href="{{url_for('list_ofFavs')}}" class="favorites-link">
+           <i class="fa-regular fa-heart heart-icon"></i>FAVORITES
+         </a>
+           <a href="/login" class = "login">SIGN IN</a>
+
+
+           
+
+             <a href="/requestBook" class = "login">BOOK REQUEST</a>
+
+             <a id="carts-btn" >
+              <div class="carts-container">
+               <i class="fa-solid fa-cart-shopping"></i>
+                <p id="cart">0</p>
+              </div>
+              <div id="cart-dropdown">
+                <p id="cart-items">Cart is empty</p>
+              </div>
+            </a>
+
+         </div>
+       </div>
+       
+
+         <div class="search">
+           <form action="/search" method="get">
+               <input type="text" name="query" placeholder="Search Book, author....">
+               <button type="submit">Search</button>
+           </form>
+         </div>
+        
+       <div class="topnav2" id="myTopnav2">
+      
+         <a href="{{ url_for('get_books', category='Romance') }}" >ROMANCE</a>
+         <a href="{{ url_for('get_books', category='Children') }}" >CHILDREN</a>
+         <a href="{{ url_for('get_books', category='Fiction') }}" >FICTION</a>
+         <a href="{{ url_for('get_books', category='Non-Fiction') }}" >NON-FICTION</a>
+         <a href="{{ url_for('get_books', category='psychology') }}" >PSYCHOLOGY</a>
+         <a href="{{ url_for('get_books', category='Business') }}" >BUSINESS</a>
+       
+         <div class="hoverdiv" id="hoverContent" onmouseover="showHoverDiv()" onmouseout="hideHoverDiv()">
+           
+         </div>
+       </div>
+       <div class="sidenav" id="mySidenav">
+        <a href="javascript:void(0);" class="icon" onclick="toggleNav()">
+          <i id="menuIconSidenav" class="fa fa-bars"></i>
+        </a>
+        <div id="sidenavItems" class="sidenav-items">
+        <a href="{{url_for('index')}}">Home</a>
+        <a href="{{ url_for('get_books', category='Romance') }}">Romance</a>
+        <a href="{{ url_for('get_books', category='Fiction') }}">Fiction</a>
+        <a href="{{ url_for('get_books', category='Non-Fiction') }}">Non-Fiction</a>
+        <a href="{{ url_for('get_books', category='psychology') }}">Psychology</a>
+        <a href="{{ url_for('get_books', category='Business') }}">Business</a>
+        </div>
+      </div>
+      <div class="sidebar">
+        <div class="head"><p>My Cart</p></div>
+        <div id="cartItem">Your Cart is Empty</div>
+        <div class = "foot"><h3>Total
+
+        </h3>
+      <h2 id="total">R 0.00</h2></div>
+      <button id="checkoutButton">Proceed to Checkout</button>
+      </div>
+
+      <script src = "../static/Javascript/topnav2.js"></script>
+</body>
+</html>

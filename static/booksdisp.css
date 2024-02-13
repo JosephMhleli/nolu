@@ -6,55 +6,89 @@
   html {
     scroll-behavior: smooth;
   }
-  .topnav{
-    /* background-color: #0056b3; */
-   z-index: 2;
-    width: 60%;
- top: 0;
-    margin-left: 20%;
-    }
-    .topnav a{
-        float:right;
-        display: block;
-         color:black;
-        text-align: center;
-      
-        font-family: 'Vollkorn', serif;
-        padding: 5px 15px;
-        text-decoration: none;
-      top:10px;
-      margin-top: 10px;
-        font-size: 16px;
-    }
-
-   
-    .icon{
-        background-color: #2F4858;
-        border:2px solid #2F4858;
-        border-radius: 5px;
-        margin-right: 10px;
-        
-    }
-.icon p{
-    color: white;
-    font-weight: 500;
-}
-.login{
-  
-  border:1px solid #3277c1;
-  border-radius: 5px;
-  
-}
-.login:hover{
-  background-color: #DFF1FF;
-}
-.favorites-link {
-  display: inline-flex; 
+.navi {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px; 
+  /* background-color: #333; */
+  border-bottom: 1px solid #333;
+  width: 60%;
+  margin:  0 auto;
 }
 
-.heart-icon {
-  margin-right: 10px; 
+/* Style the home button */
+#home {
+  font-family: 'Ephesis', cursive;
+ font-size: 30px;
+ font-weight: bold;
+ color: #2b2b2b;
+  text-decoration: none;
 }
+#home:hover{
+  cursor: pointer;
+}
+
+/* Style the individual navigation links */
+.topnav a {
+  display: inline-block;
+  color: #333; /* Change text color as needed */
+  text-decoration: none;
+  padding: 10px 15px; /* Adjust padding as needed */
+}
+
+/* Change color on hover */
+
+  .topnav a::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background-color: #758199; 
+  transition: width 0.3s ease-in-out;
+}
+
+.topnav a:hover::after {
+  width: 100%;
+}
+/* Style the carts container */
+.carts-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Style the carts icon */
+.carts-icon {
+  font-size: 16px; /* Adjust the size as needed */
+  margin-right: 5px; /* Adjust spacing between icon and count */
+}
+
+/* Style the cart count */
+#cartcount {
+  margin: 0;
+}
+#cart-dropdown {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  padding: 12px;
+  z-index: 1;
+}
+
+#cart-dropdown p {
+  margin: 0;
+}
+
+#carts-btn:hover #cart-dropdown {
+  display: block;
+}
+
+#cart-items {
+  /* Add your styles for the cart items here */
+}
+
 .search input[type="text"] {
     padding: 10px;
 background-color: #FFFFFF; 
@@ -63,7 +97,7 @@ background-color: #FFFFFF;
    margin-left: 20%;
     border: 2px solid #ccc;
     border-radius: 20px;
-    margin-top: 5%;
+    margin-top: 2%;
 }
 
 
@@ -82,31 +116,25 @@ background-color: #FFFFFF;
     background-color: #0056b3;
 }
 #header{
-  width: 55%;
-height: 5vh;
-  margin: 20px auto;
+  width: 90%;
+min-height: 5vh;
+  margin: 1.5rem auto;
   text-align: center;
   border-bottom: 1px solid #ccc;
   padding-top: 7px;
   border-top: 1px solid #ccc;
   font-size: 26px;
 }
-  .book-container {
+  .book-container1 {
     display: flex;
     flex-wrap: wrap;
     /* background-color: red; */
+    justify-content: space-between;
     width: 60%;
     margin: 20px auto;
 }
 
-.book {
-    border: 1px solid #ccc;
-    margin: 10px;
-    padding: 10px;
-    width: 300px; /* Adjust the width as needed */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-}
+
 
 .book {
     border: 1px solid #ccc;
@@ -133,4 +161,16 @@ height: 5vh;
     color: #2F4858;
     font-size: 22px;
     font-weight: bold;
+}
+@media screen and (max-width: 767px) 
+{
+  .book-container1 {
+    display: flex;
+    flex-wrap: wrap;
+    /* background-color: red; */
+    justify-content: space-between;
+    width: 70%;
+    margin: 20px auto;
+}
+
 }

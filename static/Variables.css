@@ -1,0 +1,48 @@
+/* Variables.css */
+:root {
+    /* fonts */
+    --ff-h1: 'Noto Sans', sans-serif;
+    --ff-p: 'Roboto', sans-serif;
+    --ff-h2: 'Open Sans', sans-serif;
+  
+    /* font sizes ...h1,h2,h3 and paragraph texts */
+    --fs-lg: 2.5rem;  
+    --fs-md: 1.5rem;
+    --fs-sm: 1.25rem;
+    --fs-p: 1rem;
+  
+    /* font font-weight: */
+    --fw-lg: 1000;
+    --fw-md: 700;
+    --fw-sm: 400;
+  
+    /* colors(color schemes) */
+    /* #dcb7bc; */
+    --primary-clr: white;
+    --secondary-clr: #dcb7bc;
+    --secondary-clr2: #989799;
+    --tertiary-clr: #333;
+    --clr-grd1: #0662c0;
+    --clr-grd2: #063e7a;
+  
+    /* width cntr */
+  
+    /* padding(s) */
+    --pd-xsm: 0.2rem 0.5rem;
+    --pd-sm: 0.5rem 1rem;
+    --pd-md: 1rem 1rem;
+    --pd-lg: 2rem 2rem;
+  
+    /* border radius */
+    --bd-rd-sm: 0.25rem;
+    --bd-rd-md: 0.5rem;
+    --bd-rd-lg: 1rem;
+  
+    /* underline thickness */
+    --thck-md: 0.3rem;
+    --thck-sm: 0.2rem;
+  
+    /* underline spacing */
+    --und-spacing: -0.7rem;
+  }
+  

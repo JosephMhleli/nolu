@@ -4,49 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ category }} Books</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script src="https://kit.fontawesome.com/324c7ccd76.js" crossorigin="anonymous"></script>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Roboto&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Diplomata+SC&family=Gorditas&family=Josefin+Sans:ital,wght@1,500&family=PT+Serif:ital@1&family=Vast+Shadow&family=Vollkorn&display=swap" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ephesis&family=Josefin+Sans:ital,wght@0,100;1,100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='booksdisp.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
 
-    <div class="topnav" id="myTopnav">
-            
-        <a href="#ews" class="favorites-link">
-          <i class="fa-regular fa-heart heart-icon"></i>FAVORITES
-        </a>
-          <a href="/login" class = "login">SIGN IN</a>
-          <a href="CART.html" onclick="addToCart(event)">CART</a>
-          
-          <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <!-- <i class="fa fa-bars"></i> -->
-            <p>REQUEST A BOOK</p>
-          </a>
-        </div>
-
-        <div class="search">
-          <form action="/search" method="get">
-              <input type="text" name="query" placeholder="Search Book, author....">
-              <button type="submit">Search</button>
-          </form>
-        </div>
+{%include 'navbar.html'%}
     <h2 id="header">Our in store {{ category }} books</h2>
-    <div class="book-container">
+    <div class="book-container1">
 
         {% for book in books %}
         <div class="book" onclick="redirectToProductPage('{{ book.title }}','{{ book.price }}','{{ book.image_url }}','{{ book.author }}','{{ book.category }}')">
             <h3>{{ book.title }}</h3>
             <p id="author">{{ book.author }}</p>
-            <!--<p>Category: {{ book.category }}</p> -->
             
             <img src="{{ book.image_url }}" alt="{{ book.title }} Cover">
             <p id="price"> R {{ book.price }}</p>
         </div>
         {% endfor %}
     </div>
+    
     <script src="{{ url_for('static', filename='Javascript/redirect.js') }}"></script>
+    {%include 'footer.html'%}
 </body>
 </html>

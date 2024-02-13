@@ -30,7 +30,8 @@ class FavoriteItem(Base):
     id = Column(Integer, Sequence('favorite_item_id_seq'), primary_key=True)
     name = Column(String(50), nullable=False)
     price = Column(Integer, nullable=False)
-    
+    image_url = Column(String(50), nullable=False)
+    author = Column(Integer, nullable=False)
     favorite_id = Column(Integer, ForeignKey('favorites.id'), nullable=False)
     favorite = relationship('Favorite', back_populates='items')
     
@@ -48,7 +49,9 @@ class RequestItem(Base):
     id = Column(Integer, Sequence('request_item_id_seq'), primary_key=True)
     name = Column(String(50), nullable=False)
     author = Column(String(50), nullable=False)
-    price = Column(Integer, nullable=False)
+    cell = Column(Integer, nullable=False)
+    email = Column(String(50), unique=True, nullable=False)
+    title = Column(String(100), unique=False, nullable=False)
     
     request_id = Column(Integer, ForeignKey('requests.id'), nullable=False)
     request = relationship('Request', back_populates='items')
@@ -67,7 +70,9 @@ class CartItem(Base):
     __tablename__ = 'cart_items'
 
     id = Column(Integer, Sequence('cart_item_id_seq'), primary_key=True)
-    name = Column(String(50), nullable=False)
+    title = Column(String(50), nullable=False)
+    author = Column(String(50), nullable=False)
+    image_url = Column(String(100))
     price = Column(Integer, nullable=False)
     
     cart_id = Column(Integer, ForeignKey('carts.id'), nullable=False)

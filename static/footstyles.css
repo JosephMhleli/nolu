@@ -1,0 +1,140 @@
+@import url(Variables.css);
+*{
+    margin: 0;
+    padding: 0;
+}
+.Footer{
+    width:100%;
+   
+    /* text-align:center; */
+    min-height: 17em;
+   
+    background-color: var(--secondary-clr);
+ 
+  
+  
+  }
+  .footinfor{
+  
+    display: flex;
+    justify-content: space-between;
+    /* margin:1rem auto; */
+  
+  }
+  .infoUs{
+    flex-basis: 30%;
+    padding:var(--pd-xsm);
+
+  }
+ .infoUs h2{
+  font-size: var(--fs-md);
+  padding: 10px 0;
+  color: white;
+ }
+.infoUs p{
+  padding: var(--pd-xsm);
+  color: white;
+
+}
+ .infoUs a{
+  
+  display: block;
+  text-decoration: none;
+  padding: 10px 0;
+  /* font-weight: bold; */
+  color:white; 
+ text-decoration:solid;
+  top:15px;
+  font-size: var(--fs-sm);
+  /* font-family: Arial, Helvetica, sans-serif; */
+ }
+ .fitfooter{
+  width: 60%;
+margin: 0 auto;
+}
+.subscribe-section {
+  text-align: center;
+ 
+}
+/* .subscribe-section p{
+    font-size: var(--fs-md);
+} */
+
+.subscribe-section form {
+  max-width: 400px;
+  margin: auto;
+ 
+}
+
+.subscribe-section label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.subscribe-section input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.subscribe-section button {
+  background-color: #FFFFFF;
+  color: #2F4858;
+  padding: 10px 20px;
+  border: none;
+  width: 30%;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.subscribe-section button:hover {
+  background-color: #333;
+  color: white;
+}
+ 
+#mlizo{
+    text-align: center;
+    color: white;
+    margin-top: 1.5rem;
+}
+/* .cred{
+    background-color: pink;
+    min-height: 20svh;
+    width: 100%;
+} */
+
+@media  (max-width:768px) and  (min-width: 226px)
+{
+    .footinfor{
+      width: 100%;
+        display: flex;
+       flex-direction: column;
+       flex-wrap: wrap;
+      
+      }
+      .infoUs{
+        
+    flex-wrap: wrap;
+      }  
+      .infoUs{
+        /* flex-basis: 20%; */
+        padding:var(--pd-xsm);
+    
+      }
+      .infoUs h2{
+        font-size: var(--fs-sm);
+        padding: 10px 0;
+        color: white;
+       }
+       .subscribe-section h2{
+        font-size: var(--fs-sm);
+        padding: 10px 0;
+        color: white;
+       }
+       .subscribe-section {
+        text-align:start;
+       
+      }
+}

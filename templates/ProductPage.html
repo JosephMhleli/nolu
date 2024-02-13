@@ -4,113 +4,75 @@
   <title>Nolu Book Store</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <meta charset="UTF-8">
-
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script src="https://kit.fontawesome.com/324c7ccd76.js" crossorigin="anonymous"></script>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Roboto&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Diplomata+SC&family=Gorditas&family=Josefin+Sans:ital,wght@1,500&family=PT+Serif:ital@1&family=Vast+Shadow&family=Vollkorn&display=swap" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ephesis&family=Josefin+Sans:ital,wght@0,100;1,100&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='productpagestyles.css') }}">
   </head>
   <body>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://kit.fontawesome.com/324c7ccd76.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
-  <link href="https://fonts.googleapis.com/css2?family=Diplomata+SC&family=Gorditas&family=Josefin+Sans:ital,wght@1,500&family=PT+Serif:ital@1&family=Vast+Shadow&family=Vollkorn&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Ephesis&family=Josefin+Sans:ital,wght@0,100;1,100&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ url_for('static', filename='productpagestyles.css') }}">
+    
 
 <section class="content">
-  <div class ="navi">
-    <a id = "home" href="{{url_for('index')}}">
-      FlavaBooks
-    </a>
-    <div class="topnav" id="myTopnav">
-    
-     <a href="#ews" class="favorites-link">
-       <i class="fa-regular fa-heart heart-icon"></i>FAVORITES
-     </a>
-       <a href="/login" class = "login">SIGN IN</a>
-
-
-       <a id="carts-btn" href="{{url_for('addtocart')}}" onclick="addToCart(event)">
-         <div class="carts-container">
-           <span class="carts-icon">🛒</span>
-          
-           <p id="cartcount">0</p>
-         </div>
-         <div id="cart-dropdown">
-           <p id="cart-items">Cart is empty</p>
-         </div>
-       </a>
-
-         <a href="" class = "login">BOOK REQUEST</a>
-
-     </div>
-   </div>
-
-    <div class="search">
-      <form action="/search" method="get">
-          <input type="text" name="query" placeholder="Search Book, author....">
-          <button type="submit">Search</button>
-      </form>
-    </div>
-    <div class="topnav2" id="myTopnav2">
-      <a href="{{ url_for('get_books', category='Romance') }}" >ROMANCE</a>
-      <a href="{{ url_for('get_books', category='Children') }}" >CHILDREN</a>
-      <a href="{{ url_for('get_books', category='Fiction') }}" >FICTION</a>
-      <a href="{{ url_for('get_books', category='Non-Fiction') }}" >NON-FICTION</a>
-      <a href="{{ url_for('get_books', category='psychology') }}" >PSYCHOLOGY</a>
-      
-    
-      <div class="hoverdiv" id="hoverContent" onmouseover="showHoverDiv()" onmouseout="hideHoverDiv()">
-        
-      </div>
-    </div>
+{%include 'navbar.html'%}
   <div class="product-info">
-    
+    <div id="headus">
+      <h1 id="bookTitle">{{ title}}</h1>
+      <p id="bookAuthor"> {{author}}</p>
+    </div>
+   
     <img src="{{ image_url }}" alt="{{ title }} Cover">
 
     <div class="titlebook">
       <div class="product-container">
-        <h1 id="bookTitle">{{ title}}</h1>
-        <p id="bookAuthor"> {{author}}</p>
-      
-       <!---<p>Category: {{ category }}</p>-->
-        
-        <!-- Add more details or styling as needed -->
+        <div class="hideus">
+          <h1 id="bookTitle">{{ title}}</h1>
+          <p id="bookAuthor"> {{author}}</p>
+        </div>            
         <p id="price"> R {{ price }}</p>
     </div>
       <div class="estimation">
-        <h3>ESTIMATED DELIVERY:</h3>
-        <h4>Approx in 4 Working Days</h4> 
+        <p>Delivery:</p>
+        <p>Approx in 4 Working Days</p> 
       </div>
 
       <div class="ButtonSec">
-       <div class="cartbutt" onclick="addToCart(event,'{{image_url}}','{{title}}','{{author}}','{{price}}')">
-        ADD TO CART <i class="fas fa-shopping-cart"></i>
+       <div class="cartbutt" onclick="addToCart('{{image_url}}','{{title}}','{{author}}','{{price}}')">
+        ADD TO CART 
        </div>
-       <div class="Wishbutt" onclick="addToWish()">
-        ADD TO WISH  <i class="fa-regular fa-heart heart-icon"></i>
        </div>
-      </div>
-     
-        <div class="Condition">
-          Condition: Good
-        </div>
-        <div class="bookApp">    <!--appreacnce of the book small dscription of the appreacnce of the book-->
-       <p>{{descri}}</p>          
-        </div>
-     
-      
+       <!-- <div class="Wishbutt">
+        <a href="/Favorites/post" onclick="addToWish('{{image_url}}','{{title}}','{{author}}','{{price}}','{{category}}'); return false;">
+            ADD TO WISH  
+        </a>
+    </div> -->
+    <div class="Condition">
+      Condition: Good
     </div>
+    <div class="bookApp">    <!--appreacnce of the book small dscription of the appreacnce of the book-->
+   <p>{{descri}}</p>          
+    </div>
+       
+  </div>
     
     
-    
-</div>
+
+
+</section> 
 <div class="topsellers">
   <h2>You Might Also Like</h2>
-</div> 
-
+</div>
 <div class="biocontainer">
   
-
+  <div class="book-container">
     {% set children_books = [] %}
     {% for book in books %}
         {% if book.category == category %}
@@ -118,83 +80,97 @@
                 {% set _ = children_books.append(book) %}
                 <div class="book" onclick="redirectToProductPage('{{ book.title }}','{{ book.price }}','{{ book.image_url }}','{{ book.author }}','{{ book.category }}','{{book.descri}}')">
                   <div class="cart-overlay">
-                    <div class="cart-icon">&#128722;</div>
+                    <div class="cart-icon"><i class="fa-solid fa-cart-shopping"></i></div>
                     <p>ADD TO CART</p>
-                  </div> 
+                  </div>
                   <img src="{{ book.image_url }}" alt="{{ book.title }} Cover">
                     <h3>{{ book.title }}</h3>
                     <p id="author">{{ book.author }}</p>
-                    <!--- <p id="price"> R {{ book.price }}</p> -->
+                    <p id="price"> R {{ book.price }}</p>
                 </div>
             {% endif %}
         {% endif %}
     {% endfor %}
-
+</div>
 
   
   
 </div>
 
-</section>
 
 
 
 
-<section class="Footer">
-  <div class="fitfooter">
-    <div class = "footinfor">
-      <div class = "infoUs">
-        <h2>CUSTOMER CARE</h2>
-        
-              <p><i class="fas fa-envelope mr-3"></i> info@KeeganTechnologies.com</p>
-              <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-              
-              <h3>CONTACT HOURS:</h3>
 
+{%include 'footer.html'%}
 
-  
-      </div>
-      <div class = "infoUs">
-        <h2>ABOUT US</h2>
-        <a href="#ews">Contact Us</a>
-        <a href="#ews">T's and C's</a>
-        <a href="#contact">Gift cards and Vouchers</a>
-        <a href="#about">Privacy Policy</a>
-  
-      </div>
-      <div class = "infoUs">
-        <h2>CUSTOMER SERVICES</h2>
-        <p> <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
-              <p><i class="fas fa-envelope mr-3"></i> info@KeeganTechnologies.com</p>
-              <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-              <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
-  
-      </div>
-      <div class = "infoUs">
-        <div class="subscribe-section">
-          <h2>SUBSCRIBE</h2>
-          <p>Stay updated with our latest news and offers. Subscribe now!</p>
-        
-          <form>
-          
-            <input type="text" id="name" name="name" placeholder="Your Name" required>
-        
-            
-            <input type="email" id="email" name="email" placeholder="Your Email" required>
-        
-            <button type="submit">Subscribe</button>
-          </form>
-        </div>
-        
-      </div>
-     
-    </div>
-  </div>
-
-</section>
-
-<script src="{{ url_for('static', filename='Javascript/bookUpdate.js') }}"></script>
+<!--<script src="{{ url_for('static', filename='Javascript/bookUpdate.js') }}"></script>-->
 <script src="{{ url_for('static', filename='Javascript/redirect.js') }}"></script>
-
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    displayCart();
+    setupCartToggle();
+  });
+  
+  document.getElementById("cartItem").addEventListener("click", function(e) {
+    if (e.target && e.target.nodeName === "BUTTON" && e.target.getAttribute("data-action") === "remove") {
+      removeFromCart(e.target.getAttribute("data-index"));
+    }
+  });
+  
+  function addToCart(imageUrl, title, author, price) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push({ imageUrl, title, author, price });
+    localStorage.setItem("cart", JSON.stringify(cart));
+    displayCart();
+    const sidebar = document.querySelector('.sidebar');
+    if (!sidebar.classList.contains('visible')) {
+      sidebar.classList.add('visible');
+    }
+  }
+  
+  function displayCart() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let cartContainer = document.getElementById("cartItem");
+    let total = 0;
+    cartContainer.innerHTML = cart.length > 0 ? '' : 'Your Cart is Empty';
+  
+    cart.forEach((item, index) => {
+      total += parseFloat(item.price);
+      cartContainer.innerHTML += `
+        <div class="cart-item">
+          <img src="${item.imageUrl}" alt="Cover" style="width: 50px; height: auto;">
+          <p>${item.title} - R${item.price}</p>
+          <button data-index="${index}" data-action="remove">Remove</button>
+        </div>
+      `;
+    });
+  
+    document.getElementById("total").innerText = `R ${total.toFixed(2)}`;
+    document.getElementById("cart").innerText = cart.length; // Update the cart counter in the top navigation
+  }
+  function setupCartToggle() {
+    const cartButton = document.getElementById('carts-btn'); // Adjust if necessary to match your cart button's ID
+    cartButton.addEventListener('click', function() {
+      const sidebar = document.querySelector('.sidebar');
+      sidebar.classList.toggle('visible'); // Toggle the 'visible' class to show/hide the cart box
+    });
+  }
+  function removeFromCart(index) {
+    let cart = JSON.parse(localStorage.getItem("cart"));
+    if (index >= 0 && index < cart.length) {
+      cart.splice(index, 1); // Remove the item at the specified index
+      localStorage.setItem("cart", JSON.stringify(cart));
+      displayCart(); // Refresh the cart display
+    }
+  }
+  document.getElementById('checkoutButton').addEventListener('click', function() {
+    window.location.href = '/checkout'; // Update with the actual path to your checkout page
+  });
+  
+  </script>
+  
+  
+  
 </body>
 </html>

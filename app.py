@@ -1,32 +1,39 @@
-from flask import Flask, render_template,request,make_response,jsonify,session,redirect, url_for
+from flask import Flask,flash, render_template,request,make_response,jsonify,session,redirect, url_for
 import jwt
+from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity
 from passlib.hash import bcrypt
 import requests
 from datetime import datetime,timedelta,timezone
 from functools import wraps
 from db import User, UserSession
-from db import Book, BookSession
+from db import Book, BookSession, Favorite, FavoriteItem, fav_session,Cart, CartItem, CartSession,Request,RequestItem,ReqSession
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'c87793cf26c24a759e75c3713de80466'    
 
+from functools import wraps
+from flask import request, jsonify
+
 def token_required(func):
-     @wraps(func)
-     def decorated(*args, **kwargs):
+    @wraps(func)
+    def decorated(*args, **kwargs):
         token = request.args.get('token')
         if not token:
-            return jsonify({'Alert!': 'Token is missing!'})
+            return jsonify({'Alert': 'Token is missing!'}), 401
         try:
             payload = jwt.decode(token, app.config['SECRET_KEY'])
-        except:
-            return jsonify({'Alert!': 'Invalid Token!'})
-        return decorated
-   
+        except jwt.ExpiredSignatureError:
+            return jsonify({'Alert': 'Token has expired!'}), 401
+        except jwt.InvalidTokenError:
+            return jsonify({'Alert': 'Invalid Token!'}), 401
+        return func(*args, **kwargs)
+    return decorated
+
 @app.route('/getbooks', methods=['GET'])
 def list_books():
     try:
         # Query the database to get all books
-        book_session = BookSession()
+        book_session = BookSession() #creating a book object
         books = book_session.query(Book).all()
         book_session.close()
 
@@ -74,17 +81,26 @@ def login():
         user = db_session.query(User).filter_by(email=email).first()
 
         if user and bcrypt.verify(password, user.password):
+            session['user_id'] = user.id
             session['logged_in'] = True
             expiration_time = datetime.now(timezone.utc) + timedelta(seconds=120)
             token = jwt.encode({'user': user.email, 'expiration': str(expiration_time)},
                                app.config['SECRET_KEY'])
             db_session.close()
-            return redirect(url_for('index'))
+            print('Login successful!', 'success')
+            response = make_response(redirect(url_for('index')))
+            response.set_cookie('token', token, httponly=True, secure=True)  
+            return response
         else:
             db_session.close()
+            print('Login failed. Please check your email and password.', 'error')
             return make_response('Unable to verify', 403)
     except Exception as e:
         return make_response(str(e), 500)
+    
+# getting the current user session    
+def get_current_user_id():
+    return session.get('user_id')
 
 @app.route('/register')
 def show_register():
@@ -175,18 +191,26 @@ def product_page():
         return jsonify({'error': str(e)}), 500
     
     
-
+@app.route('/requestBook')
+def show_reque():
+    return render_template('requestbook.html')
 
 @app.route('/requestBook', methods = ['POST'])
 def bookre():
     try:
-        title = request.args.get('title', '')
-        price = request.args.get('price', '')
-        author = request.args.get('author', '')
-        
+        title = request.form['title']
+        cell = request.form['cell']
+        author = request.form['author']
+        email = request.form['email']
+        name = request.form['name']
+
+        if not all([title, author, cell, email,name]):
+                return make_response('Missing required fields', 400)
+            #Create a new request
+        new_book_req = Request(title = title, author=author,cell=cell,email=email,name=name) 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-    return render_template()  
+    return render_template('requestbook.html')  
 
 @app.route('/search', methods=['GET'])
 def search_books():
@@ -215,21 +239,61 @@ def search_books():
         return render_template('categoryBooks.html', books=book_list, category=search_query)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-   
-@app.route('/AddtoCart',methods = ['POST','GET','DELETE'])
-def addtocart():
-    
-    
-     return render_template('CART.html') 
  
+def get_cart_count_for_user(user_id):
+   
+    user_cart = Cart.query.filter_by(user_id=user_id).first()
 
-
-# @app.route('/Favorites',methods = ['POST','GET','DELETE'])
+    if user_cart:
+        cart_count = len(user_cart.items)
+        return cart_count
+    else:
+        return 0
+   
+@app.route('/checkout')
 # @token_required
-# def myFavorites():
-#      return 'My favorites!'
+def showcheckout():
+        return render_template('checkout.html')
 
 
+@app.route('/Favorites/post',methods = ['POST'])
+@token_required
+def myFavoritesAdd():
+       
+        image_url = request.args.get('image_url')
+        title = request.args.get('title')
+        author = request.args.get('author')
+        price = request.args.get('price')
+        # category = request.args.get('category')
 
+        
+        user_id = get_current_user_id()
+        favorite_item = FavoriteItem(name=title, price=price,author=author,image_url = image_url)  # Adjust as needed
+        favorite = Favorite(user_id=user_id)  # Assuming you have a user_id field in Favorite
+        favorite.items.append(favorite_item)
+        fav_session.add(favorite)
+        fav_session.commit()
+
+        # Show an appropriate message (you can customize this message)
+        message = f"Book '{title}' added to wishlist successfully!"
+
+@app.route('/privacy')
+def showprivacy():
+    return render_template('privacy.html')
+@app.route('/Favorites/get', methods=['GET'])
+def list_ofFavs():
+    try:
+        user_id = get_current_user_id()  
+        user_favorites = fav_session.query(FavoriteItem).join(Favorite).filter(Favorite.user_id == user_id).all()
+
+        if not user_favorites:
+            
+            message = "Your wishlist is empty. Start adding books now!"
+            return render_template('Favorites.html', message=message)
+        else:
+          return render_template('Favorites.html', favorites=user_favorites)
+          
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 if __name__ == '__main__':
     app.run(debug=True)

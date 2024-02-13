@@ -1,0 +1,60 @@
+@import url(Variables.css);
+*{
+    margin: 0;
+    padding: 0;
+}
+/* .page{
+    min-height: 80svh;
+    width: 100%;
+    background-color: #ccc;
+} */
+/* General form styling */
+.page form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f9f9f9;
+}
+
+/* Style for all labels */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+/* Style for all text inputs and email */
+input[type="text"],
+input[type="email"],
+input[type="cell"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Style for the submit button */
+button[type="submit"] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Add some hover effects to inputs */
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="cell"]:hover {
+    border-color: #1a73e8;
+}

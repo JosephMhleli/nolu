@@ -15,50 +15,44 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Ephesis&family=Josefin+Sans:ital,wght@0,100;1,100&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='footstyles.css') }}">
     <link rel = "stylesheet" href = "/static/footstyles.css">
 </head>
 <body>
-    <section class="Footer">
-        <div class="fitfooter">
-          <div class = "footinfor">
-         
-            <div class = "infoUs">
-              <h2>ABOUT US</h2>
-              <p id="header"> <span id="close">Operating</span> Hours</p>
-               <div class="botnav">
-                <i class="fas fa-clock fa-clock"></i><span class="opening-hours">08:00-16:00 PM on weekdays</span><br>
-                <i class="fas fa-clock fa-clock"></i><span class="opening-hours">08:00-16:00 PM on weekends</span>
-              <!-- <a href="#contact">Gift cards and Vouchers</a> -->
-        
-            </div>
-            <div class = "infoUs">
-              <h2>CUSTOMER SERVICES</h2>
-              <a href="#"> Delivery Information</a>
-                    <a href="#" >Return Policy</a>
-                    <a href = "#">Contact Us</a>
-                    <!-- <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p> -->
-        
-            </div>
-            <div class = "infoUs">
-              <div class="subscribe-section">
-                <h2>SUBSCRIBE</h2>
-                <p>Subscribe for the latest news and exclusive offers!</p>
-              
-                <form action="#" method="post">
-                            
-                  <input type="email" id="email" name="email" placeholder="Your Email" required>
-              
-                  <button type="submit">Subscribe</button>
-                </form>
-              </div>
-              
-            </div>
-           
+  <section class="Footer">
+    <div class="fitfooter">
+      <div class="footinfor">
+        <div class="infoUs">
+          <h2>ABOUT US</h2>
+          <p id="header"> <span id="close">Operating</span> Hours</p>
+           <div class="botnav">
+            <i class="fas fa-clock fa-clock"></i><span class="opening-hours">08:00-16:00 PM on weekdays</span><br>
+            <i class="fas fa-clock fa-clock"></i><span class="opening-hours">08:00-16:00 PM on weekends</span>
           </div>
         </div>
-    
-        <p id="mlizo">&copy; 2023 CED. All rights reserved.</p>
-    </section>
+        <div class="infoUs">
+          <h2>CUSTOMER SERVICES</h2>
+          <a href="#"> Delivery Information</a>
+          <a href="#">Return Policy</a>
+          <a href="#">Contact Us</a>
+        </div>
+        <div class="infoUs">
+          <div class="subscribe-section">
+            <h2>SUBSCRIBE</h2>
+            <p>Subscribe for the latest news and exclusive offers!</p>
+          
+            <form action="#" method="post">           
+              <input type="email" id="email" name="email" placeholder="Your Email" required>      
+              <button type="submit">Subscribe</button>
+            </form>
+          </div>          
+        </div>
+       
+      </div>
+    </div>
+
+    <p id="mlizo">&copy; 2023 CED. All rights reserved.</p>
+</section>
+
 </body>
 </html>

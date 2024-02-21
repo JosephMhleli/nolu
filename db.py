@@ -60,10 +60,8 @@ class Cart(Base):
     __tablename__ = 'carts'
 
     id = Column(Integer, Sequence('cart_id_seq'), primary_key=True)
-    user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
-    
-    user = relationship('User', back_populates='carts')
-    
+    user_id = Column(Integer, ForeignKey('users.id'), nullable=False) 
+    user = relationship('User', back_populates='carts') 
     items = relationship('CartItem', back_populates='cart')
 
 class CartItem(Base):
@@ -78,35 +76,11 @@ class CartItem(Base):
     cart_id = Column(Integer, ForeignKey('carts.id'), nullable=False)
     cart = relationship('Cart', back_populates='items')
 
-# Create an SQLite database for the User
-user_engine = create_engine('sqlite:///NoluUsers.db', echo=True)
-Base.metadata.create_all(user_engine)
+class NewsLetter(Base):
+    __tablename__='news'
+    id = Column(Integer, Sequence('new_id_seq'), primary_key=True)
+    email = Column(String(50), unique=True, nullable=False)
 
-# Create a session to interact with the User database
-UserSession = sessionmaker(bind=user_engine)
-user_session = UserSession()
-
-# Create an SQLite database for the Cart
-cart_engine = create_engine('sqlite:///cartdatabase.db', echo=True)  # In-memory database for testing
-Base.metadata.create_all(cart_engine)
-
-
-#Create an SQLite database for favorites
-fav_engine = create_engine('sqlite:///favdatabase.db', echo=True)
-Base.metadata.create_all(fav_engine)
-# Create an SQLite database for requests
-req_engine = create_engine('sqlite:///reqdatabase.db', echo=True)
-Base.metadata.create_all(req_engine)
-# Create a session to interact with the Cart database
-CartSession = sessionmaker(bind=cart_engine)
-cart_session = CartSession()
-
-FavSession = sessionmaker(bind=fav_engine)
-fav_session = FavSession()
-
-ReqSession = sessionmaker(bind=req_engine)
-
-req_session = ReqSession()
 # Book Class
 class Book(Base):
     __tablename__ = 'books'
@@ -119,7 +93,8 @@ class Book(Base):
     price = Column(String(20))
     image_url = Column(String(100))
 
-# Book Database
-book_engine = create_engine('sqlite:///BooksDatabase.db', echo=True)
-Base.metadata.create_all(book_engine)
-BookSession = sessionmaker(bind=book_engine)
+
+# Create an SQLite database for the User
+engine = create_engine('sqlite:///NoluUsers.db', echo=True)
+Base.metadata.create_all(engine)
+Session = sessionmaker(bind=engine)

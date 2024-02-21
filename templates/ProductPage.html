@@ -70,15 +70,15 @@
 <div class="topsellers">
   <h2>You Might Also Like</h2>
 </div>
-<div class="biocontainer">
+<div class="biocontainer2">
   
-  <div class="book-container">
+  <div class="book-container2">
     {% set children_books = [] %}
     {% for book in books %}
         {% if book.category == category %}
             {% if children_books|length < 3 %}
                 {% set _ = children_books.append(book) %}
-                <div class="book" onclick="redirectToProductPage('{{ book.title }}','{{ book.price }}','{{ book.image_url }}','{{ book.author }}','{{ book.category }}','{{book.descri}}')">
+                <div class="book2" onclick="redirectToProductPage('{{ book.title }}','{{ book.price }}','{{ book.image_url }}','{{ book.author }}','{{ book.category }}','{{book.descri}}')">
                   <div class="cart-overlay">
                     <div class="cart-icon"><i class="fa-solid fa-cart-shopping"></i></div>
                     <p>ADD TO CART</p>

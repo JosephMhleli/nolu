@@ -75,21 +75,51 @@
     .topnav a:hover::after {
       width: 100%;
     }
-    .biocontainer{
+    .biocontainer2{
       width: 60%;
-      min-height: 30vh;
+     min-height: 30svh;
       margin: 0 auto;
       display: flex;
       padding: 10px;
-    /* background-color: yellow; */
+      position: relative;
+    text-align: center;
       justify-content: space-between;
     }
-    .book-container{
+    .book-container2{
       /* background-color: red; */
       min-height: 20svh;
       display: flex;
       justify-content: space-between;
       width: 100%;
+      text-align: center;
+    }
+    .book2{
+      position: relative;
+    }
+    .book2 img{
+      width: 100%;
+      height: auto;
+    }
+    .cart-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 0;
+      color: white;
+      font-weight: bold;
+      font-size: 25px;
+      background-color: rgba(0, 0, 0, 0.8);
+      overflow: hidden;
+      transition: height 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .book2:hover .cart-overlay {
+      height: 20%;
     }
 .carts-icon {
   font-size: 16px; /* Adjust the size as needed */
@@ -286,27 +316,7 @@
     width: 60%;
     margin: 20px auto;
   }
-  .cart-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 0;
-    color: white;
-    font-weight: bold;
-    font-size: 25px;
-    background-color: rgba(0, 0, 0, 0.8);
-    overflow: hidden;
-    transition: height 0.3s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
   
-  .book:hover .cart-overlay {
-    height: 100%;
-  }
   
   .cart-icon {
     font-size: 30px;

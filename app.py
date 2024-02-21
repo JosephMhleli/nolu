@@ -2,38 +2,52 @@ from flask import Flask,flash, render_template,request,make_response,jsonify,ses
 import jwt
 from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity
 from passlib.hash import bcrypt
+from functools import wraps
+from flask import request, jsonify
 import requests
 from datetime import datetime,timedelta,timezone
 from functools import wraps
-from db import User, UserSession
-from db import Book, BookSession, Favorite, FavoriteItem, fav_session,Cart, CartItem, CartSession,Request,RequestItem,ReqSession
+from db import User 
+from db import Book,Favorite, FavoriteItem, Cart,Request,RequestItem,NewsLetter,Session
+from flask_mail import Mail, Message
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'c87793cf26c24a759e75c3713de80466'    
+mail = Mail(app)
 
-from functools import wraps
-from flask import request, jsonify
+# Email server configuration
+app.config['MAIL_SERVER'] = 'smtp.gmail'  # Use your SMTP server details
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'lihlemayila7@gmail.com'  # Your email
+app.config['MAIL_PASSWORD'] = 'Sisimelele2020#'  # Your email password
+app.config['MAIL_DEFAULT_SENDER'] = 'lihlemayila7@gmail.com'  # Default sender
 
-def token_required(func):
-    @wraps(func)
-    def decorated(*args, **kwargs):
-        token = request.args.get('token')
+mail.init_app(app)
+
+
+def token_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        token = None
+        if 'token' in request.cookies:
+            token = request.cookies['token']
         if not token:
-            return jsonify({'Alert': 'Token is missing!'}), 401
+            return jsonify({'message': 'Token is missing!'}), 403
         try:
-            payload = jwt.decode(token, app.config['SECRET_KEY'])
-        except jwt.ExpiredSignatureError:
-            return jsonify({'Alert': 'Token has expired!'}), 401
-        except jwt.InvalidTokenError:
-            return jsonify({'Alert': 'Invalid Token!'}), 401
-        return func(*args, **kwargs)
-    return decorated
+            data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
+            current_user_email = data['user']
+        except:
+            return jsonify({'message': 'Token is invalid!'}), 403
+        return f(current_user_email, *args, **kwargs)
+    return decorated_function
+
 
 @app.route('/getbooks', methods=['GET'])
 def list_books():
-    try:
-        # Query the database to get all books
-        book_session = BookSession() #creating a book object
+    try:  
+        book_session = Session() 
         books = book_session.query(Book).all()
         book_session.close()
 
@@ -53,8 +67,8 @@ def list_books():
 @app.route('/')     # for the public anyone can access this side......
 def index():
     try:
-        # Directly call the list_books function without making an HTTP request
-        book_response = list_books()  # Call the function directly
+        
+        book_response = list_books()  
 
         # Since list_books returns a Response object, you need to get the JSON data
         books_data = book_response.get_json()  # Extract JSON data from the Response object
@@ -76,15 +90,14 @@ def login():
     try:
         email = request.form['email']
         password = request.form['password']
-        db_session = UserSession()
+        db_session = Session()
         user = db_session.query(User).filter_by(email=email).first()
 
         if user and bcrypt.verify(password, user.password):
             session['user_id'] = user.id
             session['logged_in'] = True
             expiration_time = datetime.now(timezone.utc) + timedelta(seconds=120)
-            token = jwt.encode({'user': user.email, 'expiration': str(expiration_time)},
-                               app.config['SECRET_KEY'])
+            token = jwt.encode({'user': user.email, 'exp': expiration_time}, app.config['SECRET_KEY'], algorithm="HS256")
             db_session.close()
             print('Login successful!', 'success')
             response = make_response(redirect(url_for('index')))
@@ -113,7 +126,7 @@ def register():
         email = request.form['email']
         password = request.form['password']
         confirm_password = request.form['confirm_password']
-        db_session = UserSession()
+        db_session = Session()
         if password != confirm_password:
             return make_response('Passwords do not match. Please try again.', 400)
         
@@ -145,7 +158,7 @@ def get_books(category):
   
     try:
         # Query the database to get books for a specific category
-        book_session = BookSession()
+        book_session = Session()
         books = book_session.query(Book).filter_by(category=category).all()
         book_session.close()
 
@@ -169,10 +182,10 @@ def get_books(category):
 
 @app.route('/ProductPage')
 def product_page():
-    
     try:
-     books_url = url_for('list_books')  # Assuming your route for getting books is named 'list_books'
-     response = requests.get(f'http://localhost:5000{books_url}')  # Replace localhost:5000 with your actual host and port
+      # Assuming your route for getting books is named 'list_books'
+     book_response = list_books()  # Replace localhost:5000 with your actual host and port
+     response = book_response.get_json()
      
      title = request.args.get('title', '')
      price = request.args.get('price', '')
@@ -181,11 +194,11 @@ def product_page():
      category = request.args.get('category', '')
      descri = request.args.get('descri', '')
             
-     if response.status_code == 200:
-            books = response.json()['books']
+     if 'books' in response:
+            books = response['books']
             return render_template('ProductPage.html', title=title, price=price, image_url=image_url, author=author, category=category, descri=descri,books=books)
      else:
-            return jsonify({'error': f"Failed to fetch books. Status code: {response.status_code}"}), response.status_code
+            return jsonify({'error': f"Failed to fetch books. Status code"}), 400
     except Exception as e:
         return jsonify({'error': str(e)}), 500
     
@@ -218,7 +231,7 @@ def search_books():
         search_query = request.args.get('query', '')
 
         # Query the database to get books with the specified title
-        book_session = BookSession()
+        book_session = Session()
         books = book_session.query(Book).filter(Book.title.ilike(f"%{search_query}%")).all()
         book_session.close()
 
@@ -239,60 +252,39 @@ def search_books():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
  
-def get_cart_count_for_user(user_id):
-   
-    user_cart = Cart.query.filter_by(user_id=user_id).first()
-
-    if user_cart:
-        cart_count = len(user_cart.items)
-        return cart_count
-    else:
-        return 0
-   
 @app.route('/checkout')
 # @token_required
 def showcheckout():
         return render_template('checkout.html')
 
 
-@app.route('/Favorites/post',methods = ['POST'])
-@token_required
-def myFavoritesAdd():
-       
-        image_url = request.args.get('image_url')
-        title = request.args.get('title')
-        author = request.args.get('author')
-        price = request.args.get('price')
-        # category = request.args.get('category')
-
-        
-        user_id = get_current_user_id()
-        favorite_item = FavoriteItem(name=title, price=price,author=author,image_url = image_url)  # Adjust as needed
-        favorite = Favorite(user_id=user_id)  # Assuming you have a user_id field in Favorite
-        favorite.items.append(favorite_item)
-        fav_session.add(favorite)
-        fav_session.commit()
-
-        # Show an appropriate message (you can customize this message)
-        message = f"Book '{title}' added to wishlist successfully!"
-
 @app.route('/privacy')
 def showprivacy():
     return render_template('privacy.html')
-@app.route('/Favorites/get', methods=['GET'])
-def list_ofFavs():
-    try:
-        user_id = get_current_user_id()  
-        user_favorites = fav_session.query(FavoriteItem).join(Favorite).filter(Favorite.user_id == user_id).all()
 
-        if not user_favorites:
-            
-            message = "Your wishlist is empty. Start adding books now!"
-            return render_template('Favorites.html', message=message)
-        else:
-          return render_template('Favorites.html', favorites=user_favorites)
-          
+    
+@app.route('/subscribe',methods = ['POST'])
+def sub():
+    
+    
+    email = request.form['email']    
+    db_session = Session()       
+    existing_email = db_session.query(NewsLetter).filter_by(email=email).first()
+    if existing_email:
+        flash('This email is already subscribed.', 'info')
+        return redirect(url_for('index'))  # Adjust as needed
+
+    # Email doesn't exist, proceed with insertion
+    try:
+        
+        new_entry = NewsLetter(email=email)  # Adjust according to your model
+        db_session.add(new_entry)
+        db_session.commit()
+        flash('Subscription successful!', 'success')
+        return jsonify({"success": True, "message": "Contact form submitted successfully!"})
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+            return make_response(jsonify({"success": False, "message": str(e)}), 500)
+               
+    
 if __name__ == '__main__':
     app.run(debug=True)

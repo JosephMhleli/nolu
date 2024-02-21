@@ -32,12 +32,17 @@
 {%include 'navbar.html'%}
 <section class = "Romance">
   
-        <div class="specialoffer">       
+        <div class="specialoffer">  
+          <div class="image1"><img src = "{{url_for('static', filename='images/book1.png')}}"></div>
+          <div class="image1"><img src = "{{url_for('static', filename='images/book2.png')}}"></div>
+          <div class="image1"><img src = "{{url_for('static', filename='images/book3.png')}}"></div>
+          <div class="image1"><img src = "{{url_for('static', filename='images/book4.png')}}"></div>     
       </div> 
      
       <div class="topsellers">
           <h2>Top Sellers</h2>
-      </div> 
+          
+        </div> 
       <div class="slideshow-container1">
         {% for group in books|batch(4) %}
           <div class="mySlides fade">

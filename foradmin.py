@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, make_response
-from db import Book, BookSession
+from db import Book, Session
 from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
@@ -13,7 +13,7 @@ def show():
 def list_books():
     try:
         # Query the database to get all books
-        book_session = BookSession()
+        book_session = Session()
         books = book_session.query(Book).all()
         book_session.close()
 
@@ -42,7 +42,7 @@ def add_book():
             new_book = Book(title=title, author=author, category=category, price=price,image_url=img_url,descri = decrip )
 
             # Add the book to the database
-            book_session = BookSession()
+            book_session = Session()
             book_session.add(new_book)
             book_session.commit()
             book_session.close()
@@ -67,7 +67,7 @@ def update_book():
             abort(400, 'Missing required fields')
 
         # Query the database to get the existing book
-        db_session = BookSession()
+        db_session = Session()
         existing_book = db_session.query(Book).filter_by(id=book_id).first()
 
         # Update the book information
@@ -95,7 +95,7 @@ def delete_book():
         if not book_id:
             abort(400, 'Missing book ID')
         # Query the database to get the existing book
-        db_session = BookSession()
+        db_session = Session()
         book_to_delete = db_session.query(Book).filter_by(id=book_id).first()
 
         # Remove the book from the database

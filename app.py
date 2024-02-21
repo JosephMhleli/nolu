@@ -53,20 +53,19 @@ def list_books():
 @app.route('/')     # for the public anyone can access this side......
 def index():
     try:
-        # Fetch books from the /getbooks endpoint
-        books_url = url_for('list_books')  # Assuming your route for getting books is named 'list_books'
-        response = requests.get(f'http://localhost:5000{books_url}')  # Replace localhost:5000 with your actual host and port
+        # Directly call the list_books function without making an HTTP request
+        book_response = list_books()  # Call the function directly
 
+        # Since list_books returns a Response object, you need to get the JSON data
+        books_data = book_response.get_json()  # Extract JSON data from the Response object
 
-        # Check if the request was successful (status code 200)
-        if response.status_code == 200:
-            books = response.json()['books']
+        if 'books' in books_data:
+            books = books_data['books']
             return render_template('index.html', books=books)
         else:
-            return jsonify({'error': f"Failed to fetch books. Status code: {response.status_code}"}), response.status_code
+            return jsonify({'error': "Failed to fetch books."}), 500
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-    
     
 @app.route('/login')
 def show_login():

@@ -1,5 +1,10 @@
 /* Variables.css */
 :root {
+
+    --nolu1-image-url: url('{{ url_for("static", filename="Images/Nolu1.png") }}');
+      --img3-image-url: url('{{ url_for("static", filename="Images/img3.jpg") }}');
+      --beauty-image-url: url('{{ url_for("static", filename="Images/beauty.jpg") }}');
+      --img1-image-url: url('{{ url_for("static", filename="Images/img1.jpg") }}');
     /* fonts */
     --ff-h1: 'Noto Sans', sans-serif;
     --ff-p: 'Roboto', sans-serif;

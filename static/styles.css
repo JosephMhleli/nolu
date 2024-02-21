@@ -9,7 +9,34 @@
   }
 
  
- 
+  @keyframes backgroundChange {
+    0%, 20% {
+      background-image: var(--nolu-image-url);
+      opacity: 1;
+    }
+    25% {
+      opacity: 0;
+    }
+    30%, 50% {
+      background-image: var(--img3-image-url);
+      opacity: 1;
+    }
+    55% {
+      opacity: 0;
+    }
+    60%, 80% {
+      background-image: var(--beauty-image-url);
+      opacity: 1;
+    }
+    85% {
+      opacity: 0;
+    }
+    90%, 100% {
+      background-image: var(--img1-image-url);
+      opacity: 1;
+    }
+  }
+  
 
 
 

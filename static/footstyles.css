@@ -3,20 +3,20 @@
     margin: 0;
     padding: 0;
 }
-.Footer{
-    width:100%;
-   
-    /* text-align:center; */
-    min-height: 17em;
-   
-    background-color: var(--secondary-clr);
-  
-  }
+.fitfooter{
+  width: 100%;
+margin: 0 auto;
+
+min-height: 17em;
+
+background-color: var(--secondary-clr);
+
+}
   .footinfor{
   
     display: flex;
     justify-content: space-between;
- 
+   
   }
   .infoUs{
     flex-basis: 30%;
@@ -45,10 +45,7 @@
   font-size: var(--fs-sm);
   /* font-family: Arial, Helvetica, sans-serif; */
  }
- .fitfooter{
-  width: 65%;
-margin: 0 auto;
-}
+
 .subscribe-section {
   text-align: center;
  

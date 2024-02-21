@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/static/footstyles.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='/static/footstyles.css')}}">
 </head>
 <body>
     
-    <section class="Footer">
+   
         <div class="fitfooter">
           <div class="footinfor">
             <div class="infoUs">
               <h2>ABOUT US</h2>
-              <p id="header"> <span id="close">Operating</span> Hours</p>
+              <p > <span id="close">Operating</span> Hours</p>
                <div class="botnav">
                 <i class="fas fa-clock fa-clock"></i><span class="opening-hours">08:00-16:00 PM on weekdays</span><br>
                 <i class="fas fa-clock fa-clock"></i><span class="opening-hours">08:00-16:00 PM on weekends</span>
@@ -38,7 +39,7 @@
             </div>
            
           </div>
-        </div>
+       
     
         <p id="mlizo">&copy; 2023 CED. All rights reserved.</p>
     </section>

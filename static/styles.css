@@ -347,7 +347,7 @@ padding: 10px;
    }
    
   .book img{
-    width: 60%;
+    width: 80%;
     height: auto;
   }
   .book {
@@ -374,5 +374,15 @@ padding: 10px;
   }
   .Book{
     padding: 10px;
+  }
+  #booktitle{
+font-size: 0.7rem;
+font-weight: 600;
+  }
+  #bookauthor{
+font-size: 0.75rem;
+  }
+  #bookprice{
+
   }
 }

@@ -4,7 +4,7 @@
     padding: 0;
 }
 .fitfooter{
-  width: 100%;
+width: 100%;
 margin: 0 auto;
 
 min-height: 17em;
@@ -13,9 +13,10 @@ background-color: var(--secondary-clr);
 
 }
   .footinfor{
-  
+    width: 70%;
     display: flex;
     justify-content: space-between;
+    margin: 0 auto;
    
   }
   .infoUs{
@@ -33,7 +34,7 @@ background-color: var(--secondary-clr);
   color: white;
 
 }
- .infoUs a{
+ .infoUs a {
   
   display: block;
   text-decoration: none;
@@ -44,6 +45,13 @@ background-color: var(--secondary-clr);
   top:15px;
   font-size: var(--fs-sm);
   /* font-family: Arial, Helvetica, sans-serif; */
+ }
+ .botnav{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  color:white;
+  justify-content: space-around;
  }
 
 .subscribe-section {

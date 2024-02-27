@@ -20,16 +20,7 @@
 <body>
 
 
-       <div class="topnav" id="myTopnav">
-            
-        <a href="#ews" class="favorites-link">
-          <i class="fa-regular fa-heart heart-icon"></i>FAVORITES
-        </a>
-          <a href="/login" class = "login">SIGN IN</a>
-          <a href="CART.html" onclick="addToCart(event)">CART</a>
-          
-          
-        </div>
+  {%include 'navbar.html'%}
 
         <div class=formscon>
             
@@ -51,6 +42,6 @@
                 <button type="submit">Login</button>
             </form>
         </div>
-    
+        {%include 'footer.html'%}
 </body>
 </html>

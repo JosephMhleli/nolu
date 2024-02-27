@@ -40,40 +40,15 @@
  
  
     
-    /* Style the home button */
-    #home {
-      font-family: 'Ephesis', cursive;
-     font-size: 30px;
-     font-weight: bold;
-     color: #2b2b2b;
-      text-decoration: none;
-    }
-    #home:hover{
-      cursor: pointer;
-      transform: scale(1.05);
-    }
-    
-    /* Style the individual navigation links */
-    .topnav a {
-      display: inline-block;
-      color: #333; /* Change text color as needed */
-      text-decoration: none;
-      padding: 10px 15px; /* Adjust padding as needed */
-    }
-    
-    /* Change color on hover */
-    
-      .topnav a::after {
-      content: "";
-      display: block;
-      width: 0;
-      height: 2px;
-      background-color: #758199; 
-      transition: width 0.3s ease-in-out;
-    }
-    
-    .topnav a:hover::after {
+ 
+    .flexit{
+      margin-top: 2rem;
+      display: flex;
       width: 100%;
+      flex-wrap: wrap;
+      flex-direction: column;
+      justify-content: space-around;
+      
     }
     .biocontainer2{
       width: 60%;
@@ -87,10 +62,12 @@
     }
     .book-container2{
       /* background-color: red; */
-      min-height: 20svh;
+     
       display: flex;
       justify-content: space-between;
       width: 100%;
+      
+     min-height: 30svh;
       text-align: center;
     }
     .book2{
@@ -126,56 +103,6 @@
   margin-right: 5px; /* Adjust spacing between icon and count */
 }
 
-/* Style the cart count */
-#cartcount {
-  margin: 0;
-}
-
-/* Style the cart dropdown */
-.carts-container {
-  display: flex;
-  align-items: center;
-}
-
-/* Style the carts icon */
-.carts-icon {
-  font-size: 16px; /* Adjust the size as needed */
-  margin-right: 5px; /* Adjust spacing between icon and count */
-}
-
-/* Style the cart count */
-#cartcount {
-  margin: 0;
-}
-#cart-dropdown {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  padding: 12px;
-  z-index: 1;
-}
-
-#cart-dropdown p {
-  margin: 0;
-}
-
-#carts-btn:hover #cart-dropdown {
-  display: block;
-}
-/* Style the cart items */
-#cart-items {
-  padding: 10px;
-  margin: 0;
-}
-
-.cart-item {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid #eee; /* Add a border between items */
-  padding: 8px 0;
-}
 
 
 
@@ -296,6 +223,21 @@
     margin: 10px;
     height: 5vh;
 } */
+.bookApp p {
+  max-height: 200px; /* Adjust based on your preference */
+  overflow: auto; /* Adds a scrollbar if the content overflows */
+  word-wrap: break-word; /* Ensures long words do not cause spillover */
+}
+
+/* Optional: For a nicer look with ellipsis */
+.bookApp p {
+  white-space: nowrap; /* Prevents text from wrapping to a new line */
+  overflow: hidden; /* Hides overflow content */
+  text-overflow: ellipsis; /* Adds ellipsis to indicate clipped text */
+  max-width: 100%; /* Ensures the paragraph does not exceed the div width */
+}
+
+
 .topsellers{
     width: 60%;
     height: 5vh;
@@ -395,7 +337,7 @@
   display: flex;
   /* margin: 10px; */
 }
-.biocontainer{
+.biocontainer2{
   width: 100%;
   min-height: 10svh;
   margin: 0 auto;
@@ -404,4 +346,34 @@
 /* background-color: yellow; */
   justify-content: space-between;
 }
+/* .biocontainer2{
+  width: 60%;
+ min-height: 30svh;
+  margin: 0 auto;
+  display: flex;
+  padding: 10px;
+  position: relative;
+text-align: center;
+  justify-content: space-between;
+} */
+.book-container2{
+  /* background-color: red; */
+ 
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  
+ min-height: 30svh;
+  text-align: center;
+}
+#booktitle{
+  font-size: 0.7rem;
+  font-weight: 600;
+    }
+    #bookauthor{
+  font-size: 0.75rem;
+    }
+    #bookprice{
+  
+    }
 }

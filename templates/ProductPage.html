@@ -66,34 +66,35 @@
     
 
 
-</section> 
-<div class="topsellers">
-  <h2>You Might Also Like</h2>
-</div>
-<div class="biocontainer2">
-  
-  <div class="book-container2">
-    {% set children_books = [] %}
-    {% for book in books %}
-        {% if book.category == category %}
-            {% if children_books|length < 3 %}
-                {% set _ = children_books.append(book) %}
-                <div class="book2" onclick="redirectToProductPage('{{ book.title }}','{{ book.price }}','{{ book.image_url }}','{{ book.author }}','{{ book.category }}','{{book.descri}}')">
-                  <div class="cart-overlay">
-                    <div class="cart-icon"><i class="fa-solid fa-cart-shopping"></i></div>
-                    <p>ADD TO CART</p>
+</section>
+<div class="flexit">
+  <div class="topsellers">
+    <h2>You Might Also Like</h2>
+  </div>
+  <div class="biocontainer2">
+    
+    <div class="book-container2">
+      {% set children_books = [] %}
+      {% for book in books %}
+          {% if book.category == category %}
+              {% if children_books|length < 3 %}
+                  {% set _ = children_books.append(book) %}
+                  <div class="book2" onclick="redirectToProductPage('{{ book.title }}','{{ book.price }}','{{ book.image_url }}','{{ book.author }}','{{ book.category }}','{{book.descri}}')">
+                    <div class="cart-overlay">
+                      <div class="cart-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+                      <p>ADD TO CART</p>
+                    </div>
+                    <img src="{{ book.image_url }}" alt="{{ book.title }} Cover">
+                    <h4 id="booktitle">{{ book.title }}</h4>
+                    <p id="bookauthor">{{ book.author }}</p>
+                    <p id="bookprice"> R {{ book.price }}</p>
                   </div>
-                  <img src="{{ book.image_url }}" alt="{{ book.title }} Cover">
-                    <h3>{{ book.title }}</h3>
-                    <p id="author">{{ book.author }}</p>
-                    <p id="price"> R {{ book.price }}</p>
-                </div>
-            {% endif %}
-        {% endif %}
-    {% endfor %}
-</div>
-
+              {% endif %}
+          {% endif %}
+      {% endfor %}
+  </div>
   
+  </div>
   
 </div>
 

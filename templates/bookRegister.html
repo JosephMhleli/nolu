@@ -18,6 +18,12 @@
       <link href="https://fonts.googleapis.com/css2?family=Ephesis&family=Josefin+Sans:ital,wght@0,100;1,100&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="loader-container">
+        <div class="loader"></div>
+    </div>
+    
+    <!-- Fade the background when loading -->
+    <div class="fade-background"></div>
     <form id="bookForm" action="{{ url_for('add_book') }}" method="post" onsubmit="return validateForm()">
         <label for="title">Title:</label>
         <input type="text" id="title" name="title" required>
@@ -77,7 +83,7 @@
     </script>
     
     
-
+    <script src="{{ url_for('static', filename='Javascript/redirect.js') }}"></script>
     
 
 </body>

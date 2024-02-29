@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
-    <title>Login</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
       <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -16,11 +15,17 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Ephesis&family=Josefin+Sans:ital,wght@0,100;1,100&display=swap" rel="stylesheet">
-</head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+    </head>
 <body>
+{%include 'navbar.html'%}
 
-
-  {%include 'navbar.html'%}
+<section class="my-section">
+    <div class="loader-container">
+        <div class="loader"></div>
+    </div>
+    <!-- Fade the background when loading -->
+    <div class="fade-background"></div>
 
         <div class=formscon>
             
@@ -42,6 +47,9 @@
                 <button type="submit">Login</button>
             </form>
         </div>
+    
+</section>
+    
         {%include 'footer.html'%}
 </body>
 </html>

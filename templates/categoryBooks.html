@@ -19,7 +19,12 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
-
+    <div class="loader-container">
+        <div class="loader"></div>
+    </div>
+    
+    <!-- Fade the background when loading -->
+    <div class="fade-background"></div>
 {%include 'navbar.html'%}
     <h2 id="header">Our in store {{ category }} books</h2>
     <div class="book-container1">

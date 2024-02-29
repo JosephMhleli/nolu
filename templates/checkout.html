@@ -60,6 +60,12 @@
     </style>
 </head>
 <body>
+  <div class="loader-container">
+    <div class="loader"></div>
+</div>
+
+<!-- Fade the background when loading -->
+<div class="fade-background"></div>
     {%include 'navbar.html'%}
     <div class="container">
         <div class="checkout-header">
@@ -177,5 +183,6 @@
 
         // Stripe JavaScript here (similar to previous example)
     </script>
+    <script src="{{ url_for('static', filename='Javascript/redirect.js') }}"></script>
 </body>
 </html>

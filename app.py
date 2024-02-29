@@ -4,7 +4,7 @@ from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity
 from passlib.hash import bcrypt
 from functools import wraps
 from flask import request, jsonify
-import requests
+import requests,boto3
 from datetime import datetime,timedelta,timezone
 from functools import wraps
 from db import User 
@@ -25,6 +25,23 @@ app.config['MAIL_PASSWORD'] = 'Sisimelele2020#'  # Your email password
 app.config['MAIL_DEFAULT_SENDER'] = 'lihlemayila7@gmail.com'  # Default sender
 
 mail.init_app(app)
+
+# Your DigitalOcean Spaces credentials
+access_key = 'DO00KA7MZCGKLY7AQMWJ'
+mfihlo = 'Qa2wDKKmueTTDH29PZhhQbF0R19aDeFy0GLDN0+7umQ'
+
+# Your DigitalOcean Spaces endpoint
+endpoint_url = 'https://cedengineering.nyc3.digitaloceanspaces.com'  # Example for New York region (nyc3)
+
+# Create a session using your DO Spaces credentials
+session = boto3.session.Session()
+client = session.client('s3',
+                        region_name='nyc3',  # Change to your region
+                        endpoint_url=endpoint_url,
+                        aws_access_key_id=access_key,
+                        aws_secret_access_key=mfihlo)
+
+
 
 
 def token_required(f):

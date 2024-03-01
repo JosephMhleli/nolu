@@ -19,19 +19,15 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
-    <div class="loader-container">
-        <div class="loader"></div>
-    </div>
-    
-    <!-- Fade the background when loading -->
-    <div class="fade-background"></div>
+ 
 {%include 'navbar.html'%}
+{%include 'loader.html'%}
     <h2 id="header">Our in store {{ category }} books</h2>
     <div class="book-container1">
 
         {% for book in books %}
         <div class="book" onclick="redirectToProductPage('{{ book.title }}','{{ book.price }}','{{ book.image_url }}','{{ book.author }}','{{ book.category }}')">
-            <h3>{{ book.title }}</h3>
+            <h4>{{ book.title }}</h4>
             <p id="author">{{ book.author }}</p>
             
             <img src="{{ book.image_url }}" alt="{{ book.title }} Cover">

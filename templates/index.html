@@ -20,13 +20,11 @@
  
   </head>
   <body>
-    <div class="loader-container">
-      <div class="loader"></div>
-  </div>
-  
-  <!-- Fade the background when loading -->
-  <div class="fade-background"></div>
+   
 {%include 'navbar.html'%}
+{%include 'loader.html'%}
+
+
 <section class = "Romance">
   
         <div class="specialoffer">  
@@ -49,7 +47,7 @@
                   <div class="bookdet">
                     <img src="{{book.image_url }}" alt="{{ book.title }}" style="width:100%" height="80%">
                     <div class="bookconte">
-                      <h4>{{ book.title }}</h4>
+                      <!-- <h4>{{ book.title }}</h4> -->
                       
                      
                     </div>
@@ -138,6 +136,7 @@
 <!-- end of the bestsellers CHILDREN section -->
 </section>
 <script src="{{ url_for('static', filename='Javascript/redirect.js') }}"></script>
+<script src="{{ url_for('static', filename='Javascript/slide.js') }}"></script>
 {%include 'footer.html'%}
 
 

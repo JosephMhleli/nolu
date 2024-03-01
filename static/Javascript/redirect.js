@@ -124,17 +124,4 @@ function getToken() {
         return null;
     }
 }
-function showLoader() {
-    document.querySelector('.loader').style.display = 'block'; 
-}
 
-// Example: simulate loading for 3 seconds
-setTimeout(function() {
-    document.querySelector('.loader').style.display = 'none'; 
-}, 3000);
-
-// JavaScript to hide the loader container after animation completes
-window.addEventListener("load", function() {
-    document.querySelector('.loader-container').style.display = 'none';
-  });
-  

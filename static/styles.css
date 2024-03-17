@@ -463,4 +463,7 @@ font-size: 0.75rem;
     border: none;
     cursor: pointer;
   }
+  .cart-overlay {
+  display: none;}
+  
 }

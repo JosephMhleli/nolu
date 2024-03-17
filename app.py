@@ -222,11 +222,20 @@ def product_page():
     
 @app.route('/requestBook')
 def show_reque():
-    return render_template('requestbook.html')
+        book_response = list_books()  
+
+        # Since list_books returns a Response object, you need to get the JSON data
+        books_data = book_response.get_json()  # Extract JSON data from the Response object
+
+        if 'books' in books_data:
+            books = books_data['books']
+            
+        return render_template('requestbook.html',books=books)
 
 @app.route('/requestBook', methods = ['POST'])
 def bookre():
     try:
+        
         title = request.form['title']
         cell = request.form['cell']
         author = request.form['author']
@@ -239,7 +248,7 @@ def bookre():
         new_book_req = Request(title = title, author=author,cell=cell,email=email,name=name) 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-    return render_template('requestbook.html')  
+    return render_template('requestbook.html',books=books)  
 
 @app.route('/search', methods=['GET'])
 def search_books():
@@ -275,9 +284,23 @@ def showcheckout():
         return render_template('checkout.html')
 
 
-@app.route('/privacy')
+@app.route('/help/privacy-policy')
 def showprivacy():
     return render_template('privacy.html')
+
+def send_email(firstName, email, cellNumber, companyName, message):
+    msg = Message('New Contact Form Submission', recipients=['lihlemayila7@gmail.com'])
+    msg.body = f'''
+    You have a new contact form submission:
+    
+    Name: {firstName}
+    Email: {email}
+    Cell Number: {cellNumber}
+    Company Name: {companyName}
+    Message: {message}
+    '''
+    mail.send(msg)
+
 
     
 @app.route('/subscribe',methods = ['POST'])

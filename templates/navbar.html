@@ -22,27 +22,16 @@
           Books & Nooks
         </a>
        
-        <div class="overlay" id="overlay" onclick="closeNav()"></div>
+        <div class="overlay3" id="overlay3" onclick="closeNav()"></div>
         <div class="topnav" id="myTopnav">
-        
-         <a href="#" class="favorites-link">
-           <i class="fa-regular fa-heart heart-icon"></i>FAVORITES
-         </a>
            <a href="/login" class = "login">SIGN IN</a>
-
-
-           
-
              <a href="/requestBook" class = "login">BOOK REQUEST</a>
-
              <a id="carts-btn" >
               <div class="carts-container">
                <i class="fa-solid fa-cart-shopping"></i>
                 <p id="cart">0</p>
               </div>
-              <div id="cart-dropdown">
-                <p id="cart-items">Cart is empty</p>
-              </div>
+             
             </a>
 
          </div>
@@ -50,7 +39,7 @@
        
 
          <div class="search">
-           <form action="/search" method="get">
+           <form action="/search" method="get" id="numba4">
                <input type="text" name="query" placeholder="Search book, author...">
                <button type="submit">Search</button>
            </form>

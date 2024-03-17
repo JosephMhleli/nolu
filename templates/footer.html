@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../static/footstyles.css">
@@ -22,7 +23,7 @@
             <div class="infoUs">
               <h2>CUSTOMER SERVICES</h2>
               <a href="#"> Delivery Information</a>
-              <a href="#">Return Policy</a>
+              <a href="/help/privacy-policy">Privacy Policy</a>
               <a href="#">Contact Us</a>
             </div>
             <div class="infoUs">
@@ -31,15 +32,54 @@
                 <h2>SUBSCRIBE</h2>
                 <p>Subscribe for the latest news and exclusive offers!</p>
               
-                <form action="/subscribe" method="post">           
+                <form action="/subscribe" method="post"  id="subscribeForm">           
                   <input type="email" id="email" name="email" placeholder="Your Email" required>      
                   <button type="submit">Subscribe</button>
                 </form>
+                <div id="loading">Processing...</div> 
+                <div id="message"></div>
               </div>          
             </div>
            
           </div>
-        <p id="mlizo">&copy; 2023 CED. All rights reserved.</p>
-   
+          <p id="mlizo">&copy; <a href="https://cedengineering.co.za/" style="text-decoration: none;">2024 CED</a>. All rights reserved.</p>
+        </div>
+          <script>
+            $(document).ready(function() {
+                $('#subscribeForm').submit(function(e) {
+                    e.preventDefault(); // Prevent default form submission
+                    $('#loading').show(); // Show loading indicator
+                    $('#message').empty(); // Clear previous messages
+                    var formData = $(this).serialize(); // Serialize form data
+        
+                    $.ajax({
+                        type: 'POST',
+                        url: '/subscribe',
+                        data: formData,
+                        success: function(response) {
+                            $('#loading').hide(); // Hide loading indicator
+                            // Display success message
+                            $('#message').text(response.message).addClass('success').removeClass('error');
+                            $('#subscribeForm').find('input[type=email]').val('');
+                            // Remove message after 5 seconds
+                            setTimeout(function() {
+                                $('#message').empty().removeClass('success');
+                            }, 5000);
+                          },
+                        error: function(xhr) {
+                            $('#loading').hide(); // Hide loading indicator
+                            // Display error message
+                            var errorMsg = xhr.responseJSON && xhr.responseJSON.message ? xhr.responseJSON.message : 'An error occurred. Please try again later.';
+                            $('#message').text(errorMsg).addClass('error').removeClass('success');
+                            $('#subscribeForm').find('input[type=email]').val('');
+                            // Remove message after 5 seconds
+                            setTimeout(function() {
+                                $('#message').empty().removeClass('error');
+                            }, 5000);
+                          }
+                    });
+                });
+            });
+            </script>
 </body>
 </html>

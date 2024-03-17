@@ -48,9 +48,34 @@
     </form>
     
 </section>
-
+<div class="popularbooks">
+  <h2 id="poptxt">Popular Books</h2>
+  <div class="slideshow-container1">
+    {% for group in books|batch(4) %}
+      <div class="mySlides fade">
+        <div class="imgcontainer">
+          {% for book in group %}
+            <div class="Book">
+              <div class="book" onclick="redirectToProductPage('{{ book.title }}','{{ book.price }}','{{ book.image_url }}','{{ book.author }}','{{ book.category }}','{{book.descri}}')">
+                <div class="cart-overlay">
+                 
+                </div>
+                <img src="{{ book.image_url }}" alt="{{ book.title }} Cover">
+               
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+</div>
 
 {%include 'footer.html'%}
+<script src="{{ url_for('static', filename='Javascript/redirect.js') }}"></script>
+<script src="{{ url_for('static', filename='Javascript/slide.js') }}"></script>
 </body>
 </html>
 

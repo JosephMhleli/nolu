@@ -1,37 +1,15 @@
-body {
-   
+@import url(Variables.css);
+
+body {  
     margin: 0;
     padding: 0;
-  
-
 }
 
 
-.formscon{
-  width: 50%;
-  margin: 5rem auto;
-  min-height: 30svh;
- 
-}
-   
-.formscon form {
-        position: relative;
-        
-        margin-top: 20px; 
-        /* background-color: #b23838; */
-        padding: 20px;
-        display: flex;
-        flex-wrap: wrap;
-        margin: 0 auto;
-        border-radius: 8px;
-        height: 40vh;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        width: 50%; 
-}
     
  .my-section{
   background-color:#FFFFFF;
-  min-height: 100vh;
+  min-height: 50vh;
    top: 0;
    z-index:0;
    background-position: center;
@@ -41,6 +19,27 @@ body {
   align-items: center;
  }  
 
+ .formscon{
+  width: 50%;
+  margin: 5rem auto;
+  position: relative;
+  min-height: 50svh;
+ /* background-color: red; */
+}
+   
+.formscon form {
+        position: relative;     
+        margin-top: 20px; 
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        /* flex-wrap: wrap; */
+        margin: 0 auto;
+        border-radius: 8px;
+        height: 50vh;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 50%; 
+}
 
 .formscon label {
     display: block;
@@ -53,11 +52,14 @@ body {
     padding: 8px;
    margin-left: 10%;
     margin-bottom: 15px;
-    border-radius: 0.15rem;
+    border-radius: 0.85rem;
     box-sizing: border-box;
 }
 
-button {
+.formscon input:focus {
+  outline: none;
+}
+.formscon button {
     background-color: var(--secondary-clr);
     color: #fff;
     padding: 10px;
@@ -69,43 +71,7 @@ button {
     width: 80%;
 }
 
-.loader-container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 9999; /* Ensure the loader is on top of other content */
-  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Box shadow for depth */
-}
 
-.loader {
-  border: 8px solid #3498db; /* Blue color */
-  border-top: 8px solid #f3f3f3; /* Light grey background */
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Fade the background */
-.fade-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-  z-index: 9998; /* Ensure the background overlay is below the loader */
-  display: none; /* Initially hidden */
-}
 
 button:hover {
     background-color: #99869B;

@@ -189,34 +189,34 @@ margin: 0 auto;
   display: none;
 }
 
-.prev{
+.prev {
   position: absolute;
-  top: 50%;
-  width: auto;
+  left: -20px;
   padding: 16px;
-  margin-top: -22px;
+  top: 50%; 
+  transform: translateY(-50%); 
   font-size: 20px;
-  color: white;
-  background-color: black;
+  color: #333;
   border: none;
   cursor: pointer;
 }
+
 .next {
   position: absolute;
-  right: 0;
-  top: 50%;
-  width: auto;
+  right: -20px;
+  
   padding: 16px;
-  margin-top: -22px;
+  top: 50%; /* Position the top of the arrow at the center */
+  transform: translateY(-50%); 
   font-size: 20px;
-  color: white;
-  background-color: black;
+  color: #333;
+ 
   border: none;
   cursor: pointer;
 }
 .prev:hover, .next:hover {
-  background-color: #ddd;
-  color: black;
+
+  color: #ddd;
 }
 
 .fade {
@@ -265,7 +265,7 @@ margin: 0 auto;
 }
 
 .book:hover .cart-overlay {
-  height: 20%;
+  height: 40%;
 }
 .fa-solid{
   color: white;
@@ -275,7 +275,7 @@ margin: 0 auto;
 
 .cart-icon {
   font-size: 30px;
-  color: white;
+  color:  var(--secondary-clr2);
   font-weight: bold;
   margin-bottom: 10px;
 }
@@ -372,27 +372,52 @@ padding: 10px;
      display: flex;
      justify-content: space-between;
   
-     margin: 20px auto;
+     margin: 10px auto;
      /* background-color: #5D5C5E; */
    }
+  
+   .topsellers{
+    width: 90%;
+    min-height: 5vh;
+    margin: 1% auto;
    
-  .book img{
-    width: 100%;
-    height: auto;
+    border-top: 1px solid #989799;
+    border-bottom: 1px solid #989799;
+    
   }
-  .book {
-    /* border: 1px solid #ccc; */
-  margin: 10px;
-  padding: 10px;
-   text-align: center;
-   position: relative;
-   margin: 10px;
-   cursor: pointer;
-   transition: transform 0.3s;
-     /* width: 300px;  */
-     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 5px; 
+   
+
+   .imgcontainer {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    justify-content: space-between;
   }
+  
+  .Book {
+    flex-basis: 25%;
+    padding: 10px; /* Adjust padding as needed */
+    box-sizing: border-box;
+  }
+  
+  /* Set the image within each book container to fill the available space */
+  .Book img {
+    width: 100%; /* Ensure the image fills the width of the container */
+    height: 100%; /* Ensure the image fills the height of the container */
+    object-fit: cover; /* Maintain aspect ratio and fill the container */
+    border-radius: 2px;
+    border: 2px solid #F4ECFF;
+  }
+  
+
+.bookdet{
+width: 100%;
+height: 100%;
+margin: 0 auto;
+/* background-color: silver; */
+}
+
+ 
   .biocontainer{
     width: 100%;
     min-height: 10svh;
@@ -402,9 +427,7 @@ padding: 10px;
   /* background-color: yellow; */
     justify-content: space-between;
   }
-  .Book{
-    padding: 10px;
-  }
+
   #booktitle{
 font-size: 0.7rem;
 font-weight: 600;
@@ -414,5 +437,30 @@ font-size: 0.75rem;
   }
   #bookprice{
 
+  }
+  .prev {
+    position: absolute;
+    left: 0px;
+    padding: 16px;
+    top: 50%; 
+    transform: translateY(-50%); 
+    font-size: 20px;
+    color: #333;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .next {
+    position: absolute;
+    right: 0px;
+    
+    padding: 16px;
+    top: 50%; /* Position the top of the arrow at the center */
+    transform: translateY(-50%); 
+    font-size: 20px;
+    color: #333;
+   
+    border: none;
+    cursor: pointer;
   }
 }

@@ -19,13 +19,10 @@
     </head>
 <body>
 {%include 'navbar.html'%}
-
+{%include 'loader.html'%}
 <section class="my-section">
-    <div class="loader-container">
-        <div class="loader"></div>
-    </div>
-    <!-- Fade the background when loading -->
-    <div class="fade-background"></div>
+    
+   
 
         <div class=formscon>
             
@@ -50,6 +47,9 @@
     
 </section>
     
-        {%include 'footer.html'%}
+
+        <script src="{{ url_for('static', filename='Javascript/redirect.js') }}"></script>
+<script src="{{ url_for('static', filename='Javascript/slide.js') }}"></script>
+{%include 'footer.html'%}
 </body>
 </html>

@@ -65,19 +65,20 @@
    
 <!-- for the biograpgy bestsellers book section -->
 <div class="topsellers">
-  <h2>Fiction Top Sellers</h2>
+  <h2>Self Development</h2>
 </div> 
 <div class="biocontainer">
   
   
     {% set children_books = [] %}
     {% for book in books %}
-        {% if book.category == 'Fiction' %}
+        {% if book.category == 'psychology' %}
             {% if children_books|length < 3 %}
                 {% set _ = children_books.append(book) %}
                 <div class="book" onclick="redirectToProductPage('{{ book.title }}','{{ book.price }}','{{ book.image_url }}','{{ book.author }}','{{ book.category }}','{{book.descri}}')">
                   <div class="cart-overlay">
-                    <div class="cart-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+                    <div class="cart-icon">&#128722;
+                    </i></div>
                     <p>ADD TO CART</p>
                   </div>
                   <img src="{{ book.image_url }}" alt="{{ book.title }} Cover">
@@ -100,22 +101,21 @@
 
 <!-- for the CHILDREN bestsellers book section -->
 <div class="topsellers">
-  <h2>Romance Top Sellers</h2>
+  <h2>Non-Fiction Top Sellers</h2>
 </div> 
 <div class="biocontainer">
-  
-    
   
   <div class="book-container">
    
     {% set children_books = [] %}
     {% for book in books %}
-        {% if book.category == 'Romance' %}
+        {% if book.category == 'Non-Fiction' %}
             {% if children_books|length < 3 %}
                 {% set _ = children_books.append(book) %}
                 <div class="book" onclick="redirectToProductPage('{{ book.title }}','{{ book.price }}','{{ book.image_url }}','{{ book.author }}','{{ book.category }}','{{book.descri}}')">
                   <div class="cart-overlay">
-                    <div class="cart-icon"> <i class="fa-solid fa-cart-shopping"></i></div>
+                    <div class="cart-icon"> &#128722;
+                    </div>
                     <p>ADD TO CART</p>
                   </div> 
                   <img src="{{ book.image_url }}" alt="{{ book.title }} Cover">
